@@ -5,7 +5,6 @@ const srcDir = path.resolve(__dirname, './src')
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir,
-  components: false,
   telemetry: false,
 
   alias: {

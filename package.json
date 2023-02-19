@@ -1,4 +1,6 @@
 {
+  "name": "nuxt-3-boilerplate",
+  "version": "0.0.0",
   "private": false,
   "scripts": {
     "build": "nuxt build",

@@ -1,19 +1,19 @@
 <template>
   <div class="default-layout">
-    <default-header/>
+    <default-header />
     <main>
-      <nuxt-page/>
+      <nuxt-page />
     </main>
-    <default-footer/>
+    <default-footer />
   </div>
 </template>
 
 <script>
-import DefaultFooter from "@includes/DefaultFooter/DefaultFooter.vue";
-import DefaultHeader from "@includes/DefaultHeader/DefaultHeader.vue";
+import DefaultFooter from '@includes/DefaultFooter/DefaultFooter'
+import DefaultHeader from '@includes/DefaultHeader/DefaultHeader'
 
 export default {
   name: 'DefaultLayout',
-  components: {DefaultFooter, DefaultHeader}
+  components: { DefaultFooter, DefaultHeader }
 }
 </script>
