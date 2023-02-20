@@ -1,2 +1,4 @@
 #ignore components
 components/includes/*
+components/page-components/*
+components/shared/*

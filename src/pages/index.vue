@@ -4,6 +4,10 @@
 
 <script>
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+
+  mounted() {
+    console.log(encodeBase64('1'))
+  }
 }
 </script>
