@@ -1,4 +1,21 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": "./.nuxt/tsconfig.json",
+
+    "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"],
+      "~~/*": ["./*"],
+      "@@/*": ["./*"],
+      "@api/*": ["./src/api/*"],
+      "@kits/*": ["./src/components/kits/*"],
+      "@page-components/*": ["./src/components/page-components/*"],
+      "@locales/*": ["./src/locales/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@type/*": ["./src/ts/type/*"],
+      "@interface/*": ["./src/ts/interface/*"]
+    }
+  },
 }

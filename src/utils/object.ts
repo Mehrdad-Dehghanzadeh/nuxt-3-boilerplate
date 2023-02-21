@@ -5,7 +5,7 @@ export function deepFreeze(obj: object): object {
   Object.freeze(obj)
 
   Object.getOwnPropertyNames(obj).forEach(function (prop: string) {
-    const objectProp: any = obj[prop]
+    const objectProp: any = obj[prop as keyof typeof obj]
     if (
       objectProp !== null &&
       (typeof objectProp === 'object' || typeof objectProp === 'function') &&
