@@ -13,6 +13,9 @@ export default defineNuxtConfig({
     '@shared': path.join(__dirname, 'src/components/shared'),
     '@includes': path.join(__dirname, 'src/components/includes'),
     '@locales': path.join(__dirname, 'src/locales'),
-    '@data': path.join(__dirname, 'src/locales/data')
+    '@data': path.join(__dirname, 'src/locales/data'),
+    '@utils': path.join(__dirname, 'src/utils'),
+    '@type': path.join(__dirname, './src/ts/types'),
+    '@interface': path.join(__dirname, './src/ts/interface')
   }
 })
