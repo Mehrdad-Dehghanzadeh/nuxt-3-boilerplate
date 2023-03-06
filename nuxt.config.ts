@@ -7,6 +7,22 @@ export default defineNuxtConfig({
   srcDir,
   telemetry: false,
 
+  modules: ['@nuxtjs/i18n'],
+
+  i18n: {
+    locales: ['en', 'fa'],
+    defaultLocale: 'fa',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'app_lang'
+    },
+
+    vueI18n: {
+      legacy: false,
+      locale: 'fa'
+    }
+  },
+
   alias: {
     '@api': path.join(__dirname, 'src/api'),
     '@page-components': path.join(__dirname, 'src/components/page-components'),
