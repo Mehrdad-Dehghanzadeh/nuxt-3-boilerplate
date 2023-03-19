@@ -7,11 +7,18 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "analyze": "nuxt analyze ",
+    "cleanup": "nuxt cleanup"
   },
   "devDependencies": {
     "@nuxtjs/i18n": "^8.0.0-beta.10",
-    "nuxt": "^3.2.2",
+    "nuxt": "^3.3.1",
     "prettier": "^2.8.4"
+  },
+  "dependencies": {
+    "@nuxtjs/composition-api": "^0.33.1",
+    "@pinia/nuxt": "^0.4.7",
+    "pinia": "^2.0.33"
   }
 }
