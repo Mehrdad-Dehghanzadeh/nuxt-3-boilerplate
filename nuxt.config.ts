@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   srcDir,
   telemetry: false,
 
-  modules: ['@nuxtjs/i18n'],
+  modules: ['@nuxtjs/i18n', '@pinia/nuxt'],
 
   i18n: {
     locales: ['en', 'fa'],
