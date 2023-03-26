@@ -7,6 +7,15 @@ export default defineNuxtConfig({
   srcDir,
   telemetry: false,
 
+  components: {
+    dirs: [
+      {
+        path: '~/components/kits',
+        global: true
+      }
+    ]
+  },
+
   modules: ['@nuxtjs/i18n', '@pinia/nuxt'],
 
   i18n: {
