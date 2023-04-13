@@ -19,17 +19,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/i18n', '@pinia/nuxt'],
 
   i18n: {
-    locales: ['en', 'fa'],
-    defaultLocale: 'fa',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'app_lang'
-    },
-
-    vueI18n: {
-      legacy: false,
-      locale: 'fa'
-    }
+    vueI18n: './i18n.config.ts' // if you are using custom path, default 
   },
 
   alias: {
