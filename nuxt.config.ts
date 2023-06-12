@@ -7,19 +7,22 @@ export default defineNuxtConfig({
   srcDir,
   telemetry: false,
 
-  components: {
-    dirs: [
-      {
-        path: '~/components/kits',
-        global: true
-      }
-    ]
-  },
-
   modules: ['@nuxtjs/i18n', '@pinia/nuxt'],
 
   i18n: {
-    vueI18n: './i18n.config.ts' // if you are using custom path, default 
+    vueI18n: './i18n.config.ts' // if you are using custom path, default
+  },
+
+  css: [path.join(srcDir, 'assets/style/custom/index.scss')],
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/assets/style/global/index.scss";'
+        }
+      }
+    }
   },
 
   alias: {
