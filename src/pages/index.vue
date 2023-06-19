@@ -2,8 +2,7 @@
   <article></article>
 </template>
 
-<script>
-export default {
-  name: 'HomePage'
-}
+<script lang="ts" setup>
+const { $snack } = useNuxtApp()
+console.log($snack.error('aaa'))
 </script>

@@ -5,7 +5,14 @@ const srcDir = path.resolve(__dirname, './src')
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir,
+  ssr: false,
   telemetry: false,
+  components: [
+    {
+      path: path.resolve(srcDir, 'components/kits'),
+      pathPrefix: false
+    }
+  ],
 
   modules: ['@nuxtjs/i18n', '@pinia/nuxt'],
 
@@ -29,6 +36,7 @@ export default defineNuxtConfig({
     '@api': path.join(__dirname, 'src/api'),
     '@page-components': path.join(__dirname, 'src/components/page-components'),
     '@shared': path.join(__dirname, 'src/components/shared'),
+    '@kits': path.join(__dirname, 'src/components/kits'),
     '@includes': path.join(__dirname, 'src/components/includes'),
     '@locales': path.join(__dirname, 'src/locales'),
     '@data': path.join(__dirname, 'src/locales/data'),
