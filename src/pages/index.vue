@@ -4,5 +4,8 @@
 
 <script lang="ts" setup>
 const { $snack } = useNuxtApp()
-console.log($snack.error('aaa'))
+
+onMounted(() => {
+  $snack.error('سلام')
+})
 </script>

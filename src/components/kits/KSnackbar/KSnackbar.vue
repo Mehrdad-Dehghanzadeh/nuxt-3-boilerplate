@@ -1,12 +1,11 @@
 <template>
   <client-only>
-    <div :class="['k-snackbar', `${type ? `k-snackbar-${type}` : ''}`]" v-if="isActive">
+    <div v-if="isActive" :class="['k-snackbar', `${type ? `k-snackbar-${type}` : ''}`]">
       <span v-html="text" />
     </div>
   </client-only>
 </template>
-
-<script lang="ts" setup>
+<script lang="ts">
 import { snackbarIconType } from '@type/snackbarIconType'
 
 const DEFUALT_ICON: snackbarIconType = {
@@ -16,18 +15,26 @@ const DEFUALT_ICON: snackbarIconType = {
   alert: 'mdi-alert-outline'
 }
 
-let text = ref('')
-let isActive = ref(false)
-let type = ref('')
-let icon = ref('')
+export default defineComponent({
+  data() {
+    return {
+      isActive: false,
+      type: '',
+      icon: '',
+      text: ''
+    }
+  },
 
-async function appear(config: { text: string; type: string }) {
-  text.value = config.text
-  type.value = config.type
-  icon.value = DEFUALT_ICON[config.type as keyof typeof DEFUALT_ICON]
-  await nextTick()
-  isActive.value = true
-}
+  methods: {
+    appear(config: { text: string; type: string }) {
+      this.text = config.text
+      this.type = config.type
+      debugger
+      this.icon = DEFUALT_ICON[config.type as keyof typeof DEFUALT_ICON]
+      this.isActive = true
+    }
+  }
+})
 </script>
 
 <style lang="scss" src="./KSnackbar.scss" />

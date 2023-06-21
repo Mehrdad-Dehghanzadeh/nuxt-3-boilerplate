@@ -1,8 +1,7 @@
-let snack: any
-
 const defaults = {
   type: ''
 }
+let snack: any
 
 const types = ['success', 'info', 'error', 'alert']
 
@@ -41,6 +40,7 @@ function registerTypes() {
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
+  const { vueApp } = nuxtApp
   return {
     provide: {
       snack: Object.assign(show, {
