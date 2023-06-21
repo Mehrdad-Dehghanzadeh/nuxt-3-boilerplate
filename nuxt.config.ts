@@ -10,20 +10,20 @@ export default defineNuxtConfig({
 
   modules: [translateModule, '@nuxtjs/i18n', '@pinia/nuxt'],
 
-  css: [path.join(srcDir, 'assets/style/custom/index.scss')],
+  css: [path.join(srcDir, 'assets/styles/custom/index.scss')],
 
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@/assets/style/global/index.scss";'
+          additionalData: '@import "@/assets/styles/global/index.scss";'
         }
       }
     }
   },
 
   alias: {
-    '@api': path.join(__dirname, 'src/api'),
+    '@apis': path.join(__dirname, 'src/apis'),
     '@page-components': path.join(__dirname, 'src/components/page-components'),
     '@shared': path.join(__dirname, 'src/components/shared'),
     '@includes': path.join(__dirname, 'src/components/includes'),
@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     '@data': path.join(__dirname, 'src/locales/data'),
     '@utils': path.join(__dirname, 'src/utils'),
     '@type': path.join(__dirname, './src/ts/types'),
-    '@interface': path.join(__dirname, './src/ts/interface')
+    '@interfaces': path.join(__dirname, './src/ts/interfaces'),
+    '@helpers': path.join(__dirname, './src/assets/helpers')
   }
 })
