@@ -9,7 +9,7 @@ export const activity: enumListType = [
   {
     id: Activity.Inactive,
     name: 'غیرفعال',
-    color: 'error',
+    color: 'error'
   },
 
   {
