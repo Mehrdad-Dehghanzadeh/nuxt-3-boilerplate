@@ -1,4 +1,5 @@
 import path from 'path'
+import translateModule from './translateModule'
 
 const srcDir = path.resolve(__dirname, './src')
 
@@ -7,11 +8,7 @@ export default defineNuxtConfig({
   srcDir,
   telemetry: false,
 
-  modules: ['@nuxtjs/i18n', '@pinia/nuxt'],
-
-  i18n: {
-    vueI18n: './i18n.config.ts' // if you are using custom path, default
-  },
+  modules: [translateModule, '@nuxtjs/i18n', '@pinia/nuxt'],
 
   css: [path.join(srcDir, 'assets/style/custom/index.scss')],
 
