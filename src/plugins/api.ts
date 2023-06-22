@@ -1,5 +1,5 @@
 import axios from 'axios'
-import auth from '@apis/auth'
+import { configAutoImportApis } from '@helpers/apis'
 
 const DEFAULT_HEADERS = {}
 
@@ -7,14 +7,12 @@ export default defineNuxtPlugin(() => {
   const { apiBaseUrl } = useAppConfig()
   const $axios = axios.create({
     baseURL: apiBaseUrl,
-    headers: { ...DEFAULT_HEADERS }
+    headers: DEFAULT_HEADERS 
   })
+  
+  const api:object = {}
+  configAutoImportApis(api, $axios)
 
-  console.log(useNuxtApp())
-
-  const api = {
-    auth: auth($axios)
-  }
   return {
     provide: {
       api

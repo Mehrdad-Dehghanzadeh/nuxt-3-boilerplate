@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     '@utils': path.join(__dirname, 'src/utils'),
     '@type': path.join(__dirname, './src/ts/types'),
     '@interfaces': path.join(__dirname, './src/ts/interfaces'),
+    '@dtos': path.join(__dirname, './src/ts/dtos'),
     '@helpers': path.join(__dirname, './src/assets/helpers')
   }
 })
