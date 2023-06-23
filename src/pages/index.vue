@@ -14,7 +14,7 @@ export default {
     setTimeout(() => {
       this.$api.auth
         .login(payload)
-        .then((res) => {
+        .then((res:any) => {
           console.log(res)
         })
         .catch((error) => {

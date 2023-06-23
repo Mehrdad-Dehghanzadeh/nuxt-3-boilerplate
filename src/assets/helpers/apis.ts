@@ -1,18 +1,22 @@
 import { AxiosResponse, AxiosInstance } from 'axios'
 import { ResponseApi } from '@interfaces/apis'
 
-export function statusMessageMapping(response: AxiosResponse, i18n: any) {
-  if (response) {
-    const { status } = response
+export function statusMessageMapping($axios: AxiosInstance, i18n: any) {
+  $axios.interceptors.response.use((res: AxiosResponse) => {
+    if (res) {
+      const { status } = res
 
-    return <ResponseApi>{
-      ...response,
-      statusMessage: i18n?.messages[i18n.locale]?.errors?.statusMessage[status] || ''
+      return <ResponseApi>{
+        ...res,
+        statusMessage:
+          i18n?.messages?.value?.[i18n?.locale?.value]?.errors?.statusMessage?.[status]
+            ?.source || ''
+      }
     }
-  }
+  })
 }
 
-export function configInterceptorsResponse($axios: any) {
+export function configInterceptorsResponse($axios: any, i18n: any) {
   $axios.interceptors.response.use((res: AxiosResponse) => {})
 }
 

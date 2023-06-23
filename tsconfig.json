@@ -16,6 +16,8 @@
       "@utils/*": ["./src/utils/*"],
       "@type/*": ["./src/ts/type/*"],
       "@interface/*": ["./src/ts/interface/*"]
-    }
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
 }
