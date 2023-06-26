@@ -9,7 +9,7 @@ export default {
   name: 'HomePage',
 
   mounted() {
-    const payload: LoginDto = { username: 'a@a.com', password: '123456' }
+    const payload: LoginDto = { username: 'a@a.', password: '123456' }
 
     setTimeout(() => {
       this.$api.auth
