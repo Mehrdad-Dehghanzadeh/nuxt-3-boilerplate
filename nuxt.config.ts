@@ -7,6 +7,7 @@ const srcDir = path.resolve(__dirname, './src')
 export default defineNuxtConfig({
   srcDir,
   telemetry: false,
+  // ssr: false,
 
   modules: [translateModule, '@nuxtjs/i18n', '@pinia/nuxt'],
 
@@ -21,6 +22,11 @@ export default defineNuxtConfig({
       }
     }
   },
+
+  // for static publish
+  // experimental: {
+  //   payloadExtraction: true
+  // },
 
   alias: {
     '@apis': path.join(__dirname, 'src/apis'),

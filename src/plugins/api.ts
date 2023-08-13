@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { configAutoImportApis, statusMessageMapping } from '@helpers/apis'
+import configAutoImportApis from '@helpers/api-config/autoImportApis'
+import statusMessageMapping from '@helpers/api-config/statusMessageMapping'
 
 const DEFAULT_HEADERS = {}
 
