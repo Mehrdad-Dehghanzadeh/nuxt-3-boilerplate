@@ -9,21 +9,22 @@ export default function ($axios: AxiosInstance, i18n: any) {
 
         return <ResponseApi>Promise.resolve({
           ...res,
-          statusMessage:
-            i18n?.messages?.value?.[i18n?.locale?.value]?.errors?.statusMessage?.[status]
-              ?.source || ''
+          statusMessage: status
+            ? i18n?.messages?.value?.[i18n?.locale?.value]?.errors?.statusMessage?.[
+                status
+              ]?.source || ''
+            : ''
         })
       }
     },
 
     (error: AxiosError) => {
-      const { status } = <AxiosResponse>error.response
-
+      const { status } = <AxiosResponse>error?.response
       return <ResponseApi>Promise.reject({
         ...error.response,
         statusMessage:
-          i18n?.messages?.value?.[i18n?.locale?.value]?.errors?.statusMessage?.[status]
-            ?.source || ''
+          i18n?.messages?.value?.[i18n?.locale?.value]?.errors?.statusMessage?.[status] ||
+          ''
       })
     }
   )
