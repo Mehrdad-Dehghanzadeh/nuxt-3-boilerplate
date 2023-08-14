@@ -16,10 +16,11 @@
     "@nuxtjs/i18n": "^8.0.0-rc.2",
     "nuxt": "^3.6.5",
     "prettier": "^2.8.8",
-    "sass": "^1.64.2"
+    "sass": "^1.65.1"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
+    "axios": "^1.4.0",
     "pinia": "^2.1.6"
   }
 }

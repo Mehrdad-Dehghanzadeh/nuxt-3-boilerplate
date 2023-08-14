@@ -1,3 +1,5 @@
+import errors from './errors'
+
 export default {
-    hello: 'سلام',
+    errors
 }

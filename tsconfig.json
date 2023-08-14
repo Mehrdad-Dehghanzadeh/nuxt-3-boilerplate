@@ -15,7 +15,12 @@
       "@locales/*": ["./src/locales/*"],
       "@utils/*": ["./src/utils/*"],
       "@type/*": ["./src/ts/type/*"],
-      "@interface/*": ["./src/ts/interface/*"]
-    }
+      "@interface/*": ["./src/ts/interface/*"],
+      "@helpers/*": ["./src/assets/helpers/*"],
+      "@assets/*": ["./src/assets/*"]
+
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
 }

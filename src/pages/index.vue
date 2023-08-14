@@ -2,8 +2,10 @@
   <article></article>
 </template>
 
-<script>
-export default {
-  name: 'HomePage'
-}
+<script lang="ts" setup>
+const { $api } = <any>useNuxtApp()
+
+onMounted(() => {
+  $api.auth.login({})
+})
 </script>

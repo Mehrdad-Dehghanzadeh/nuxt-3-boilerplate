@@ -3,7 +3,7 @@ import fa from './src/locales/lang/fa'
 
 export default defineI18nConfig(() => ({
   legacy: false,
-  locales: ['en', 'fa'],
+  locale: 'fa',
   messages: {
     en,
     fa
