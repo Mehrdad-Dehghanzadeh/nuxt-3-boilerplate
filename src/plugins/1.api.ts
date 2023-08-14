@@ -1,8 +1,8 @@
 import axios from 'axios'
-import configAutoImportApis from '@assets/api-config/autoImportApis'
-import statusMessageMapping from '@assets/api-config/statusMessageMapping'
-import interceptorsRequest from '@assets/api-config/interceptorsRequest'
-import defaultHeader from '@assets/api-config/defaultHeader'
+import configAutoImportApis from '@assets/api-plugin/autoImportApis'
+import statusMessageMapping from '@assets/api-plugin/statusMessageMapping'
+import interceptorsRequest from '@assets/api-plugin/interceptorsRequest'
+import defaultHeader from '@assets/api-plugin/defaultHeader'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const { $i18n } = nuxtApp

@@ -3,9 +3,9 @@
 </template>
 
 <script lang="ts" setup>
-const { $api } = <any>useNuxtApp()
+const { $api, $auth } = <any>useNuxtApp()
 
 onMounted(() => {
-  $api.auth.login({})
+  $auth.login({ username: 'a@a.com', password: '123456' })
 })
 </script>
