@@ -1,5 +1,6 @@
 import LoginDto from '@dtos/LoginDto'
 import jwt_decode from 'jwt-decode'
+import jwtType from '@type/jwt'
 
 export default defineNuxtPlugin(({ $api }) => {
   const store = useAppStore()
@@ -24,7 +25,7 @@ export default defineNuxtPlugin(({ $api }) => {
   }
 
   function setUser(jwt: string): void {
-    const jwtObject = <any>jwt_decode(jwt)
+    const jwtObject: jwtType = jwt_decode(jwt)
     store.setUser(jwtObject.data)
   }
 
