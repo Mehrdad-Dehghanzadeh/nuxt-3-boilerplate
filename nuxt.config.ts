@@ -8,8 +8,20 @@ export default defineNuxtConfig({
   srcDir,
   telemetry: false,
   // ssr: false,
+  imports: {
+    dirs: [path.join(srcDir, 'stores')]
+  },
 
-  modules: [translateModule, '@nuxtjs/i18n', '@pinia/nuxt'],
+  modules: [
+    translateModule,
+    '@nuxtjs/i18n',
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: ['defineStore', 'acceptHMRUpdate', 'storeToRefs']
+      }
+    ]
+  ],
 
   css: [path.join(srcDir, 'assets/styles/custom/index.scss')],
 
