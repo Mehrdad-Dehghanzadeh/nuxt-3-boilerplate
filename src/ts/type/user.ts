@@ -1,3 +1,3 @@
-interface User {
-  username: String
+export default interface User {
+  username: string
 }

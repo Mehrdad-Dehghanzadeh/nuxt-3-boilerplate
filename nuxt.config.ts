@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   modules: [
     translateModule,
     '@nuxtjs/i18n',
+
     [
       '@pinia/nuxt',
       {

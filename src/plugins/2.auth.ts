@@ -2,6 +2,8 @@ import LoginDto from '@dtos/LoginDto'
 import jwt_decode from 'jwt-decode'
 
 export default defineNuxtPlugin(({ $api }) => {
+  const store = useAppStore()
+
   function login(payload: LoginDto): Promise<any> {
     return new Promise((resolve, reject) => {
       $api.auth
@@ -22,7 +24,8 @@ export default defineNuxtPlugin(({ $api }) => {
   }
 
   function setUser(jwt: string): void {
-    console.log(jwt_decode(jwt))
+    const jwtObject = <any>jwt_decode(jwt)
+    store.setUser(jwtObject.data)
   }
 
   function setCookie(jwt: string): void {}

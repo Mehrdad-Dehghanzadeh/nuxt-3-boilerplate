@@ -6,12 +6,13 @@ export const useAppStore = defineStore('app', {
   }),
 
   getters: {
-    user: ({ user }) => user
+    getUser: ({ user }) => user
   },
 
   actions: {
     setUser(data: user | null) {
-      this.user = data ? <user>deepClone(data) : null
+      debugger
+      this.user = <any>(data && deepClone(data))
     }
   }
 })
