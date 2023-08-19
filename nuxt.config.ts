@@ -1,47 +1,58 @@
 import path from 'path'
+import translateModule from './translateModule'
 
 const srcDir = path.resolve(__dirname, './src')
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir,
-  ssr: false,
   telemetry: false,
-  components: [
-    {
-      path: path.resolve(srcDir, 'components/kits'),
-      pathPrefix: false
-    }
-  ],
-
-  modules: ['@nuxtjs/i18n', '@pinia/nuxt'],
-
-  i18n: {
-    vueI18n: './i18n.config.ts' // if you are using custom path, default
+  // ssr: false,
+  imports: {
+    dirs: [path.join(srcDir, 'stores')]
   },
 
-  css: [path.join(srcDir, 'assets/style/custom/index.scss')],
+  modules: [
+    translateModule,
+    '@nuxtjs/i18n',
+
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: ['defineStore', 'acceptHMRUpdate', 'storeToRefs']
+      }
+    ]
+  ],
+
+  css: [path.join(srcDir, 'assets/styles/custom/index.scss')],
 
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@/assets/style/global/index.scss";'
+          additionalData: '@import "@/assets/styles/global/index.scss";'
         }
       }
     }
   },
 
+  // for static publish
+  // experimental: {
+  //   payloadExtraction: true
+  // },
+
   alias: {
-    '@api': path.join(__dirname, 'src/api'),
+    '@apis': path.join(__dirname, 'src/apis'),
     '@page-components': path.join(__dirname, 'src/components/page-components'),
     '@shared': path.join(__dirname, 'src/components/shared'),
-    '@kits': path.join(__dirname, 'src/components/kits'),
     '@includes': path.join(__dirname, 'src/components/includes'),
     '@locales': path.join(__dirname, 'src/locales'),
     '@data': path.join(__dirname, 'src/locales/data'),
     '@utils': path.join(__dirname, 'src/utils'),
     '@type': path.join(__dirname, './src/ts/types'),
-    '@interface': path.join(__dirname, './src/ts/interface')
+    '@interfaces': path.join(__dirname, './src/ts/interfaces'),
+    '@dtos': path.join(__dirname, './src/ts/dtos'),
+    '@helpers': path.join(__dirname, './src/assets/helpers'),
+    '@assets': path.join(__dirname, './src/assets')
   }
 })

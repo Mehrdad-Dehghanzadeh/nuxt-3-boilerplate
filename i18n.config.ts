@@ -1,15 +1,11 @@
-import en from './src/locales/en'
-import fa from './src/locales/fa'
+import en from './src/locales/lang/en'
+import fa from './src/locales/lang/fa'
 
 export default defineI18nConfig(() => ({
   legacy: false,
-  locales: ['en', 'fa'],
+  locale: 'fa',
   messages: {
     en,
     fa
-  },
-  detectBrowserLanguage: {
-    useCookie: true,
-    cookieKey: 'app_lang'
   }
 }))

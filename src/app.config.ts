@@ -1,7 +1,10 @@
-//Do not put any secret values inside app.config file. It is exposed to the user client bundle
+import appConfigType from '@type/appConfig'
 
-export default defineAppConfig({
-  publicUrl: '',
+const appConfing: appConfigType = {
+  publicUrl: '/',
   appVersion: '0.0.0',
-  apiBaseUrl: ''
-})
+  apiBaseUrl: 'http://localhost:999',
+  cookieAuhtName: 'token'
+}
+
+export default defineAppConfig(appConfing)
