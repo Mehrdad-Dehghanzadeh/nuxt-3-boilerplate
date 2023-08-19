@@ -8,21 +8,30 @@ export default defineNuxtPlugin(({ $api }) => {
   const { cookieAuhtName }: appConfig = useAppConfig()
 
   function login(payload: LoginDto): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res = await $api.auth.login(payload)
+        if (res?.data?.accessToken) {
+          await setCookie(res?.data?.accessToken)
+          await init()
+          resolve(res)
+        } else {
+          reject({ message: 'res.data.accessToken is null' })
+        }
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
+
+  function logout(): Promise<any> {
     return new Promise((resolve, reject) => {
-      $api.auth
-        .login(payload)
-        .then((res: any) => {
-          if (res?.data?.accessToken) {
-            setUser(res?.data?.accessToken)
-            setCookie(res?.data?.accessToken)
-            resolve(res)
-          } else {
-            reject({ message: 'res.data.accessToken is null' })
-          }
-        })
-        .catch((err: any) => {
-          reject(err)
-        })
+      try {
+        removeToken()
+        resolve(null)
+      } catch (error) {
+        reject(error)
+      }
     })
   }
 
@@ -53,18 +62,30 @@ export default defineNuxtPlugin(({ $api }) => {
         setUser(cookie.value)
         store.setIslogin(true)
       } else {
-        store.setUser(null)
-        store.setIslogin(false)
+        removeToken()
       }
+    } else {
+      store.setUser(null)
+      store.setIslogin(false)
     }
+  }
+
+  function removeToken() {
+    const cookie = useCookie(cookieAuhtName)
+    cookie.value = null
+    store.setIslogin(false)
+    store.setUser(null)
   }
 
   init()
 
   const auth = {
     login,
+    removeToken,
+    logout,
     init
   }
+
   return {
     provide: {
       auth
