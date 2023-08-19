@@ -1,7 +1,9 @@
 <template>
   <client-only>
     <div v-if="isActive" :class="['k-snackbar', `${type ? `k-snackbar-${type}` : ''}`]">
-      <span v-html="text" />
+      <div class="k-snackbar__wrapper">
+        <span class="k-snackbar__text" v-html="text" />
+      </div>
     </div>
   </client-only>
 </template>
@@ -16,9 +18,10 @@ const DEFUALT_ICON: snackbarIconType = {
 }
 
 export default defineComponent({
+  name: 'KSnackbar',
   data() {
     return {
-      isActive: false,
+      isActive: true,
       type: '',
       icon: '',
       text: ''
@@ -29,7 +32,6 @@ export default defineComponent({
     appear(config: { text: string; type: string }) {
       this.text = config.text
       this.type = config.type
-      debugger
       this.icon = DEFUALT_ICON[config.type as keyof typeof DEFUALT_ICON]
       this.isActive = true
     }

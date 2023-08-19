@@ -1,21 +1,5 @@
 <template>
-  <article>
-    <div v-if="store.isLogin" class="text-center">
-      <button @click="logout">logout</button>
-    </div>
-  </article>
+  <article></article>
 </template>
 
-<script lang="ts" setup>
-const { $api, $auth } = <any>useNuxtApp()
-const store = useAppStore()
-onMounted(() => {
-  setInterval(() => {
-    $auth.login({ username: 'a@a.com', password: '123456' })
-  }, 6000)
-})
-
-function logout() {
-  $auth.logout()
-}
-</script>
+<script lang="ts" setup></script>

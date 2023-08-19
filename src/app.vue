@@ -1,5 +1,10 @@
 <template>
   <nuxt-layout />
+  <k-snackbar />
 </template>
-
-<script lang="ts" setup></script>
+<script>
+import KSnackbar from './components/kits/KSnackbar'
+export default {
+  components: { KSnackbar }
+}
+</script>
