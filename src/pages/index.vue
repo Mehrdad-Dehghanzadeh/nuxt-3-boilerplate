@@ -6,6 +6,8 @@
 const { $api, $auth } = <any>useNuxtApp()
 
 onMounted(() => {
-  $auth.login({ username: 'a@a.com', password: '123456' })
+  setTimeout(() => {
+    $auth.login({ username: 'a@a.com', password: '123456' })
+  }, 6000)
 })
 </script>
