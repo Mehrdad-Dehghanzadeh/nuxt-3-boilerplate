@@ -10,7 +10,7 @@
 const { $api, $auth } = <any>useNuxtApp()
 const store = useAppStore()
 onMounted(() => {
-  setTimeout(() => {
+  setInterval(() => {
     $auth.login({ username: 'a@a.com', password: '123456' })
   }, 6000)
 })
