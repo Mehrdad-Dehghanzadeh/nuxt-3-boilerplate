@@ -17,7 +17,9 @@
       "@type/*": ["./src/ts/type/*"],
       "@interface/*": ["./src/ts/interface/*"],
       "@helpers/*": ["./src/assets/helpers/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@dtos":["./src/ts/dtos/*"],
+      "@interfaces": ["./src/ts/interfaces/*"]
 
     },
     "esModuleInterop": true,
