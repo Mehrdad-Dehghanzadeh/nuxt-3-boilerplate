@@ -1,5 +1,8 @@
 import path from 'path'
 import translateModule from './translateModule'
+import vuetify from 'vite-plugin-vuetify'
+import { createResolver } from '@nuxt/kit'
+const { resolve } = createResolver(import.meta.url)
 
 const srcDir = path.resolve(__dirname, './src')
 
@@ -21,10 +24,18 @@ export default defineNuxtConfig({
       {
         autoImports: ['defineStore', 'acceptHMRUpdate', 'storeToRefs']
       }
-    ]
+    ],
+
+    async (options, nuxt) => {
+      nuxt.hooks.hook('vite:extendConfig', (config) => config.plugins.push(vuetify()))
+    }
   ],
 
-  css: [path.join(srcDir, 'assets/styles/custom/index.scss')],
+  css: [
+    'vuetify/lib/styles/main.sass',
+    '@mdi/font/css/materialdesignicons.min.css',
+    path.join(srcDir, 'assets/styles/custom/index.scss')
+  ],
 
   vite: {
     css: {
@@ -36,10 +47,29 @@ export default defineNuxtConfig({
     }
   },
 
+  build: {
+    transpile: ['vuetify']
+  },
+
   // for static publish
   // experimental: {
   //   payloadExtraction: true
   // },
+
+  hooks: {
+    'vite:extendConfig': (config) => {
+      config.plugins.push(
+        vuetify({
+          styles: { configFile: resolve(`${srcDir}/assets/styles/vuetify-settings.scss`) }
+        })
+      )
+    }
+  },
+
+  sourcemap: {
+    server: false,
+    client: false
+  },
 
   alias: {
     '@apis': path.join(__dirname, 'src/apis'),
