@@ -5,6 +5,7 @@ import { createResolver } from '@nuxt/kit'
 const { resolve } = createResolver(import.meta.url)
 
 const srcDir = path.resolve(__dirname, './src')
+const vuetifyStyleSettingPath = `${srcDir}/assets/styles/vuetify-settings.scss`
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -27,7 +28,9 @@ export default defineNuxtConfig({
     ],
 
     async (options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => config.plugins.push(vuetify()))
+      nuxt.hooks.hook('vite:extendConfig', (config) => {
+        config?.plugins?.push(vuetify())
+      })
     }
   ],
 
@@ -58,9 +61,9 @@ export default defineNuxtConfig({
 
   hooks: {
     'vite:extendConfig': (config) => {
-      config.plugins.push(
+      config?.plugins?.push(
         vuetify({
-          styles: { configFile: resolve(`${srcDir}/assets/styles/vuetify-settings.scss`) }
+          styles: { configFile: resolve(vuetifyStyleSettingPath) }
         })
       )
     }
