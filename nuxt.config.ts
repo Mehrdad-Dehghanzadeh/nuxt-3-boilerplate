@@ -11,7 +11,7 @@ const vuetifyStyleSettingPath = `${srcDir}/assets/styles/vuetify-settings.scss`
 export default defineNuxtConfig({
   srcDir,
   telemetry: false,
-  // ssr: false,
+  ssr: false,
   imports: {
     dirs: [path.join(srcDir, 'stores')]
   },
