@@ -17,7 +17,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    translateModule,
     '@nuxtjs/i18n',
 
     [
@@ -33,6 +32,7 @@ export default defineNuxtConfig({
       })
     }
   ],
+  i18n: translateModule,
 
   css: [
     'vuetify/lib/styles/main.sass',
@@ -47,6 +47,10 @@ export default defineNuxtConfig({
           additionalData: '@import "@/assets/styles/global/index.scss";'
         }
       }
+    },
+
+    ssr: {
+      noExternal: ['vuetify']
     }
   },
 

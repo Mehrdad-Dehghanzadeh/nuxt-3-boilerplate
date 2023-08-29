@@ -2,7 +2,7 @@ import { createVuetify } from 'vuetify'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
-    ssr: true
+    // ssr: true
   })
 
   nuxtApp.vueApp.use(vuetify)
