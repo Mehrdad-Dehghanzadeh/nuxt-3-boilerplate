@@ -18,6 +18,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/i18n',
+    translateModule,
 
     [
       '@pinia/nuxt',
@@ -32,7 +33,6 @@ export default defineNuxtConfig({
       })
     }
   ],
-  i18n: translateModule,
 
   css: [
     'vuetify/lib/styles/main.sass',
