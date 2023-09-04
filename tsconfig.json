@@ -9,17 +9,19 @@
       "@/*": ["./src/*"],
       "~~/*": ["./*"],
       "@@/*": ["./*"],
-      "@api/*": ["./src/api/*"],
+      "@apis/*": ["./src/apis/*"],
       "@kits/*": ["./src/components/kits/*"],
       "@page-components/*": ["./src/components/page-components/*"],
+      "@shared/*": ["./src/components/shared/*"],
+      "@includes/*": ["./src/components/includes/*"],
+      "@data/*": ["./src/locales/data/*"],
       "@locales/*": ["./src/locales/*"],
       "@utils/*": ["./src/utils/*"],
       "@type/*": ["./src/ts/type/*"],
       "@interface/*": ["./src/ts/interface/*"],
-      "@helpers/*": ["./src/assets/helpers/*"],
       "@assets/*": ["./src/assets/*"],
-      "@dtos":["./src/ts/dtos/*"],
-      "@interfaces": ["./src/ts/interfaces/*"]
+      "@interfaces/*": ["./src/ts/interfaces/*"],
+      "@dtos/*":["./src/ts/interfaces/dtos/*"]
 
     },
     "esModuleInterop": true,

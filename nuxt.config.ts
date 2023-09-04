@@ -81,6 +81,7 @@ export default defineNuxtConfig({
   alias: {
     '@apis': path.join(__dirname, 'src/apis'),
     '@page-components': path.join(__dirname, 'src/components/page-components'),
+    '@kits': path.join(__dirname, 'src/components/kits'),
     '@shared': path.join(__dirname, 'src/components/shared'),
     '@includes': path.join(__dirname, 'src/components/includes'),
     '@locales': path.join(__dirname, 'src/locales'),
@@ -89,7 +90,6 @@ export default defineNuxtConfig({
     '@type': path.join(__dirname, './src/ts/types'),
     '@interfaces': path.join(__dirname, './src/ts/interfaces'),
     '@dtos': path.join(__dirname, './src/ts/dtos'),
-    '@helpers': path.join(__dirname, './src/assets/helpers'),
     '@assets': path.join(__dirname, './src/assets')
   }
 })
