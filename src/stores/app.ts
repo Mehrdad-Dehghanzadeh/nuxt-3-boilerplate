@@ -1,9 +1,13 @@
-import user from '@type/user'
+import User from '@type/user'
 
-type userState = user | null
+type userState = User | null
+type State = {
+  user: userState
+  isLogin: boolean
+}
 
 export const useAppStore = defineStore('app', {
-  state: () => ({
+  state: (): State => ({
     user: null,
     isLogin: false
   }),
