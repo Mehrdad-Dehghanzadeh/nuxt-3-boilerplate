@@ -1,11 +1,11 @@
-import { enumListType } from '@type/enums'
+import { EnumList } from '@type/Enums'
 
 export enum Activity {
   Inactive,
   Active
 }
 
-export const activity: enumListType = [
+export const activity: EnumList = [
   {
     id: Activity.Inactive,
     name: 'غیرفعال',

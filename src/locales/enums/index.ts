@@ -4,6 +4,6 @@ export default {
   Activity
 }
 
-export const enumListType = {
+export const enumsList = {
   activity
 }

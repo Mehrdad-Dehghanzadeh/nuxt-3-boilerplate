@@ -1,4 +1,4 @@
-import User from './user'
+import User from './User'
 
 type JwtType = {
   exp: number

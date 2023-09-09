@@ -1,8 +1,8 @@
-import User from '@type/user'
+import User from '@type/User'
 
-type userState = User | null
+type UserState = User | null
 type State = {
-  user: userState
+  user: UserState
   isLogin: boolean
 }
 
@@ -17,8 +17,8 @@ export const useAppStore = defineStore('app', {
   },
 
   actions: {
-    setUser(data: userState) {
-      this.user = <userState>(data ? deepClone(data) : null)
+    setUser(data: UserState) {
+      this.user = <UserState>(data ? deepClone(data) : null)
     },
 
     setIslogin(value: boolean) {

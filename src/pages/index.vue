@@ -8,12 +8,8 @@
 
 <script lang="ts" setup>
 const { $api, $auth } = <any>useNuxtApp()
+
 const store = useAppStore()
-onMounted(() => {
-  setInterval(() => {
-    $auth.login({ username: 'a@a.com', password: '123456' })
-  }, 6000)
-})
 
 function logout() {
   $auth.logout()

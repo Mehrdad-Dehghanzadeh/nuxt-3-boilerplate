@@ -1,6 +1,6 @@
-import appConfigType from '@type/appConfig'
+import AppConfig from '@type/AppConfig'
 
-const appConfing: appConfigType = {
+const appConfing: AppConfig = {
   publicUrl: '/',
   appVersion: '0.0.0',
   apiBaseUrl: 'http://localhost:999',

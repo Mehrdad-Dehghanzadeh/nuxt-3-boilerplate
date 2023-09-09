@@ -1,5 +1,5 @@
-import { enumListType } from '@locales/enums'
-import { EnumType } from '@type/enums'
+import { enumsList } from '@locales/enums'
+import { EnumType } from '@type/Enums'
 
 type EnumProvider = EnumType | object
 
@@ -8,7 +8,7 @@ export default function enumsProvider(
   value: string | number,
   prop: string = 'id'
 ): EnumProvider {
-  const item = enumListType[type as keyof typeof enumListType].find(
+  const item = enumsList[type as keyof typeof enumsList].find(
     (i) => i[prop as keyof typeof i] === value
   )
 
