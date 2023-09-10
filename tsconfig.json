@@ -23,7 +23,6 @@
       "@assets/*": ["./src/assets/*"],
       "@interfaces/*": ["./src/ts/interfaces/*"],
       "@dtos/*":["./src/ts/interfaces/dtos/*"]
-
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
