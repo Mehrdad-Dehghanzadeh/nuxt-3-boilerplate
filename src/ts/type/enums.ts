@@ -5,4 +5,4 @@ export type EnumType = {
   [key: string]: unknown
 }
 
-export type enumListType = Array<EnumType>
+export type EnumList = Array<EnumType>

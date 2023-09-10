@@ -16,6 +16,7 @@
       "@includes/*": ["./src/components/includes/*"],
       "@data/*": ["./src/locales/data/*"],
       "@locales/*": ["./src/locales/*"],
+      "@enums": ["./src/locales/enums/*"],
       "@utils/*": ["./src/utils/*"],
       "@type/*": ["./src/ts/type/*"],
       "@interface/*": ["./src/ts/interface/*"],
