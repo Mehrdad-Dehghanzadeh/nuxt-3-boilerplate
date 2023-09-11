@@ -1,11 +1,11 @@
 <template>
-  <div class="default-layout">
+  <v-layout class="default-layout">
     <default-header />
     <main>
       <nuxt-page />
     </main>
     <default-footer />
-  </div>
+  </v-layout>
 </template>
 
 <script>

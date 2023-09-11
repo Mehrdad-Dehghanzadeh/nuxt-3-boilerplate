@@ -1,10 +1,10 @@
-import user from './user'
+import User from './User'
 
-type jwtType = {
+type JwtType = {
   exp: number
-  data: user
+  data: User
   iat: number
   [key: string]: unknown
 }
 
-export default jwtType
+export default JwtType

@@ -1,10 +1,9 @@
 <template>
   <nuxt-layout />
-  <k-snackbar />
 </template>
-<script>
-import KSnackbar from './components/kits/KSnackbar'
-export default {
-  components: { KSnackbar }
-}
+
+<script lang="ts" setup>
+useHead({
+  titleTemplate: '%s | nuxt 3 boilerplate'
+})
 </script>

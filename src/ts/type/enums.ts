@@ -1,8 +1,8 @@
-export type enumType = {
+export type EnumType = {
   id: string | number
   name: string | number
   color?: string
   [key: string]: unknown
 }
 
-export type enumListType = Array<enumType>
+export type EnumList = Array<EnumType>

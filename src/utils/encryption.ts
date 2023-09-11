@@ -1,16 +1,16 @@
-import { Buffer } from "buffer"
+import { Buffer } from 'buffer'
 
 /**
  * Encoding base-64
  * ***********************************/
-export function encodeBase64(str: string) {
+export function encodeBase64(str: string): string {
   return Buffer.from(str).toString('base64')
 }
 
 /**
  * Decoding base-64
  * ***********************************/
-export function decodeBase64(str: string) {
+export function decodeBase64(str: string): string {
   return Buffer.from(str, 'base64').toString()
 }
 

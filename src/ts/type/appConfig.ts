@@ -1,8 +1,8 @@
-type appConfig = {
+type AppConfig = {
   publicUrl: string
   appVersion: string
   apiBaseUrl: string
   cookieAuhtName: string
 }
 
-export default appConfig
+export default AppConfig

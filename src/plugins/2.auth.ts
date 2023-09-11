@@ -1,11 +1,11 @@
 import LoginDto from '@dtos/LoginDto'
 import jwt_decode from 'jwt-decode'
-import jwtType from '@type/jwt'
-import appConfig from '@type/appConfig'
+import JwtType from '@type/Jwt'
+import AppConfig from '@type/AppConfig'
 
 export default defineNuxtPlugin(({ $api }) => {
   const store = useAppStore()
-  const { cookieAuhtName }: appConfig = useAppConfig()
+  const { cookieAuhtName }: AppConfig = useAppConfig()
 
   function login(payload: LoginDto): Promise<any> {
     return new Promise(async (resolve, reject) => {
@@ -36,13 +36,13 @@ export default defineNuxtPlugin(({ $api }) => {
   }
 
   function setUser(jwt: string): void {
-    const jwtObject: jwtType = jwt_decode(jwt)
+    const jwtObject: JwtType = jwt_decode(jwt)
     store.setUser(jwtObject.data)
   }
 
   function setCookie(jwt: string): void {
     if (jwt) {
-      const jwtObject: jwtType = jwt_decode(jwt)
+      const jwtObject: JwtType = jwt_decode(jwt)
       const cookie = useCookie(cookieAuhtName, {
         sameSite: true,
         expires: new Date(jwtObject.exp * 1000),
@@ -55,7 +55,7 @@ export default defineNuxtPlugin(({ $api }) => {
   function init() {
     const cookie = useCookie(cookieAuhtName)
     if (cookie.value) {
-      const { exp, data }: jwtType = jwt_decode(cookie.value)
+      const { exp, data }: JwtType = jwt_decode(cookie.value)
       const isExpired: boolean = exp * 1000 > Date.now()
 
       if (isExpired && data) {

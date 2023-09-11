@@ -1,7 +1,7 @@
 /**
  *  Deep Freeze Object
  ***********************/
-export function deepFreeze(obj: object): object {
+export function deepFreeze<T>(obj: T): T {
   Object.freeze(obj)
 
   Object.getOwnPropertyNames(obj).forEach(function (prop: string) {
@@ -21,14 +21,14 @@ export function deepFreeze(obj: object): object {
 /**
  *  Check Object Is Empty
  ***************************/
-export function isEmpty(obj: object): boolean {
+export function isEmpty(obj: any): boolean {
   return Object.keys(obj).length === 0
 }
 
 /**
  *  Convert Object To Array
  ***************************/
-export function objectToArray(obj: object) {
+export function objectToArray(obj: any) {
   return !isEmpty(obj)
     ? Object.entries(obj).map(([key, value]) => {
         return { [key]: value }
@@ -39,6 +39,6 @@ export function objectToArray(obj: object) {
 /**
  * Deep Clone Object
  ************************/
-export function deepClone(obj: object): object {
+export function deepClone<T>(obj: T): T {
   return JSON.parse(JSON.stringify(obj))
 }
