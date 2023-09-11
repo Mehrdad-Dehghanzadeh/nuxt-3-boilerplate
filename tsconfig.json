@@ -18,7 +18,7 @@
       "@locales/*": ["./src/locales/*"],
       "@enums": ["./src/locales/enums/*"],
       "@utils/*": ["./src/utils/*"],
-      "@type/*": ["./src/ts/type/*"],
+      "@types/*": ["./src/ts/types/*"],
       "@interface/*": ["./src/ts/interface/*"],
       "@assets/*": ["./src/assets/*"],
       "@interfaces/*": ["./src/ts/interfaces/*"],
