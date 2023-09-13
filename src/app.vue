@@ -1,5 +1,7 @@
 <template>
   <nuxt-layout />
+
+  <k-snackbar />
 </template>
 
 <script lang="ts" setup>

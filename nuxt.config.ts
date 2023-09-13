@@ -16,6 +16,15 @@ export default defineNuxtConfig({
     dirs: [path.join(srcDir, 'stores')]
   },
 
+  components: {
+    dirs: [
+      {
+        path: path.resolve(srcDir, 'components/kits'),
+        global: true
+      }
+    ]
+  },
+
   modules: [
     '@nuxtjs/i18n',
     translateModule,

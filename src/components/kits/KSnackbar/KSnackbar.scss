@@ -1,12 +1,15 @@
 .k-snackbar {
+  display: none;
   padding: 8px;
   width: 320px;
   position: fixed;
-  bottom: 32px;
-  border-radius: 6px 6px 0 0;
+  bottom: 16px;
+  border-radius: 6px;
   overflow: hidden;
   left: 50%;
   transform: translateX(-50%);
+  min-height: 80px;
+  color: white;
 
   &__wrapper {
     display: flex;
@@ -18,14 +21,20 @@
   }
 
   &-success {
+    display: flex;
+    align-items: center;
+    background-color: green;
   }
 
   &-info {
+    display: block;
   }
 
   &-error {
+    display: block;
   }
 
   &-alert {
+    display: block;
   }
 }
