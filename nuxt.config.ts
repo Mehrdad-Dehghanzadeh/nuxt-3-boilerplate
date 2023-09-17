@@ -94,12 +94,12 @@ export default defineNuxtConfig({
     '@shared': path.join(__dirname, 'src/components/shared'),
     '@includes': path.join(__dirname, 'src/components/includes'),
     '@locales': path.join(__dirname, 'src/locales'),
-    '@enums': path.join(__dirname, './src/locales/enums'),
+    '@enums': path.join(__dirname, 'src/locales/enums'),
     '@data': path.join(__dirname, 'src/locales/data'),
     '@utils': path.join(__dirname, 'src/utils'),
-    '@types': path.join(__dirname, './src/ts/types'),
-    '@interfaces': path.join(__dirname, './src/ts/interfaces'),
-    '@dtos': path.join(__dirname, './src/ts/dtos'),
-    '@assets': path.join(__dirname, './src/assets')
+    '@types': path.join(__dirname, 'src/ts/types'),
+    '@interfaces': path.join(__dirname, 'src/ts/interfaces'),
+    '@dtos': path.join(__dirname, 'src/ts/dtos'),
+    '@assets': path.join(__dirname, 'src/assets')
   }
 })
