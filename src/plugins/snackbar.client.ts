@@ -1,9 +1,21 @@
-const defaults = {
-  type: ''
-}
-let snack: any
+import { State, AppearOptions, IconType } from '@types/Snackbar'
 
-const types = ['success', 'info', 'error', 'alert']
+let snack: any = {
+  text: '',
+  state: '',
+  isActive: false,
+  icon: '',
+
+  appear(options: AppearOptions) {
+    this.text = options.text
+    this.state = options.state
+    this.icon = this.isActive = true
+
+    setTimeout(() => {
+      this.isActive = false
+    }, 5000)
+  }
+}
 
 function setMessage(res: any) {
   let val = ''
@@ -24,28 +36,18 @@ function setMessage(res: any) {
   return val
 }
 
-function show(res: any, options: object) {
+function show(state: State, res: any) {
   const text = setMessage(res)
-  snack.appear({ text, ...defaults, ...options })
-}
-
-function registerTypes() {
-  const methods = {}
-
-  types.forEach((type) => {
-    methods[type] = (text: string, options: object) => show(text, { type, ...options })
-  })
-
-  return methods
+  snack.appear({ text, state })
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const { vueApp } = nuxtApp
   return {
     provide: {
-      snack: Object.assign(show, {
-        ...registerTypes()
-      })
+      snack: {
+        show,
+        refs: snack
+      }
     }
   }
 })

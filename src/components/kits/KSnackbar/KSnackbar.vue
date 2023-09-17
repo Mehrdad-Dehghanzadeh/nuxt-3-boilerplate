@@ -1,16 +1,27 @@
 <template>
   <client-only>
-    <div v-if="isActive" :class="['k-snackbar', `${state && `k-snackbar-${state}`}`]">
+    <div
+      v-if="snack.isActive"
+      :class="['k-snackbar', `${snack.state && `k-snackbar-${snack.state}`}`]"
+    >
       <div class="k-snackbar__wrapper">
         <v-icon class="k-snackbar__icon">{{ icon }}</v-icon>
-        <span class="k-snackbar__text" v-html="text" />
+        <span class="k-snackbar__text" v-html="snack.text" />
       </div>
     </div>
   </client-only>
 </template>
 
 <script lang="ts" setup>
-import { IconType, State } from './Types'
+import { IconType } from '@types/Snackbar'
+
+const { $snack } = useNuxtApp()
+const snack = reactive($snack.refs)
+
+watch('snack.isActive', () => {
+  debugger
+  forceUpdate()
+})
 
 const DEFUALT_ICON: IconType = {
   success: 'mdi-checkbox-marked-circle-outline',
@@ -19,17 +30,7 @@ const DEFUALT_ICON: IconType = {
   alert: 'mdi-alert-outline'
 }
 
-const isActive = ref<boolean>(true)
-const state = ref<State>('')
-const icon = ref<string>('')
-const text = ref<string>('')
-
-function appear(config: { text: string; state: State }) {
-  text.value = config.text
-  state.value = config.state
-  icon.value = DEFUALT_ICON[config.state as keyof typeof DEFUALT_ICON]
-  isActive.value = true
-}
+const icon = computed(() => snack.state && DEFUALT_ICON[snack.state as keyof IconType])
 </script>
 
 <style lang="scss" src="./KSnackbar.scss" />

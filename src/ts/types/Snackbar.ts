@@ -5,4 +5,9 @@ export type IconType = {
   alert: string
 }
 
+export type AppearOptions = {
+  text: string
+  state: string
+}
+
 export type State = keyof IconType | ''
