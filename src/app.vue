@@ -6,11 +6,8 @@
 
 <script lang="ts" setup>
 useHead({
-  titleTemplate: '%s | nuxt 3 boilerplate',
-
-  htmlAttrs: {
-    lang: 'fa',
-    dir: 'rtl'
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} | Nuxt 3 Boilerplate` : 'Nuxt 3 Boilerplate';
   }
 })
 </script>
