@@ -1,5 +1,7 @@
 <template>
-  <nuxt-layout />
+  <v-app>
+    <nuxt-layout />
+  </v-app>
 </template>
 
 <script lang="ts" setup>
