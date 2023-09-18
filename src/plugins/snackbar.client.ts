@@ -1,4 +1,4 @@
-import { State, AppearOptions, IconType } from '@types/Snackbar'
+import { State, AppearOptions } from '@types/Snackbar'
 
 let snack: any = {
   text: '',
@@ -9,11 +9,7 @@ let snack: any = {
   appear(options: AppearOptions) {
     this.text = options.text
     this.state = options.state
-    this.icon = this.isActive = true
-
-    setTimeout(() => {
-      this.isActive = false
-    }, 5000)
+    this.isActive = true
   }
 }
 

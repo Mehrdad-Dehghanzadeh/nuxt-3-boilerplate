@@ -8,6 +8,9 @@ useHead({
 })
 
 onMounted(() => {
-  useSanck('error', 'wwwwe')
+  setTimeout(() => {
+    const { $snack } = <any>useNuxtApp()
+    $snack.show('error', 'asdasdasd')
+  }, 5000)
 })
 </script>

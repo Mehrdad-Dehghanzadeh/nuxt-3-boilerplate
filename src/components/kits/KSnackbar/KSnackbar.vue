@@ -15,14 +15,8 @@
 <script lang="ts" setup>
 import { IconType } from '@types/Snackbar'
 
-const { $snack } = useNuxtApp()
-const snack = reactive($snack.refs)
-
-watch('snack.isActive', () => {
-  debugger
-  forceUpdate()
-})
-
+const { $snack } = <any>useNuxtApp()
+let snack = reactive($snack.refs) 
 const DEFUALT_ICON: IconType = {
   success: 'mdi-checkbox-marked-circle-outline',
   info: 'mdi-information-outline',
