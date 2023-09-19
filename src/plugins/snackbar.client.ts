@@ -1,6 +1,6 @@
 import { State, AppearOptions } from '@types/Snackbar'
 
-let snack: any = {
+const snack = reactive({
   text: '',
   state: '',
   isActive: false,
@@ -10,8 +10,14 @@ let snack: any = {
     this.text = options.text
     this.state = options.state
     this.isActive = true
+
+    setTimeout(() => {
+      this.text = ''
+      this.state = ''
+      this.isActive = false
+    }, 10000)
   }
-}
+})
 
 function setMessage(res: any) {
   let val = ''

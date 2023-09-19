@@ -16,7 +16,7 @@
 import { IconType } from '@types/Snackbar'
 
 const { $snack } = <any>useNuxtApp()
-let snack = reactive($snack.refs) 
+const snack = $snack.refs
 const DEFUALT_ICON: IconType = {
   success: 'mdi-checkbox-marked-circle-outline',
   info: 'mdi-information-outline',
@@ -24,7 +24,9 @@ const DEFUALT_ICON: IconType = {
   alert: 'mdi-alert-outline'
 }
 
-const icon = computed(() => snack.state && DEFUALT_ICON[snack.state as keyof IconType])
+const icon = computed(
+  () => snack.state && DEFUALT_ICON[snack.state as keyof IconType]
+)
 </script>
 
 <style lang="scss" src="./KSnackbar.scss" />
