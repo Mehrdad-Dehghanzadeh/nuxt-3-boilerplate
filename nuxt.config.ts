@@ -25,6 +25,15 @@ export default defineNuxtConfig({
     }
   },
 
+  components: {
+    dirs: [
+      {
+        path: path.resolve(srcDir, 'components/kits'),
+        global: true
+      }
+    ]
+  },
+
   modules: [
     '@nuxtjs/i18n',
     translateModule,

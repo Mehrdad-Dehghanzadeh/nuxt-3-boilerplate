@@ -6,6 +6,8 @@
       <nuxt-page />
     </nuxt-layout>
   </v-app>
+
+  <k-snackbar />
 </template>
 
 <script lang="ts" setup>

@@ -1,0 +1,42 @@
+.k-snackbar {
+  display: none;
+  padding: 8px;
+  width: 320px;
+  position: fixed;
+  bottom: 16px;
+  border-radius: 6px;
+  overflow: hidden;
+  left: 50%;
+  transform: translateX(-50%);
+  min-height: 80px;
+  color: white;
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+  }
+
+  &__text {
+    width: 100%;
+  }
+
+  &-success {
+    display: flex;
+    align-items: center;
+    background-color: green;
+  }
+
+  &-info {
+    display: block;
+  }
+
+  &-error {
+    display: block;
+    align-items: center;
+    background-color: red;
+  }
+
+  &-alert {
+    display: block;
+  }
+}
