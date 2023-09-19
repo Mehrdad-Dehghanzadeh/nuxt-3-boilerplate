@@ -10,12 +10,13 @@ const snack = reactive({
     this.text = options.text
     this.state = options.state
     this.isActive = true
+    const time: number = options?.time ?? 10000
 
     setTimeout(() => {
       this.text = ''
       this.state = ''
       this.isActive = false
-    }, 10000)
+    }, time)
   }
 })
 
