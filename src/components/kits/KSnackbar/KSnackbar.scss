@@ -14,29 +14,33 @@
   &__wrapper {
     display: flex;
     width: 100%;
+    align-items: center;
   }
 
   &__text {
     width: 100%;
+    margin-right: 8px;
+    font-weight: 500;
+    @include inline-block();
   }
 
-  &-success {
+  &--success {
     display: flex;
-    align-items: center;
-    background-color: green;
+    background-color: rgb(var(--v-theme-success));
   }
 
-  &-info {
-    display: block;
+  &--info {
+    display: flex;
+    background-color: rgb(var(--v-theme-info));
   }
 
-  &-error {
-    display: block;
-    align-items: center;
-    background-color: red;
+  &--error {
+    display: flex;
+    background-color: rgb(var(--v-theme-error));
   }
 
-  &-alert {
-    display: block;
+  &--alert {
+    display: flex;
+    background-color: rgb(var(--v-theme-warning));
   }
 }

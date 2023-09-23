@@ -2,7 +2,7 @@
   <client-only>
     <div
       v-if="snack.isActive"
-      :class="['k-snackbar', `${snack.state && `k-snackbar-${snack.state}`}`]"
+      :class="['k-snackbar', `${snack.state && `k-snackbar--${snack.state}`}`]"
     >
       <div class="k-snackbar__wrapper">
         <v-icon class="k-snackbar__icon">{{ icon }}</v-icon>

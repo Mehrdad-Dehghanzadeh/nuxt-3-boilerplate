@@ -16,6 +16,15 @@ export default defineNuxtConfig({
     dirs: [path.join(srcDir, 'stores')]
   },
 
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'fa',
+        dir: 'rtl'
+      }
+    }
+  },
+
   components: {
     dirs: [
       {

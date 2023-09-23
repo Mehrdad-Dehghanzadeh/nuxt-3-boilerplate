@@ -8,6 +8,7 @@ export type IconType = {
 export type AppearOptions = {
   text: string
   state: string
+  time?: number
 }
 
 export type State = keyof IconType | ''
