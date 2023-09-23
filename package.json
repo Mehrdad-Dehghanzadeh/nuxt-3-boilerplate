@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "private": false,
   "type": "module",
+  "engines": {
+    "node": ">=16.17.0",
+    "npm": ">=8.15.0"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -26,5 +30,12 @@
     "jwt-decode": "^3.1.2",
     "pinia": "^2.1.6",
     "vuetify": "^3.3.16"
-  }
+  },
+  "browserslist": [
+    "Chrome >=80",
+    "Firefox >=80",
+    "Edge >=80",
+    "Safari >=13.1",
+    "iOS >=13.1"
+  ]
 }
