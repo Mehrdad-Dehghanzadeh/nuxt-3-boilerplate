@@ -3,6 +3,7 @@ type AppConfig = {
   appVersion: string
   apiBaseUrl: string
   cookieAuhtName: string
+  appName: string
 }
 
 export default AppConfig
