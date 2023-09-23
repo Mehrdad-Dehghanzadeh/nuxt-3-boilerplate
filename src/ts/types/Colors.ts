@@ -19,3 +19,5 @@ export type OnColors = {
   'on-error': string
   'on-info': string
 }
+
+export type themesColors = Readonly<Partial<BaseColors> & Partial<OnColors>>

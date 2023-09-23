@@ -1,13 +1,15 @@
 <template>
-  <v-app>
-    <nuxt-layout>
-      <nuxt-loading-indicator />
+  <v-theme-provider>
+    <v-app>
+      <nuxt-layout>
+        <nuxt-loading-indicator />
 
-      <nuxt-page />
-    </nuxt-layout>
-  </v-app>
+        <nuxt-page />
+      </nuxt-layout>
+    </v-app>
 
-  <k-snackbar />
+    <k-snackbar />
+  </v-theme-provider>
 </template>
 
 <script lang="ts" setup>
