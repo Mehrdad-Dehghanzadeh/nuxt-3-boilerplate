@@ -1,5 +1,4 @@
 import iban from './iban'
+import { isRealNationalCode, isLegalNationalCode, isNationalCode } from './nationalCode'
 
-export default {
-  iban
-}
+export { iban, isRealNationalCode, isLegalNationalCode, isNationalCode }

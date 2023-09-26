@@ -16,6 +16,8 @@ export default deepFreeze({
   required: 'لطفا مقدار را وارد نمایید',
   size: 'سایز فایل نباید بیشتر از {size}KB باشد',
   nationalCode: 'کد/شناسه ملی معتبر نیست',
+  legalNationalCode: 'شناسه ملی معتبر نیست',
+  realNationalCode: 'کد ملی معتبر نیست',
   mobile: 'شماره موبایل نادرست است',
   iban: 'شماره شبا نادرست است',
   noZero: 'مقدار وارد شده نباید صفر باشد'

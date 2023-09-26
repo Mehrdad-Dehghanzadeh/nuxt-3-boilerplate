@@ -1,7 +1,7 @@
 /**
  * Real nationalCode validation
  * ***********************************/
-export const checkNationalCode = function (value: string): boolean {
+export const isRealNationalCode = function (value: string): boolean {
   if (
     !/^\d{10}$/.test(value) ||
     value === '0000000000' ||
@@ -30,7 +30,7 @@ export const checkNationalCode = function (value: string): boolean {
 /**
  * legal nationalCode validation
  * ***********************************/
-export const checkLegalNationalCode = function (value: string): boolean {
+export const isLegalNationalCode = function (value: string): boolean {
   if (value.length !== 11 || parseInt(value, 10) === 0) return false
 
   if (parseInt(value.substr(3, 6), 10) === 0) return false
@@ -42,4 +42,11 @@ export const checkLegalNationalCode = function (value: string): boolean {
   s = s % 11
   if (s === 10) s = 0
   return c === s
+}
+
+/**
+ * both  nationalCode validation
+ * ***********************************/
+export const isNationalCode = function (value: string): boolean {
+  return isLegalNationalCode(value) || isRealNationalCode(value)
 }

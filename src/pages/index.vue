@@ -7,7 +7,7 @@
           id="1"
           label="test"
           variant="outlined"
-          :rules="[maxValue(5)]"
+          :rules="[nationalCode]"
         />
       </v-card-text>
     </v-card>
@@ -20,5 +20,5 @@ useHead({
 })
 
 const val = ref('')
-const { maxValue } = useValidations()
+const { nationalCode } = useValidations()
 </script>
