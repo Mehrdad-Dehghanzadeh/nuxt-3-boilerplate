@@ -2,7 +2,7 @@
   // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
 
-    "compilerOptions": {
+  "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"],
@@ -21,12 +21,11 @@
       "@interface/*": ["./src/ts/interface/*"],
       "@assets/*": ["./src/assets/*"],
       "@interfaces/*": ["./src/ts/interfaces/*"],
-      "@types/*": ["./src/ts/types/*"],
-      "@dtos/*":["./src/ts/interfaces/dtos/*"]
+      "@type/*": ["./src/ts/type/*"],
+      "@dtos/*": ["./src/ts/interfaces/dtos/*"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": false
-
-  },
+  }
 }

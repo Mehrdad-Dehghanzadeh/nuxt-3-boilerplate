@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IconType } from '@types/Snackbar'
+import { IconType } from '@type/Snackbar'
 
 const { $snack } = <any>useNuxtApp()
 const snack = $snack.refs
@@ -24,9 +24,7 @@ const DEFUALT_ICON: IconType = {
   alert: 'mdi-alert-outline'
 }
 
-const icon = computed(
-  () => snack.state && DEFUALT_ICON[snack.state as keyof IconType]
-)
+const icon = computed(() => snack.state && DEFUALT_ICON[snack.state as keyof IconType])
 </script>
 
 <style lang="scss" src="./KSnackbar.scss" />

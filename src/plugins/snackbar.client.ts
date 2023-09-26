@@ -1,4 +1,4 @@
-import { State, AppearOptions } from '@types/Snackbar'
+import { State, AppearOptions } from '@type/Snackbar'
 
 const snack = reactive({
   text: '',

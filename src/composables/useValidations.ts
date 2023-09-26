@@ -18,16 +18,16 @@ export default function () {
     return isEmail(val) || t('errors.validations.email')
   }
 
-  function required(val: string | null): validated {
+  function required(val: string): validated {
     return !isEmpty(val) || t('errors.validations.required')
   }
 
-  function maxValue(max: string | number): validatedFunc {
+  function maxValue(max: number | undefined): validatedFunc {
     return (val: string) =>
       isFloat(val, { max }) || t('errors.validations.max_value', { max })
   }
 
-  function minValue(min: string | number): validatedFunc {
+  function minValue(min: number | undefined): validatedFunc {
     return (val: string) =>
       isFloat(val, { min }) || t('errors.validations.min_value', { min })
   }

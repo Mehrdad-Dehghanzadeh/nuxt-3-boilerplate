@@ -1,4 +1,4 @@
-import { EnumList } from '@types/Enums'
+import { EnumList } from '@type/Enums'
 
 export enum Activity {
   Inactive,

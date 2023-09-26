@@ -1,4 +1,4 @@
-import AppConfig from '@types/AppConfig'
+import AppConfig from '@type/AppConfig'
 
 const appConfing: AppConfig = {
   publicUrl: '/',

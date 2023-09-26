@@ -7,7 +7,7 @@
           id="1"
           label="test"
           variant="outlined"
-          :rules="[nationalCode]"
+          :rules="[legalNationalCode]"
         />
       </v-card-text>
     </v-card>
@@ -20,5 +20,5 @@ useHead({
 })
 
 const val = ref('')
-const { nationalCode } = useValidations()
+const { legalNationalCode } = useValidations()
 </script>
