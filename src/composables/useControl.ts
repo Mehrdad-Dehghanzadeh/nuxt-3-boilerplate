@@ -1,23 +1,28 @@
-export default function () {
-  const { id, name, placeholder, label } = useAttrs()
+export default function (uid: any) {
+  const { id, name, placeholder, label } = <
+    { id: string; placeholder: string; label: string; name: string }
+  >useAttrs()
+
   const { appName } = useAppConfig()
 
   const safeId = computed(() => {
-    return `${appName}${id ? '_' + id : ''}`
+    return `${appName}${id ? '_' + id : '_' + uid.value}`
   })
 
   const safeName = computed(() => {
-    return `${appName}${name ? '_' + name : ''}`
+    return `${appName}${name ? '_' + name : '_' + uid.value}`
   })
 
   const safePlaceholder = computed(() => {
+    let val: string = ''
+    if (label) {
+      val = `لطفا ${label} را وارد کنید`
+    }
     if (placeholder) {
-      return placeholder
+      val = placeholder
     }
 
-    if (label) {
-      return `لطفا ${label} را وارد کنید`
-    }
+    return val
   })
 
   return {

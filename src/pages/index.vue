@@ -2,12 +2,11 @@
   <article>
     <v-card class="mx-auto" max-width="380px">
       <v-card-text class="mt-10">
-        <k-password-field
+        <k-select
           v-model="val"
-          id="1"
+          :items="['a', 'b', 'c']"
           label="test"
           variant="outlined"
-          inner-icon
         />
       </v-card-text>
     </v-card>
@@ -18,5 +17,5 @@
 useHead({
   title: 'Home'
 })
-const val = ref('')
+const val = ref(null)
 </script>

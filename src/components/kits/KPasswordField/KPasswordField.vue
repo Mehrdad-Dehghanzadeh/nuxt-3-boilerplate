@@ -1,5 +1,5 @@
 <template>
-  <div class="k-password-field">
+  <div ref="el" class="k-password-field">
     <v-text-field
       v-bind="{ ...$attrs, ...icon }"
       :type="safeType"
@@ -12,14 +12,17 @@
   </div>
 </template>
 
-<script setup>
-const { safeId, safeName, safePlaceholder } = useControl()
+<script lang="ts" setup>
+const el = <any>ref(null)
+const uid = computed(() => el.value?.__vueParentComponent?.uid)
+const { safeId, safeName, safePlaceholder } = useControl(uid)
 const { innerIcon } = defineProps({ innerIcon: Boolean })
 
 const show = ref(false)
 
 const icon = computed(() => {
-  let val = {}
+  let val: any = {}
+
   val[innerIcon ? 'append-inner-icon' : 'append-icon'] = show.value
     ? 'mdi-eye'
     : 'mdi-eye-off'
