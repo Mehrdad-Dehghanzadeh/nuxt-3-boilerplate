@@ -1,6 +1,7 @@
 import isEmail from 'validator/lib/isEmail'
 import isEmpty from 'validator/lib/isEmpty'
 import isFloat from 'validator/lib/isFloat'
+import isStrongPassword from 'validator/lib/isStrongPassword'
 import {
   isRealNationalCode,
   isLegalNationalCode,
@@ -48,6 +49,10 @@ export default function () {
     return isIban(val) || t('errors.validations.iban')
   }
 
+  function password(val: string): validated {
+    return isStrongPassword(val) || t('errors.validations.password')
+  }
+
   return {
     email,
     required,
@@ -56,6 +61,7 @@ export default function () {
     realNationalCode,
     legalNationalCode,
     nationalCode,
-    iban
+    iban,
+    password
   }
 }
