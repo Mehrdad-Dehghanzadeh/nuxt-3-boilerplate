@@ -19,8 +19,8 @@ export default function () {
     return isEmail(val) || t('errors.validations.email')
   }
 
-  function required(val: string): validated {
-    return !isEmpty(val) || t('errors.validations.required')
+  function required(val: string | null): validated {
+    return (!!val && !isEmpty(val)) || t('errors.validations.required')
   }
 
   function maxValue(max: number | undefined): validatedFunc {

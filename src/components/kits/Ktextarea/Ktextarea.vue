@@ -1,6 +1,6 @@
 <template>
-  <div ref="el" class="k-select">
-    <v-select
+  <div ref="el" class="k-textarea">
+    <v-textarea
       v-bind="$attrs"
       :id="safeId"
       :name="safeName"
