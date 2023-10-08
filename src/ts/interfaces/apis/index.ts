@@ -1,4 +1,4 @@
-import { AxiosResponse, AxiosError } from 'axios'
+import { AxiosResponse } from 'axios'
 
 export interface ResponseApi extends AxiosResponse {
   statusMessage: string

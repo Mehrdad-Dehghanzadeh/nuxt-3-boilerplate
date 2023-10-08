@@ -1,4 +1,4 @@
-import { State } from '@types/Snackbar'
+import { State } from '@type/Snackbar'
 
 export default function (state: State, res: unknown) {
   if (process.client) {

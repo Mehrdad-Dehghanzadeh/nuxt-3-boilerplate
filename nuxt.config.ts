@@ -106,7 +106,7 @@ export default defineNuxtConfig({
     '@enums': path.join(__dirname, 'src/locales/enums'),
     '@data': path.join(__dirname, 'src/locales/data'),
     '@utils': path.join(__dirname, 'src/utils'),
-    '@types': path.join(__dirname, 'src/ts/types'),
+    '@type': path.join(__dirname, 'src/ts/type'),
     '@interfaces': path.join(__dirname, 'src/ts/interfaces'),
     '@dtos': path.join(__dirname, 'src/ts/dtos'),
     '@assets': path.join(__dirname, 'src/assets')
