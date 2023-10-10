@@ -1,3 +1,5 @@
+import { date } from '@utils/date'
+
 export default function () {
   /**
    * Roune number
@@ -43,9 +45,24 @@ export default function () {
     return 'N/A'
   }
 
+  /**
+   * retrun value or havenot String
+   * ***********************************/
+  const haveNot = (val: unknown) => val ?? 'ندارد'
+
+  /**
+   * Format garegorian date time to jalali
+   * ***********************************/
+  const dateTime = (val: string) => {
+    return date(val, true)
+  }
+
   return {
     round,
     price,
-    fileSize
+    fileSize,
+    haveNot,
+    date,
+    dateTime
   }
 }

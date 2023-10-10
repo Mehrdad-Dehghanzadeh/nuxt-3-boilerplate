@@ -1,23 +1,47 @@
-/**
- * currentDate formate yyyy-mm-dd
- * ****************************************/
-export function currentDate(): string {
-  let currentDate = new Date(new Date().getTime())
-  let day = currentDate.getDate()
-  let month = currentDate.getMonth() + 1
-  let year = currentDate.getFullYear()
+import moment from 'moment-jalaali'
 
-  return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`
+/**
+ * create date
+ * ***********************************/
+export function date(val: string | number | Date, isFull: boolean = false): string {
+  const fullStr: string = isFull ? ' - HH:mm' : ''
+  return val ? moment(val).format(`jYYYY/jMM/jDD${fullStr}`) : ''
 }
 
 /**
- * tomorrow formate yyyy-mm-dd
- * ****************************************/
-export function tomorrowDate(): string {
-  let currentDate = new Date(new Date().getTime() + 60 * 60 * 24 * 1000)
-  let day = currentDate.getDate()
-  let month = currentDate.getMonth() + 1
-  let year = currentDate.getFullYear()
+ * Get today
+ * ***********************************/
+export const today = date(new Date())
 
-  return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`
+export const todayDateTime = date(new Date(), true)
+
+/**
+ * convert jalaalie to unix
+ ********************************/
+export function jalaaliToUnix(jalaaliDate: string): string | number {
+  let val: string | number = ''
+  if (jalaaliDate) {
+    const utc = moment(jalaaliDate, 'jYYYY/jMM/jDD HH:mm:ss A').format()
+    val = moment.utc(utc).unix()
+  }
+
+  return val
+}
+
+export function jalaaliToUtc(jalaaliDate: string, format: string = 'YYYY-MM-DD'): string {
+  return jalaaliDate ? moment(jalaaliDate, 'jYYYY/jMM/jDD HH:mm:ss A').format(format) : ''
+}
+
+/**
+ * convert jalaalie to unix
+ ********************************/
+export function utcToUnix(utc: string): string | number {
+  return utc ? moment.utc(utc).unix() : ''
+}
+
+/**
+ * convert utc to jalaalie
+ *****************************/
+export function utcToJalaalie(val: string): string {
+  return val ? moment.utc(val).format('jYYYY/jMM/jDD') : ''
 }

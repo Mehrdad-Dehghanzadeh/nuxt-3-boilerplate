@@ -1,4 +1,7 @@
-export default function (uid: any) {
+export default function () {
+  const instance = getCurrentInstance()
+  const uid = computed(() => instance?.uid)
+
   const { id, name, placeholder, label } = <
     { id: string; placeholder: string; label: string; name: string }
   >useAttrs()
