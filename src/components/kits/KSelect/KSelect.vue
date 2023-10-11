@@ -10,5 +10,8 @@
 </template>
 
 <script lang="ts" setup>
+defineOptions({
+  inheritAttrs: false
+})
 const { safeId, safeName, safePlaceholder } = useControl()
 </script>

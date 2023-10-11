@@ -15,6 +15,9 @@
 <script lang="ts" setup>
 const { safeId, safeName, safePlaceholder } = useControl()
 const { innerIcon } = defineProps({ innerIcon: Boolean })
+defineOptions({
+  inheritAttrs: false
+})
 
 const show = ref(false)
 

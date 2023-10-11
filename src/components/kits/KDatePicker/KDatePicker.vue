@@ -6,6 +6,7 @@
         v-bind="$attrs"
         :id="`${safeId}_date_picker`"
         :name="`${safeName}_date_picker`"
+        :rules="localRules"
         :placeholder="safePlaceholder"
         :append-inner-icon="props.appendIcon"
         @click:append-inner="show = true"
@@ -28,9 +29,9 @@
 </template>
 
 <script lang="ts" setup>
-import { WritableComputedRef } from 'vue'
-const { safeId, safeName, safePlaceholder } = useControl()
+import { isPersainDate } from '@assets/validations/date'
 
+const { safeId, safeName, safePlaceholder } = useControl()
 defineOptions({
   inheritAttrs: false
 })
@@ -59,24 +60,32 @@ const props = defineProps({
   format: {
     type: String,
     default: 'YYYY-MM-DD HH:mm:ss'
+  },
+  rules: {
+    type: Array,
+    default: () => []
   }
 })
 const emit = defineEmits(['update:modelValue'])
 
-const date = ref('')
-let localValue: WritableComputedRef<string> = computed({
-  get() {
-    return utcToJalaalie(props.modelValue)
-  },
+const localRules: any = computed(() => {
+  const { persainDate } = useValidations()
+  return Array.isArray(props.rules) ? [...props.rules, persainDate] : [persainDate]
+})
 
-  set(value) {
-    emit('update:modelValue', value)
+let date = ref<string>(props.modelValue)
+let localValue = ref<string>(utcToJalaalie(props.modelValue))
+
+watch(localValue, (val) => {
+  if (!val || isPersainDate(val)) {
+    date.value = jalaaliToUtc(val, props.format)
+    emit('update:modelValue', date.value)
   }
 })
 
 let show = ref<boolean>(false)
 function close() {
   show.value = false
-  localValue.value = date.value
+  localValue.value = utcToJalaalie(date.value)
 }
 </script>
