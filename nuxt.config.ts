@@ -69,6 +69,10 @@ export default defineNuxtConfig({
 
     ssr: {
       noExternal: ['vuetify']
+    },
+
+    resolve: {
+      mainFields: ['browser', 'module', 'main', 'jsnext:main', 'jsnext']
     }
   },
 

@@ -21,5 +21,6 @@ export default deepFreeze({
   realNationalCode: 'کد ملی معتبر نیست',
   mobile: 'شماره موبایل نادرست است',
   iban: 'شماره شبا نادرست است',
-  noZero: 'مقدار وارد شده نباید صفر باشد'
+  noZero: 'مقدار وارد شده نباید صفر باشد',
+  persainDate: 'فرمت تاریخ فارسی صحیح نیست باید yyyy/mm/dd باشد'
 })

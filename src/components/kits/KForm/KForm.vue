@@ -26,9 +26,6 @@ function clear() {
 }
 
 const uid = computed(() => form?.value?.$?.uid)
-onBeforeMount(() => {
-  console.log(uid)
-})
 
 const safeId = computed(() => {
   return `${appName}${id ? '_form_' + id : 'form_' + uid?.value}`

@@ -1,4 +1,5 @@
-import iban from './iban'
+import isIban from './iban'
 import { isRealNationalCode, isLegalNationalCode, isNationalCode } from './nationalCode'
+import { isPersainDate } from './date'
 
-export { iban, isRealNationalCode, isLegalNationalCode, isNationalCode }
+export { isIban, isRealNationalCode, isLegalNationalCode, isNationalCode, isPersainDate }
