@@ -1,4 +1,4 @@
-import User from '@type/User'
+import type User from '@type/User'
 
 type UserState = User | null
 type State = {
