@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IconType } from '@type/Snackbar'
+import { type IconType } from '@type/Snackbar'
 
 const { $snack } = <any>useNuxtApp()
 const snack = $snack.refs

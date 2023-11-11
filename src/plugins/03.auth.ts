@@ -1,7 +1,7 @@
-import LoginDto from '@dtos/LoginDto'
+import type LoginDto from '@dtos/LoginDto'
 import jwt_decode from 'jwt-decode'
-import JwtType from '@type/Jwt'
-import AppConfig from '@type/AppConfig'
+import type JwtType from '@type/Jwt'
+import type AppConfig from '@type/AppConfig'
 
 export default defineNuxtPlugin(({ $api }) => {
   const store = useAppStore()
