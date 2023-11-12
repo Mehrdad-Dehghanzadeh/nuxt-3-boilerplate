@@ -1,13 +1,16 @@
 <template>
-  <div class="text-center">
-    <h2 class="mt-10">{{ error?.statusCode }}</h2>
-    <h2 class="mt-4">{{ error }}</h2>
-  </div>
+  <nuxt-layout class="error-page" name="empty">
+    <div class="text-center">
+      <h2 class="mt-10">{{ props?.error?.statusCode }}</h2>
+      <h2 class="mt-4">{{ props?.error }}</h2>
+    </div>
+  </nuxt-layout>
 </template>
 
 <script lang="ts" setup>
-const error = useError()
-console.log(error)
+const props = defineProps({
+  error: Object
+})
 
 useHead({
   titleTemplate: (titleChunk) => {

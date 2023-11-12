@@ -14,7 +14,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const api: any = {}
   configAutoImportApis(api, $axios)
-  interceptorsRequest($axios, {})
+  interceptorsRequest($axios)
   statusMessageMapping($axios, $i18n)
 
   return {
