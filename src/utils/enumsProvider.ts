@@ -1,4 +1,4 @@
-import { type EnumType } from '@type/Enums'
+import { type EnumType } from '@type'
 
 type EnumProvider = EnumType | object
 const enumsList: any = {}

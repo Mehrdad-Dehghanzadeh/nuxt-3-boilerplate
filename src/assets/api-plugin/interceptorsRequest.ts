@@ -1,4 +1,4 @@
-import { type AxiosRequestConfig, type AxiosInstance } from 'axios'
+import { type AxiosRequestConfig, type AxiosInstance } from '@type'
 
 export default function ($axios: AxiosInstance) {
   $axios.interceptors.request.use(

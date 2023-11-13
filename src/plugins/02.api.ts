@@ -3,10 +3,11 @@ import configAutoImportApis from '@assets/api-plugin/autoImportApis'
 import statusMessageMapping from '@assets/api-plugin/statusMessageMapping'
 import interceptorsRequest from '@assets/api-plugin/interceptorsRequest'
 import defaultHeader from '@assets/api-plugin/defaultHeader'
+import { type AppConfig } from '@type'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const { $i18n } = nuxtApp
-  const { apiBaseUrl } = useAppConfig()
+  const { apiBaseUrl } = <Pick<AppConfig, 'apiBaseUrl'>>useAppConfig()
   const $axios = axios.create({
     baseURL: apiBaseUrl,
     headers: defaultHeader
