@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios'
+import { type AxiosInstance } from 'axios'
 
 export default function (api: any, $axios: AxiosInstance) {
   const apisModules: any = import.meta.glob(`../../apis/*.(ts|js)`, { eager: true })

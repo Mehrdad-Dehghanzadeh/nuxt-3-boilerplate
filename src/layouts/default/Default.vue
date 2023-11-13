@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import DefaultFooter from '@includes/DefaultFooter/DefaultFooter'
-import DefaultHeader from '@includes/DefaultHeader/DefaultHeader'
-import DefaultMain from '@includes/DefaultMain/DefaultMain'
+import DefaultFooter from './DefaultFooter/DefaultFooter'
+import DefaultHeader from './DefaultHeader/DefaultHeader'
+import DefaultMain from './DefaultMain/DefaultMain'
 export default {
   name: 'DefaultLayout',
   components: { DefaultFooter, DefaultHeader, DefaultMain }

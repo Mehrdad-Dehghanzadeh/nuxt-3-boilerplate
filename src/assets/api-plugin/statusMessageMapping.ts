@@ -1,5 +1,5 @@
-import { AxiosResponse, AxiosInstance, AxiosError } from 'axios'
-import { ResponseApi } from '@interfaces/apis'
+import { type AxiosResponse, type AxiosInstance, AxiosError } from 'axios'
+import { type ResponseApi } from '@interfaces/apis'
 
 export default function ($axios: AxiosInstance, i18n: any) {
   $axios.interceptors.response.use(

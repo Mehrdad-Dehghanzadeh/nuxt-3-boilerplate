@@ -4,6 +4,9 @@
 
 <script>
 export default {
-  name: 'DefaultHeader'
+  name: 'DefaultHeader',
+  created() {
+    this.s()
+  }
 }
 </script>
