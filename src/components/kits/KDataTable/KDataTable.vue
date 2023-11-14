@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-const { $api } = <any>useNuxtApp()
+const { $api, $snack } = <any>useNuxtApp()
 
 const props = defineProps({
   resource: {
@@ -23,15 +23,24 @@ const props = defineProps({
     type: Object,
     default() {
       return {}
+    },
+    dataProp: {
+      type: String,
+      default: 'data'
     }
   }
 })
 
-const items = reactive([])
+let items:any[] = []
 const loading = ref(false)
+const count = ref(0)
 
 function setFilters() {
   return { ...props.defaultFilters }
+}
+
+function setItems<T extends object>(data: T) {
+  items = Array.isArray(data?.[props.dataProp]) ? deepClone((data?.[props.dataProp]) : []
 }
 
 function read() {
@@ -42,7 +51,7 @@ function read() {
     [props.method](filters)
     .then((res) => {})
     .catch((err) => {
-      console.error(err)
+      $snack.show('error', err)
     })
     .finally(() => {
       loading.value = false

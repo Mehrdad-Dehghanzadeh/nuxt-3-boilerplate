@@ -10,7 +10,7 @@
       </v-card-text>
     </v-card>
 
-    <k-data-table class="mt-10" :headers="headers"></k-data-table>
+    <k-data-table class="mt-10" :headers="headers" resource="app"></k-data-table>
   </article>
 </template>
 
