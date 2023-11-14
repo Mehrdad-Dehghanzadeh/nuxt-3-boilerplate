@@ -9,6 +9,8 @@
         </k-form>
       </v-card-text>
     </v-card>
+
+    <k-data-table class="mt-10" :headers="headers"></k-data-table>
   </article>
 </template>
 
@@ -16,6 +18,19 @@
 useHead({
   title: 'Home'
 })
+const headers = [
+  {
+    title: 'Dessert (100g serving)',
+    align: 'start',
+    sortable: false,
+    key: 'name'
+  },
+  { title: 'Calories', key: 'calories', align: 'end' },
+  { title: 'Fat (g)', key: 'fat', align: 'end' },
+  { title: 'Carbs (g)', key: 'carbs', align: 'end' },
+  { title: 'Protein (g)', key: 'protein', align: 'end' },
+  { title: 'Iron (%)', key: 'iron', align: 'end' }
+]
 const { maxValue, required } = useValidations()
 const val = ref('2022-11-03 00:00:00')
 const f = <any>ref(null)
