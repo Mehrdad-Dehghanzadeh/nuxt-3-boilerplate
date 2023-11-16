@@ -10,6 +10,7 @@
   transform: translateX(-50%);
   min-height: 80px;
   color: white;
+  z-index: map-get($z-index, 'snackbar' );
 
   &__wrapper {
     display: flex;

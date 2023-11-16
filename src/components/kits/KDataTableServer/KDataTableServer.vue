@@ -1,7 +1,6 @@
 <template>
   <v-data-table-server
     class="k-data-table-server"
-    v-bind="$attrs"
     :items="items"
     :items-length="count"
     :loading="loading"
@@ -41,7 +40,7 @@ const props = defineProps({
   }
 })
 
-let items: any[] = []
+let items = reactive([])
 const loading = ref(false)
 const count = ref(0)
 
@@ -54,8 +53,8 @@ function clearFilters() {
 }
 
 function setItems(data: any) {
-  items = Array.isArray(data[props.dataProp])
-    ? deepClone(data[props.dataProp])
+  items = Array.isArray(data?.[props.dataProp])
+    ? deepClone(data?.[props.dataProp])
     : deepClone([])
   count.value = data?.[props.countProp] ?? data?.[props.dataProp]?.length
 }
@@ -79,12 +78,20 @@ function read() {
     })
 }
 
+function refresh() {
+  count.value = 0
+  items = []
+  clearFilters()
+  read()
+}
+
 onMounted(() => {
   read()
 })
 
 defineExpose({
   read,
+  refresh,
   setFilters,
   clearFilters
 })
