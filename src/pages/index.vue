@@ -10,7 +10,17 @@
       </v-card-text>
     </v-card>
 
-    <k-data-table class="mt-10" :headers="headers" resource="app"></k-data-table>
+    <k-data-table-server
+      class="pa-10"
+      :headers="headers"
+      resource="auth"
+      method="tickets"
+      count-prop="total"
+    >
+      <template v-slot:item.message="{ item }">
+        {{ item?.message + '1' }}
+      </template>
+    </k-data-table-server>
   </article>
 </template>
 
@@ -25,11 +35,10 @@ const headers = [
     sortable: false,
     key: 'name'
   },
-  { title: 'Calories', key: 'calories', align: 'end' },
-  { title: 'Fat (g)', key: 'fat', align: 'end' },
-  { title: 'Carbs (g)', key: 'carbs', align: 'end' },
-  { title: 'Protein (g)', key: 'protein', align: 'end' },
-  { title: 'Iron (%)', key: 'iron', align: 'end' }
+  { title: 'message', key: 'message', align: 'end' },
+  { title: 'title', key: 'title', align: 'end' },
+  { title: 'received', key: 'received', align: 'end' },
+  { title: 'status', key: 'status', align: 'end' }
 ]
 const { maxValue, required } = useValidations()
 const val = ref('2022-11-03 00:00:00')
