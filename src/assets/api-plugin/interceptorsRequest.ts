@@ -5,7 +5,7 @@ export default function ($axios: AxiosInstance) {
     function (config: AxiosRequestConfig): any {
       const cookie = useCookie('token')
       const store = useAppStore()
-      if (store.isLogin) {
+      if (store.isLogin && config.headers) {
         config.headers.Authorization = `Bearer ${cookie.value}`
       }
 
