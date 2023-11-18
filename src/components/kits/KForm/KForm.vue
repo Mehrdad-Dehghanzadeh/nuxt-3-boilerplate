@@ -15,10 +15,15 @@ const form = <any>ref(null)
 const { id, name } = <{ id: string; name: string }>useAttrs()
 const { appName } = useAppConfig()
 
-const emit = defineEmits(['onValid'])
+const emit = defineEmits(['onValid', 'onInValid'])
 
 function submit(e) {
-  emit('onValid', e)
+  e.then((res: any) => {
+    const event = res.valid ? 'onValid' : 'onInValid'
+    emit(event, res)
+  }).catch((err: any) => {
+    emit('onInValid', err)
+  })
 }
 
 function clear() {

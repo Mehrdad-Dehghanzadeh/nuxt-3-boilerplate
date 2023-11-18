@@ -1,6 +1,7 @@
 <template>
   <v-data-table-server
     class="k-data-table-server"
+    v-model:items-per-page="pagination.pageNumber"
     :items="items"
     :items-length="count"
     :loading="loading"
@@ -12,6 +13,7 @@
 </template>
 
 <script lang="ts" setup>
+
 const { $api, $snack } = <any>useNuxtApp()
 const slots = computed(() => Object.keys(useSlots()))
 
@@ -37,10 +39,20 @@ const props = defineProps({
   countProp: {
     type: String,
     default: 'count'
+  },
+  defaultPagination: {
+    type: Object,
+    default() {
+      return {
+        pageNumber: 0,
+        pageSize: 10
+      }
+    }
   }
 })
 
 let items = reactive([])
+let pagination = reactive({ ...props.defaultPagination })
 const loading = ref(false)
 const count = ref(0)
 

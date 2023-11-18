@@ -1,24 +1,49 @@
 <template>
   <article>
-    <v-card class="mx-auto" max-width="380px">
-      <v-card-text class="mt-10">
-        <k-form ref="f" id="2">
-          <k-date-picker v-model="val" label="date" />
-          <v-btn type="submit" block>ثبت</v-btn>
-          <v-btn @click="clear" class="mt-4" color="error" block>پاک</v-btn>
-        </k-form>
-      </v-card-text>
-    </v-card>
-
     <k-data-table-server
       class="pa-10"
       :headers="headers"
       resource="auth"
       method="tickets"
       count-prop="total"
+      data-prop="securities"
     >
-      <template v-slot:item.message="{ item }">
-        {{ item?.message + '1' }}
+      <template #item.name="{ item }"> {{ item?.securities?.securitiesName }} </template>
+
+      <template #item.code="{ item }"> {{ item?.securities?.securitiesCode }} </template>
+
+      <template #item.groupDescription="{ item }">
+        {{ item?.securities?.securitiesGroupDescription }}
+      </template>
+
+      <template #item.sellingStartDate="{ item }">
+        <time>
+          {{
+            item.securities?.features?.find(
+              (el) => el.featureType === 'SELLING_START_DATE'
+            )?.quantity?.value
+          }}
+        </time>
+      </template>
+
+      <template #item.sellingEndDate="{ item }">
+        <time>
+          {{
+            item.securities?.features?.find((el) => el.featureType === 'SELLING_END_DATE')
+              ?.quantity?.value
+          }}
+        </time>
+      </template>
+
+      <template #item.status="{ item }">
+        <v-chip
+          v-if="enumsProvider('SecuritiesStatus', item?.securities?.status)"
+          :color="enumsProvider('SecuritiesStatus', item?.securities?.status)?.color"
+          label
+          small
+        >
+          {{ enumsProvider('SecuritiesStatus', item?.securities?.status)?.name }}
+        </v-chip>
       </template>
     </k-data-table-server>
   </article>
@@ -28,17 +53,26 @@
 useHead({
   title: 'Home'
 })
+
+definePageMeta({
+  middleware: ['auth']
+})
+
 const headers = [
+  { title: 'نام اوراق', key: 'name', align: 'center', minWidth: '120px' },
+  { title: 'کد اوراق', key: 'code', align: 'center' },
+  { title: 'گروه اوراق', key: 'groupDescription', align: 'center' },
+  { title: 'روز آغاز فروش', key: 'sellingStartDate' },
+  { title: 'روز پایان فروش', key: 'sellingEndDate' },
+  { title: 'وضعیت', key: 'status', align: 'center' },
+
   {
-    title: 'Dessert (100g serving)',
-    align: 'start',
+    title: 'جزئیات',
+    key: 'details',
+    align: 'center',
     sortable: false,
-    key: 'name'
-  },
-  { title: 'message', key: 'message', align: 'end' },
-  { title: 'title', key: 'title', align: 'end' },
-  { title: 'received', key: 'received', align: 'end' },
-  { title: 'status', key: 'status', align: 'end' }
+    width: '80'
+  }
 ]
 const { maxValue, required } = useValidations()
 const val = ref('2022-11-03 00:00:00')
