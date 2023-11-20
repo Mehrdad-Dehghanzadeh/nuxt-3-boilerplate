@@ -54,7 +54,6 @@ export default defineNuxtPlugin(({ $api }) => {
 
   function init() {
     const cookie = useCookie(cookieAuhtName)
-    console.log(cookie.value)
     if (cookie.value) {
       const { exp, profile }: JwtType = jwt_decode(cookie.value)
       const isExpired: boolean = exp * 1000 > Date.now()

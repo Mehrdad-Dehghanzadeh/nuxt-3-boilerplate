@@ -1,21 +1,43 @@
 <template>
   <v-data-table-server
     class="k-data-table-server"
-    v-model:items-per-page="pagination.pageNumber"
+    v-model:items-per-page="pagination.pageSize"
+    v-bind="$attrs"
     :items="items"
     :items-length="count"
     :loading="loading"
   >
-    <template v-for="(key, index) in slots" :key="`${key}-${index}`" #[key]="{ item }">
-      <slot v-bind="{ item }" :name="key" />
+    <template
+      v-for="(key, index) in slots"
+      :key="`${key}-${index}__${uid}`"
+      #[key]="{ item, index, internalItem, isExpanded, toggleExpand }"
+    >
+      <v-menu v-if="key === 'item.actions'">
+        <template #activator="{ props }">
+          <v-btn v-bind="{ ...props, ...actionBtnProps }" />
+        </template>
+        <slot
+          v-bind="{ item, index, internalItem, isExpanded, toggleExpand }"
+          name="item.actions"
+        />
+      </v-menu>
+
+      <slot
+        v-else
+        v-bind="{ item, index, internalItem, isExpanded, toggleExpand }"
+        :name="key"
+      />
     </template>
   </v-data-table-server>
 </template>
 
 <script lang="ts" setup>
-
 const { $api, $snack } = <any>useNuxtApp()
 const slots = computed(() => Object.keys(useSlots()))
+const uid = computed(() => {
+  const instance = getCurrentInstance()
+  return instance?.uid ?? '0'
+})
 
 const props = defineProps({
   resource: {
@@ -48,6 +70,29 @@ const props = defineProps({
         pageSize: 10
       }
     }
+  },
+  pageProp: {
+    type: String,
+    default: 'pageNumber'
+  },
+  pageSizeProp: {
+    type: String,
+    default: 'pageSize'
+  },
+  actionBtnProps: {
+    type: Object,
+    default(val: any) {
+      const defaultProps = {
+        icon: 'mdi-dots-horizontal-circle-outline',
+        variant: 'text',
+        density: 'compact'
+      }
+
+      return {
+        ...defaultProps,
+        ...val
+      }
+    }
   }
 })
 
@@ -57,7 +102,12 @@ const loading = ref(false)
 const count = ref(0)
 
 function setFilters<T>(filters: T) {
-  return { ...props.defaultFilters, ...filters }
+  const paginationFilter = {
+    [props.pageProp]: pagination.pageNumber,
+    [props.pageSizeProp]: pagination.pageSize
+  }
+
+  return { ...props.defaultFilters, ...filters, ...paginationFilter }
 }
 
 function clearFilters() {

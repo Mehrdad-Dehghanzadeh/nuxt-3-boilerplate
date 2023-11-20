@@ -65,7 +65,6 @@ function submit() {
       router.push('/')
     })
     .catch((err) => {
-      console.error(err)
       useSnackbar('error', err)
     })
     .finally(() => {

@@ -45,6 +45,15 @@
           {{ enumsProvider('SecuritiesStatus', item?.securities?.status)?.name }}
         </v-chip>
       </template>
+
+      <template #item.actions="{ item }">
+        <v-list>
+          <v-list-item> <v-list-item-title>1</v-list-item-title></v-list-item>
+          <v-list-item>
+            <v-list-item-title>2</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </template>
     </k-data-table-server>
   </article>
 </template>
@@ -68,14 +77,13 @@ const headers = [
 
   {
     title: 'جزئیات',
-    key: 'details',
+    key: 'actions',
     align: 'center',
     sortable: false,
     width: '80'
   }
 ]
-const { maxValue, required } = useValidations()
-const val = ref('2022-11-03 00:00:00')
+
 const f = <any>ref(null)
 
 function clear() {
