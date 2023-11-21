@@ -1,7 +1,7 @@
 <template>
-  <div class="k-password-field">
+  <div :class="['k-password-field', className]" :style="style">
     <v-text-field
-      v-bind="{ ...$attrs, ...icon }"
+      v-bind="{ ...attrs$, ...icon }"
       :type="safeType"
       :id="safeId"
       :name="safeName"
@@ -13,11 +13,14 @@
 </template>
 
 <script lang="ts" setup>
-const { safeId, safeName, safePlaceholder } = useControl()
-const { innerIcon } = defineProps({ innerIcon: Boolean })
 defineOptions({
   inheritAttrs: false
 })
+
+const { className, attrs$, style } = useExcludeAttrs()
+const { safeId, safeName, safePlaceholder } = useControl()
+
+const { innerIcon } = defineProps({ innerIcon: Boolean })
 
 const show = ref(false)
 

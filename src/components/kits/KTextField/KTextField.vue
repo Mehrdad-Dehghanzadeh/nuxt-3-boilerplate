@@ -1,7 +1,7 @@
 <template>
-  <div class="k-text-field">
+  <div :class="['k-text-field', className]" :style="style">
     <v-text-field
-      v-bind="$attrs"
+      v-bind="attrs$"
       :id="safeId"
       :name="safeName"
       :placeholder="safePlaceholder"
@@ -10,8 +10,10 @@
 </template>
 
 <script lang="ts" setup>
-const { safeId, safeName, safePlaceholder } = useControl()
 defineOptions({
   inheritAttrs: false
 })
+
+const { safeId, safeName, safePlaceholder } = useControl()
+const { className, attrs$, style } = useExcludeAttrs()
 </script>

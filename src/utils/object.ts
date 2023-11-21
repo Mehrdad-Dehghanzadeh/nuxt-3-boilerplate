@@ -42,3 +42,20 @@ export function objectToArray(obj: any) {
 export function deepClone<T>(obj: T): T {
   return JSON.parse(JSON.stringify(obj))
 }
+
+/**
+ * remove keyof object
+ *****************************/
+export function omit<T extends object>(obj: T, arr: string[]) {
+  const exclude = new Set(arr)
+  exclude.forEach((e: string) => delete obj[e as keyof T])
+}
+
+/**
+ * remove keyof object and clone
+ *****************************************/
+export function cloneOmit<T extends object>(obj: T, arr: string[]): Partial<T> {
+  const value = deepClone(obj)
+  omit(value, arr)
+  return value
+}

@@ -16,6 +16,7 @@
 
           <k-password-field
             v-model="model.password"
+            class="mb-4"
             label="رمز عبور"
             :rules="[required]"
             variant="outlined"
