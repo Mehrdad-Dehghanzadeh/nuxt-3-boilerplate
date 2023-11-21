@@ -105,7 +105,7 @@ const props = defineProps({
   }
 })
 
-let items:any[] = reactive([])
+let items:unknown[] = reactive([])
 let pagination = reactive({ ...props.defaultPagination })
 const loading = ref(false)
 const count = ref(0)
