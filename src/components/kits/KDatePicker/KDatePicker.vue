@@ -1,9 +1,9 @@
 <template>
-  <div class="k-date-picker">
+  <div :class="['k-date-picker', className]" :style="style">
     <client-only>
       <v-text-field
         v-model="localValue"
-        v-bind="$attrs"
+        v-bind="attrs$"
         :id="`${safeId}_date_picker`"
         :name="`${safeName}_date_picker`"
         :rules="localRules"
@@ -29,12 +29,14 @@
 </template>
 
 <script lang="ts" setup>
-import { isPersainDate } from '@assets/validations/date'
+import { isPersainDate } from '@assets/validations'
 
-const { safeId, safeName, safePlaceholder } = useControl()
 defineOptions({
   inheritAttrs: false
 })
+
+const { className, attrs$, style } = useExcludeAttrs()
+const { safeId, safeName, safePlaceholder } = useControl()
 
 const props = defineProps({
   modelValue: {

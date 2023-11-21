@@ -1,4 +1,4 @@
-export default function (value: string): boolean {
+export function isIban(value: string): boolean {
   const iban = value.replace(/ /g, '').toUpperCase()
   let ibancheckdigits = ''
   let leadingZeroes = true

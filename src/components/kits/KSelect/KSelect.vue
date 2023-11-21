@@ -1,7 +1,7 @@
 <template>
-  <div class="k-select">
+  <div :class="['k-select', className]" :style="style">
     <v-select
-      v-bind="$attrs"
+      v-bind="attrs$"
       :id="safeId"
       :name="safeName"
       :placeholder="safePlaceholder"
@@ -13,5 +13,7 @@
 defineOptions({
   inheritAttrs: false
 })
+
+const { className, attrs$, style } = useExcludeAttrs()
 const { safeId, safeName, safePlaceholder } = useControl()
 </script>
