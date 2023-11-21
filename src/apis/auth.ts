@@ -6,8 +6,7 @@ export default ($axios: AxiosInstance) => ({
     return $axios.post('/auth/login', payload)
   },
 
-  tickets() {
-    const payload = { pageNumber: 1, pageSize: 10 }
+  tickets(payload:any) {
     return $axios.post('/securities/allocated', payload)
   }
 })

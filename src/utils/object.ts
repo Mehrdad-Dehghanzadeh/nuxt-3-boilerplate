@@ -59,3 +59,20 @@ export function cloneOmit<T extends object>(obj: T, arr: string[]): Partial<T> {
   omit(value, arr)
   return value
 }
+
+/**
+ * get value object and subObject in this object
+ *******************************************************/
+export function getValueObject(obj: any, prop: string): any {
+  if (typeof obj === 'undefined' || obj === null) {
+    console.error(`obj undefined or null: ${obj}.${prop}`)
+    return undefined
+  }
+
+  let _index = prop.indexOf('.')
+  if (_index > -1) {
+    return getValueObject(obj[prop.substring(0, _index)], prop.substr(_index + 1))
+  }
+
+  return obj[prop]
+}

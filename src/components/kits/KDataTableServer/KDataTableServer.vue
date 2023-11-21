@@ -1,37 +1,46 @@
 <template>
-  <v-data-table-server
-    class="k-data-table-server"
-    v-model:items-per-page="pagination.pageSize"
-    v-bind="$attrs"
-    :items="items"
-    :items-length="count"
-    :loading="loading"
-  >
-    <template
-      v-for="(key, index) in slots"
-      :key="`${key}-${index}__${uid}`"
-      #[key]="{ item, index, internalItem, isExpanded, toggleExpand }"
+  <div class="k-data-table-server" v-bind="htmlAttr">
+    <v-data-table-server
+      v-bind="attrs$"
+      :items="items"
+      :items-length="count"
+      :items-per-page="pagination.pageSize"
+      :page="pagination.pageNumber"
+      :loading="loading"
+      @update:page="updatePage"
+      @update:items-per-page="updateItemsPerPage"
     >
-      <v-menu v-if="key === 'item.actions'">
-        <template #activator="{ props }">
-          <v-btn v-bind="{ ...props, ...actionBtnProps }" />
-        </template>
-        <slot
-          v-bind="{ item, index, internalItem, isExpanded, toggleExpand }"
-          name="item.actions"
-        />
-      </v-menu>
+      <template
+        v-for="(key, index) in slots"
+        :key="`${key}-${index}__${uid}`"
+        #[key]="{ item, index, internalItem, isExpanded, toggleExpand }"
+      >
+        <v-menu v-if="key === 'item.actions'">
+          <template #activator="{ props }">
+            <v-btn v-bind="{ ...props, ...actionBtnProps }" />
+          </template>
+          <slot
+            v-bind="{ item, index, internalItem, isExpanded, toggleExpand }"
+            name="item.actions"
+          />
+        </v-menu>
 
-      <slot
-        v-else
-        v-bind="{ item, index, internalItem, isExpanded, toggleExpand }"
-        :name="key"
-      />
-    </template>
-  </v-data-table-server>
+        <slot
+          v-else
+          v-bind="{ item, index, internalItem, isExpanded, toggleExpand }"
+          :name="key"
+        />
+      </template>
+    </v-data-table-server>
+  </div>
 </template>
 
 <script lang="ts" setup>
+defineOptions({
+  inheritAttrs: false
+})
+const { htmlAttr, attrs$ } = useExcludeAttrs()
+
 const { $api, $snack } = <any>useNuxtApp()
 const slots = computed(() => Object.keys(useSlots()))
 const uid = computed(() => {
@@ -66,8 +75,8 @@ const props = defineProps({
     type: Object,
     default() {
       return {
-        pageNumber: 0,
-        pageSize: 10
+        pageNumber: 1,
+        pageSize: 5
       }
     }
   },
@@ -96,7 +105,7 @@ const props = defineProps({
   }
 })
 
-let items = reactive([])
+let items:any[] = reactive([])
 let pagination = reactive({ ...props.defaultPagination })
 const loading = ref(false)
 const count = ref(0)
@@ -115,10 +124,12 @@ function clearFilters() {
 }
 
 function setItems(data: any) {
-  items = Array.isArray(data?.[props.dataProp])
-    ? deepClone(data?.[props.dataProp])
+  const dataItems = getValueObject(data, props.dataProp)
+  items = Array.isArray(dataItems)
+    ? deepClone(dataItems)
     : deepClone([])
-  count.value = data?.[props.countProp] ?? data?.[props.dataProp]?.length
+  count.value =
+    getValueObject(data, props.countProp) ?? dataItems?.length
 }
 
 function read() {
@@ -127,7 +138,7 @@ function read() {
   const filters = setFilters<object>({})
   $api[props.resource]
     [props.method](filters)
-    .then((res: { data: any; key?: any }) => {
+    .then((res: any) => {
       if (res?.data) {
         setItems(res.data)
       }
@@ -145,6 +156,20 @@ function refresh() {
   items = []
   clearFilters()
   read()
+}
+
+function updatePage(val: number | string) {
+  pagination.pageNumber = val
+  read()
+}
+
+function updateItemsPerPage(val: number | string) {
+  pagination.pageSize = val
+  if (pagination.pageNumber === 1) {
+    read()
+  } else {
+    pagination.pageNumber = 1
+  }
 }
 
 onMounted(() => {

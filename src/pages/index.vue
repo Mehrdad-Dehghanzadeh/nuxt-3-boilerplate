@@ -5,7 +5,7 @@
       :headers="headers"
       resource="auth"
       method="tickets"
-      count-prop="total"
+      count-prop="pagination.totalNumberOfEntries"
       data-prop="securities"
     >
       <template #item.name="{ item }"> {{ item?.securities?.securitiesName }} </template>
