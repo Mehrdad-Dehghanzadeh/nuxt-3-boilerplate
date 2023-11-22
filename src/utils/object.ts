@@ -65,7 +65,7 @@ export function cloneOmit<T extends object>(obj: T, arr: string[]): Partial<T> {
  *******************************************************/
 export function getValueObject(obj: any, prop: string): any {
   if (typeof obj === 'undefined' || obj === null) {
-    console.error(`obj undefined or null: ${obj}.${prop}`)
+    console.error(new Error(`obj undefined or null: ${obj}.${prop}`))
     return undefined
   }
 

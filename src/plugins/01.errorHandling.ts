@@ -4,6 +4,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (isDev) {
       showError(_args[0])
     }
-    console.log(..._args)
+    console.error(..._args)
   }
 })
