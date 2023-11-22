@@ -1,46 +1,60 @@
 <template>
   <article>
-    <v-card class="mx-auto" max-width="380px">
-      <v-card-text class="mt-10">
-        <k-form ref="f" id="2">
-          <k-date-picker
-            v-model="model.date"
-            label="date"
-            id="mehrdad-date"
-            name="mehrdad"
-          />
-          <k-password-field
-            v-model="model.password"
-            label="password"
-            id="password"
-            name="password"
-          />
-          <k-text-field
-            v-model="model.username"
-            label="username"
-            id="username"
-            name="username"
-          />
-          <k-select
-            v-model="model.type"
-            :items="items"
-            name="type"
-            id="type"
-            label="type"
-          />
+    <k-data-table-server
+      class="pa-10"
+      :headers="headers"
+      resource="auth"
+      method="tickets"
+      count-prop="pagination.totalNumberOfEntries"
+      data-prop="securities"
+    >
+      <template #item.name="{ item }"> {{ item?.securities?.securitiesName }} </template>
 
-          <k-textarea
-            class="mt-10"
-            v-model="model.description"
-            name="description"
-            id="description"
-            label="description"
-          />
-          <v-btn type="submit" block>ثبت</v-btn>
-          <v-btn @click="clear" class="mt-4" color="error" block>پاک</v-btn>
-        </k-form>
-      </v-card-text>
-    </v-card>
+      <template #item.code="{ item }"> {{ item?.securities?.securitiesCode }} </template>
+
+      <template #item.groupDescription="{ item }">
+        {{ item?.securities?.securitiesGroupDescription }}
+      </template>
+
+      <template #item.sellingStartDate="{ item }">
+        <time>
+          {{
+            item.securities?.features?.find(
+              (el) => el.featureType === 'SELLING_START_DATE'
+            )?.quantity?.value
+          }}
+        </time>
+      </template>
+
+      <template #item.sellingEndDate="{ item }">
+        <time>
+          {{
+            item.securities?.features?.find((el) => el.featureType === 'SELLING_END_DATE')
+              ?.quantity?.value
+          }}
+        </time>
+      </template>
+
+      <template #item.status="{ item }">
+        <v-chip
+          v-if="enumsProvider('SecuritiesStatus', item?.securities?.status)"
+          :color="enumsProvider('SecuritiesStatus', item?.securities?.status)?.color"
+          label
+          small
+        >
+          {{ enumsProvider('SecuritiesStatus', item?.securities?.status)?.name }}
+        </v-chip>
+      </template>
+
+      <template #item.actions="{ item }">
+        <v-list>
+          <v-list-item> <v-list-item-title>1</v-list-item-title></v-list-item>
+          <v-list-item>
+            <v-list-item-title>2</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </template>
+    </k-data-table-server>
   </article>
 </template>
 
@@ -48,15 +62,28 @@
 useHead({
   title: 'Home'
 })
-const { maxValue, required } = useValidations()
-const items = ['p', 'c']
-const model = reactive({
-  date: '2022-11-03 00:00:00',
-  username: 'mehrdad',
-  password: '123456',
-  description: 'aaaaasd asd as',
-  type: 'c'
+
+definePageMeta({
+  middleware: ['auth']
 })
+
+const headers = [
+  { title: 'نام اوراق', key: 'name', align: 'center', minWidth: '120px' },
+  { title: 'کد اوراق', key: 'code', align: 'center' },
+  { title: 'گروه اوراق', key: 'groupDescription', align: 'center' },
+  { title: 'روز آغاز فروش', key: 'sellingStartDate' },
+  { title: 'روز پایان فروش', key: 'sellingEndDate' },
+  { title: 'وضعیت', key: 'status', align: 'center' },
+
+  {
+    title: 'جزئیات',
+    key: 'actions',
+    align: 'center',
+    sortable: false,
+    width: '80'
+  }
+]
+
 const f = <any>ref(null)
 
 function clear() {

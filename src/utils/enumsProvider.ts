@@ -1,6 +1,6 @@
 import { type EnumType } from '@type'
 
-type EnumProvider = EnumType | object
+type EnumProvider = object & EnumType
 const enumsList: any = {}
 
 export function importAllEnums() {

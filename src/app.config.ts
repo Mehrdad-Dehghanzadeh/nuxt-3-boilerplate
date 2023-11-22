@@ -4,8 +4,8 @@ import { version } from '../package.json'
 const appConfing: AppConfig = {
   publicUrl: '/',
   appVersion: version,
-  apiBaseUrl: 'http://localhost:999',
-  cookieAuhtName: 'token',
+  apiBaseUrl: 'http://192.168.250.64:6040/api/v1',
+  cookieAuhtName: 'access_token',
   appName: 'nuxtBoilerplate'
 }
 
