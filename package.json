@@ -19,8 +19,8 @@
   "devDependencies": {
     "@nuxtjs/i18n": "^8.0.0-rc.4",
     "@types/moment-jalaali": "^0.7.9",
-    "@types/validator": "^13.11.6",
-    "nuxt": "^3.8.1",
+    "@types/validator": "^13.11.7",
+    "nuxt": "^3.8.2",
     "prettier": "^2.8.8",
     "sass": "^1.69.5",
     "vite-plugin-vuetify": "^1.0.2"
@@ -33,7 +33,7 @@
     "pinia": "^2.1.7",
     "validator": "^13.11.0",
     "vue3-persian-datetime-picker": "^1.2.2",
-    "vuetify": "^3.4.2"
+    "vuetify": "^3.4.3"
   },
   "browserslist": [
     "Chrome >=80",
