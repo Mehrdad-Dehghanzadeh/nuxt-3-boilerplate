@@ -1,7 +1,7 @@
 /**
  *  Deep Freeze Object
  ***********************/
-export function deepFreeze<T>(obj: T): T {
+export function deepFreeze<T>(obj: T): Readonly<T> {
   Object.freeze(obj)
 
   Object.getOwnPropertyNames(obj).forEach(function (prop: string) {
