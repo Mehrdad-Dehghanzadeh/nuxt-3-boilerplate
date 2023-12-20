@@ -23,7 +23,8 @@
     "nuxt": "^3.8.2",
     "prettier": "^2.8.8",
     "sass": "^1.69.5",
-    "vite-plugin-vuetify": "^1.0.2"
+    "vite-plugin-vuetify": "^2.0.1",
+    "vuetify": "^3.4.8"
   },
   "dependencies": {
     "@mdi/font": "^7.3.67",
@@ -32,8 +33,7 @@
     "jwt-decode": "^3.1.2",
     "pinia": "^2.1.7",
     "validator": "^13.11.0",
-    "vue3-persian-datetime-picker": "^1.2.2",
-    "vuetify": "^3.4.4"
+    "vue3-persian-datetime-picker": "^1.2.2"
   },
   "browserslist": [
     "Chrome >=80",

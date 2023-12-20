@@ -37,6 +37,7 @@
 
 <script lang="ts" setup>
 import type LoginDTO from '@dtos/LoginDTO'
+import useSnackbar from '~/composables/useSnackbar'
 const { required } = useValidations()
 const { $auth } = useNuxtApp()
 const router = useRouter()
@@ -72,4 +73,10 @@ function submit() {
       loading.value = false
     })
 }
+
+onMounted(() => {
+  setTimeout(() => {
+    useSnackbar('error', 'sssssss')
+  }, 500)
+})
 </script>

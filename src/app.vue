@@ -7,11 +7,13 @@
       </nuxt-layout>
     </v-app>
 
-    <k-snackbar />
+    <snackbar />
   </v-theme-provider>
 </template>
 
 <script lang="ts" setup>
+import Snackbar from '@includes/Snackbar/Snackbar.client'
+
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk} | Nuxt 3 Boilerplate` : 'Nuxt 3 Boilerplate'
