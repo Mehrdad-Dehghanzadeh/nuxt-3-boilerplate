@@ -27,3 +27,7 @@ export default function enumsProvider(
 
   return typeof item !== 'undefined' ? item : {}
 }
+
+export function enums(type: keyof typeof enumsList): EnumType[] {
+  return enumsList[type]
+}
