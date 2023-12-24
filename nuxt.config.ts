@@ -1,11 +1,9 @@
 import path from 'path'
 import translateModule from './translateModule'
-import vuetify from 'vite-plugin-vuetify'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import { createResolver } from '@nuxt/kit'
-const { resolve } = createResolver(import.meta.url)
 
 const srcDir = path.resolve(__dirname, './src')
-const vuetifyStyleSettingPath = `${srcDir}/assets/styles/vuetify-settings.scss`
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -45,9 +43,9 @@ export default defineNuxtConfig({
       }
     ],
 
-    async (options, nuxt) => {
+    (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
-        config?.plugins?.push(vuetify())
+        config.plugins.push(vuetify({ autoImport: true }))
       })
     }
   ],
@@ -67,12 +65,14 @@ export default defineNuxtConfig({
       }
     },
 
-    ssr: {
-      noExternal: ['vuetify']
-    },
-
     resolve: {
       mainFields: ['browser', 'module', 'main', 'jsnext:main', 'jsnext']
+    },
+
+    vue: {
+      template: {
+        transformAssetUrls
+      }
     }
   },
 
@@ -84,16 +84,6 @@ export default defineNuxtConfig({
   // experimental: {
   //   payloadExtraction: true
   // },
-
-  hooks: {
-    'vite:extendConfig': (config) => {
-      config?.plugins?.push(
-        vuetify({
-          styles: { configFile: resolve(vuetifyStyleSettingPath) }
-        })
-      )
-    }
-  },
 
   sourcemap: {
     server: false,

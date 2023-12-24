@@ -16,7 +16,7 @@
 import { type IconType } from '@type'
 
 const { $snack } = <any>useNuxtApp()
-const snack = $snack.refs
+const snack = $snack?.refs
 const DEFUALT_ICON: IconType = {
   success: 'mdi-checkbox-marked-circle-outline',
   info: 'mdi-information-outline',
@@ -27,4 +27,4 @@ const DEFUALT_ICON: IconType = {
 const icon = computed(() => snack.state && DEFUALT_ICON[snack.state as keyof IconType])
 </script>
 
-<style lang="scss" src="./KSnackbar.scss" />
+<style lang="scss" src="./Snackbar.scss" />
