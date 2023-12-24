@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import Snackbar from '@includes/Snackbar/Snackbar.client'
+import Snackbar from '@includes/Snackbar/Snackbar.client.vue'
 
 useHead({
   titleTemplate: (titleChunk) => {

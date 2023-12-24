@@ -2,7 +2,7 @@ import type { AxiosInstance } from '@type'
 
 export default function ($axios: AxiosInstance) {
   $axios.interceptors.response.use(
-    function (response): any {
+    function (response) {
       return response
     },
 
