@@ -2,6 +2,7 @@ import axios from 'axios'
 import configAutoImportApis from '@assets/api-plugin/autoImportApis'
 import statusMessageMapping from '@assets/api-plugin/statusMessageMapping'
 import interceptorsRequest from '@assets/api-plugin/interceptorsRequest'
+import interceptorsResponse from '@assets/api-plugin/interceptorsResponse'
 import defaultHeader from '@assets/api-plugin/defaultHeader'
 import { type AppConfig } from '@type'
 
@@ -16,6 +17,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const api: any = {}
   configAutoImportApis(api, $axios)
   interceptorsRequest($axios)
+  interceptorsResponse($axios)
   statusMessageMapping($axios, $i18n)
 
   return {
