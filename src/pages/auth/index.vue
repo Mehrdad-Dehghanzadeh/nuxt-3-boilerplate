@@ -12,6 +12,7 @@
             :rules="[required]"
             id="username"
             name="username"
+            type="number"
           />
 
           <k-password-field

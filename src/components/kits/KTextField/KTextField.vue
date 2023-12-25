@@ -5,6 +5,7 @@
       :id="safeId"
       :name="safeName"
       :placeholder="safePlaceholder"
+      v-on="{ wheel: props.blockWheel && blockWheel }"
     />
   </div>
 </template>
@@ -16,4 +17,15 @@ defineOptions({
 
 const { safeId, safeName, safePlaceholder } = useControl()
 const { className, attrs$, style } = useExcludeAttrs()
+
+const props = defineProps({
+  blockWheel: {
+    type: Boolean,
+    default: false
+  }
+})
+
+function blockWheel($event: Event) {
+  $event.preventDefault()
+}
 </script>
