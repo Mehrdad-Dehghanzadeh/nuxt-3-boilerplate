@@ -1,7 +1,6 @@
 import path from 'path'
 import translateModule from './translateModule'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-import { createResolver } from '@nuxt/kit'
 
 const srcDir = path.resolve(__dirname, './src')
 
@@ -9,7 +8,7 @@ const srcDir = path.resolve(__dirname, './src')
 export default defineNuxtConfig({
   srcDir,
   telemetry: false,
-  ssr: false,
+  // ssr: false,
   imports: {
     dirs: [path.join(srcDir, 'stores')]
   },

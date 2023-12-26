@@ -38,9 +38,9 @@
 
 <script lang="ts" setup>
 import type LoginDTO from '@dtos/LoginDTO'
-import useSnackbar from '~/composables/useSnackbar'
+
 const { required } = useValidations()
-const { $auth } = useNuxtApp()
+const { $auth } = <any>useNuxtApp()
 const router = useRouter()
 
 const DEFAULT_MODEL: LoginDTO = {
@@ -56,8 +56,8 @@ definePageMeta({
   layout: 'empty'
 })
 
-const loading = <boolean>ref(false)
-const model = <LoginDTO>reactive({ ...DEFAULT_MODEL })
+const loading = ref<boolean>(false)
+const model = reactive<LoginDTO>({ ...DEFAULT_MODEL })
 
 function submit() {
   loading.value = true
@@ -74,10 +74,4 @@ function submit() {
       loading.value = false
     })
 }
-
-onMounted(() => {
-  setTimeout(() => {
-    useSnackbar('error', 'sssssss')
-  }, 500)
-})
 </script>
