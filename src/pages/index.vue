@@ -84,7 +84,7 @@ const headers = [
   }
 ]
 
-const f = <any>ref(null)
+const f = ref<any>(null)
 
 function clear() {
   f.value.clear()

@@ -1,9 +1,11 @@
-import { type EnumType } from '@type'
+import type { EnumType, EnumList } from '@type'
 
-type EnumProvider = object & EnumType
-const enumsList: any = {}
+type EnumProvider = object | EnumType
+type Enums = Record<string, any>
+const enumsList: Record<string, EnumList> = {}
+const enums: Enums = {}
 
-export function importAllEnums() {
+export function importAllEnums(): void {
   const enumModules: any = import.meta.glob(`../locales/enums/*.(ts|js)`, { eager: true })
 
   for (const enumFile in enumModules) {
@@ -12,11 +14,14 @@ export function importAllEnums() {
       .replaceAll('/', '')
       .replace('.js', '')
       .replace('.ts', '')
-    enumsList[fileName] = enumModules[enumFile as keyof typeof enumModules]?.default
+
+    enums[fileName] = enumModules[enumFile as keyof typeof enumModules]?.default?.enum
+    enumsList[fileName] =
+      enumModules[enumFile as keyof typeof enumModules]?.default?.enumList
   }
 }
 
-export default function enumsProvider(
+export function enumsProvider(
   type: string,
   value: string | number | boolean,
   prop: string = 'id'
@@ -30,4 +35,8 @@ export default function enumsProvider(
 
 export function getEnumList(type: keyof typeof enumsList): EnumType[] {
   return enumsList[type]
+}
+
+export function getEnum(type: keyof Enums): Pick<Enums, keyof Enums> | undefined {
+  return enums[type]
 }

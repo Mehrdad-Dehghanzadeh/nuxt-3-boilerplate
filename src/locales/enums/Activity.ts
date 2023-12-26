@@ -19,4 +19,4 @@ const enumList: EnumList = [
   }
 ]
 
-export default enumList
+export default { enumList, enum: Activity }

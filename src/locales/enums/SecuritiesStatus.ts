@@ -6,22 +6,22 @@ export enum SecuritiesStatus {
   Matured = 'MATURED'
 }
 
-const enumsList: EnumList = [
+const enumList: EnumList = [
   {
-    id: 'INACTIVE',
+    id: SecuritiesStatus.Inactive,
     name: 'غیرفعال',
     color: 'error'
   },
   {
-    id: 'ACTIVE',
+    id: SecuritiesStatus.Active,
     name: 'فعال',
     color: 'success'
   },
   {
-    id: 'MATURED',
+    id: SecuritiesStatus.Matured,
     name: 'سررسید شده',
     color: 'warning'
   }
 ]
 
-export default enumsList
+export default { enumList, enum: SecuritiesStatus }
