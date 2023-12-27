@@ -4,8 +4,8 @@
   "private": false,
   "type": "module",
   "engines": {
-    "node": ">=16.17.0",
-    "npm": ">=8.15.0"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   },
   "scripts": {
     "build": "nuxt build",
@@ -17,19 +17,19 @@
     "cleanup": "nuxt cleanup"
   },
   "devDependencies": {
-    "@nuxtjs/i18n": "^8.0.0-rc.4",
+    "@nuxtjs/i18n": "^8.0.0",
     "@types/moment-jalaali": "^0.7.9",
     "@types/validator": "^13.11.7",
-    "nuxt": "^3.8.2",
+    "nuxt": "^3.9.0",
     "prettier": "^2.8.8",
     "sass": "^1.69.5",
     "vite-plugin-vuetify": "^2.0.1",
     "vuetify": "^3.4.8"
   },
   "dependencies": {
-    "@mdi/font": "^7.3.67",
+    "@mdi/font": "^7.4.47",
     "@pinia/nuxt": "^0.4.11",
-    "axios": "^1.6.2",
+    "axios": "^1.6.3",
     "jwt-decode": "^3.1.2",
     "pinia": "^2.1.7",
     "validator": "^13.11.0",
