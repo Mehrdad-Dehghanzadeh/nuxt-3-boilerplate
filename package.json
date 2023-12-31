@@ -17,6 +17,7 @@
     "cleanup": "nuxt cleanup"
   },
   "devDependencies": {
+    "@nuxt/devtools": "^1.0.6",
     "@nuxtjs/i18n": "^8.0.0",
     "@types/moment-jalaali": "^0.7.9",
     "@types/validator": "^13.11.7",
