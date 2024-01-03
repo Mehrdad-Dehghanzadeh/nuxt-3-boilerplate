@@ -7,7 +7,8 @@ import {
   isLegalNationalCode,
   isNationalCode,
   isIban,
-  isPersainDate
+  isPersainDate,
+  isCardNumber
 } from '@assets/validations'
 
 type validated = boolean | string
@@ -58,6 +59,10 @@ export default function () {
     return !val || isPersainDate(val) || t('errors.validations.persainDate')
   }
 
+  function cardNumber(val: string): validated {
+    return !val || isCardNumber(val) || t('errors.validations.cardNumber')
+  }
+
   return {
     email,
     required,
@@ -68,6 +73,7 @@ export default function () {
     nationalCode,
     iban,
     password,
-    persainDate
+    persainDate,
+    cardNumber
   }
 }
