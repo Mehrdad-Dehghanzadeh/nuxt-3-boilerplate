@@ -3,9 +3,20 @@
   "version": "0.0.0",
   "private": false,
   "type": "module",
+  "author": {
+    "name": "Mehrdad Dehghanzadeh",
+    "email": "mehrdad.dehghanzadeh.dev@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mehrdad-Dehghanzadeh/nuxt-3-boilerplate.git"
+  },
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=9.0.0"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "scripts": {
     "build": "nuxt build",
@@ -23,6 +34,7 @@
     "@types/moment-jalaali": "^0.7.9",
     "@types/validator": "^13.11.8",
     "husky": "^9.0.10",
+    "lint-staged": "^15.2.1",
     "nuxt": "^3.10.0",
     "prettier": "^3.2.5",
     "sass": "^1.70.0",
