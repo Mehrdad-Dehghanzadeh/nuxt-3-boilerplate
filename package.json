@@ -14,18 +14,20 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "analyze": "nuxt analyze ",
-    "cleanup": "nuxt cleanup"
+    "cleanup": "nuxt cleanup",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.8",
-    "@nuxtjs/i18n": "^8.0.0",
+    "@nuxtjs/i18n": "^8.0.1",
     "@types/moment-jalaali": "^0.7.9",
     "@types/validator": "^13.11.8",
-    "nuxt": "^3.9.3",
-    "prettier": "^3.2.4",
+    "husky": "^9.0.10",
+    "nuxt": "^3.10.0",
+    "prettier": "^3.2.5",
     "sass": "^1.70.0",
     "vite-plugin-vuetify": "^2.0.1",
-    "vuetify": "^3.5.1"
+    "vuetify": "^3.5.2"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
