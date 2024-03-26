@@ -12,7 +12,6 @@
             :rules="[required]"
             id="username"
             name="username"
-            type="number"
           />
 
           <k-password-field
@@ -61,14 +60,12 @@ const model = reactive<LoginDTO>({ ...DEFAULT_MODEL })
 
 function submit() {
   loading.value = true
-
-  $auth
-    .login(model)
-    .then((res) => {
-      router.push('/')
+  usePrompt({ title: 'لاگین درست است' })
+    .then((data) => {
+      console.log(data)
     })
     .catch((err) => {
-      useSnackbar('error', err)
+      console.log(err)
     })
     .finally(() => {
       loading.value = false
