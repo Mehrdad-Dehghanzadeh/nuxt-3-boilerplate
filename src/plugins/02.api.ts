@@ -4,7 +4,7 @@ import statusMessageMapping from '@assets/api-plugin/statusMessageMapping'
 import interceptorsRequest from '@assets/api-plugin/interceptorsRequest'
 import interceptorsResponse from '@assets/api-plugin/interceptorsResponse'
 import defaultHeader from '@assets/api-plugin/defaultHeader'
-import { type AppConfig } from '@type'
+import { type AppConfig } from '@type/AppConfig'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const { $i18n } = nuxtApp

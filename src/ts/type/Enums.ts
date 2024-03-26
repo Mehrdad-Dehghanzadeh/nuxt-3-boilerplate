@@ -1,6 +1,6 @@
 export type EnumType = {
-  id: string | number
-  name: string | number
+  value: string | number
+  title: string | number
   color?: string
   [key: string]: unknown
 }

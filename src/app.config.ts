@@ -1,4 +1,4 @@
-import { type AppConfig } from '@type'
+import { type AppConfig } from '@type/AppConfig'
 import { version } from '../package.json'
 
 const appConfing: AppConfig = {

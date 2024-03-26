@@ -1,10 +1,10 @@
 <template>
   <v-theme-provider>
     <v-app>
-      <NuxtLayout>
+      <nuxt-layout>
         <nuxt-loading-indicator />
-        <NuxtPage />
-      </NuxtLayout>
+        <nuxt-page />
+      </nuxt-layout>
     </v-app>
 
     <snackbar />

@@ -1,4 +1,5 @@
-import { type AxiosRequestConfig, type AxiosInstance, type AppConfig } from '@type'
+import { type AxiosRequestConfig, type AxiosInstance } from '@type/Apis'
+import { type AppConfig } from '@type/AppConfig'
 
 export default function ($axios: AxiosInstance) {
   const { cookieAuhtName } = <Pick<AppConfig, 'cookieAuhtName'>>useAppConfig()
@@ -8,7 +9,7 @@ export default function ($axios: AxiosInstance) {
       const cookie = useCookie(cookieAuhtName)
       const store = useAppStore()
       if (store.isLogin && config.headers) {
-      config.headers.Authorization = `Bearer ${cookie.value}`
+        config.headers.Authorization = `Bearer ${cookie.value}`
       }
 
       return config

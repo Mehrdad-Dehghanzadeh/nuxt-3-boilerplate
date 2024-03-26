@@ -3,7 +3,7 @@ import {
   type AxiosResponse,
   type AxiosInstance,
   AxiosError
-} from '@type'
+} from '@type/Apis'
 
 export default function ($axios: AxiosInstance, i18n: any) {
   $axios.interceptors.response.use(
