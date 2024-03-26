@@ -8,11 +8,13 @@
     </v-app>
 
     <snackbar />
+    <prompt />
   </v-theme-provider>
 </template>
 
 <script lang="ts" setup>
 import Snackbar from '@includes/Snackbar/Snackbar.client.vue'
+import Prompt from '@includes/Propmt/Prompt.client.vue'
 
 useHead({
   titleTemplate: (titleChunk) => {

@@ -1,6 +1,6 @@
 import type { EnumType, EnumList } from '@type/Enums'
 
-type EnumProvider = object | EnumType
+type EnumProvider = EnumType | undefined
 type Enums = Record<string, any>
 const enumsList: Record<string, EnumList> = {}
 const enums: Enums = {}
@@ -10,7 +10,7 @@ export function importAllEnums(): void {
 
   for (const enumFile in enumModules) {
     const fileName: string = enumFile
-      .replace('../locales/enums', '')
+      .replace('../ts/enums', '')
       .replaceAll('/', '')
       .replace('.js', '')
       .replace('.ts', '')
@@ -24,19 +24,19 @@ export function importAllEnums(): void {
 export function enumsProvider(
   type: string,
   value: string | number | boolean,
-  prop: string = 'id'
+  prop: string = 'value'
 ): EnumProvider {
   const item = enumsList[type as keyof typeof enumsList].find(
     (i: EnumType) => i[prop as keyof typeof i] === value
   )
 
-  return typeof item !== 'undefined' ? item : {}
+  return item
 }
 
 export function getEnumList(type: keyof typeof enumsList): EnumType[] {
   return enumsList[type]
 }
 
-export function getEnum(type: keyof Enums): Partial<Enums> | undefined {
+export function getEnum(type: keyof Enums): any {
   return enums[type]
 }
