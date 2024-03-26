@@ -1,0 +1,42 @@
+.prompt {
+  &-sheet {
+    padding: 32px 8px;
+    border-radius: 32px !important;
+
+    &__actions {
+      display: flex;
+      justify-content: center;
+
+      .v-btn {
+        width: calc(50% - 8px);
+        max-width: 180px;
+      }
+    }
+
+    &__content {
+      display: flex;
+      padding-bottom: 16px;
+      flex-direction: column;
+    }
+
+    &__text {
+      width: 100%;
+      line-height: 1.5;
+      margin: 16px 0;
+      text-align: center;
+    }
+
+    &__title {
+      @include text-size(1rem, normal, 600);
+      margin-bottom: 16px;
+    }
+
+    &__message {
+      @include text-size(0.875rem, normal, 400);
+    }
+  }
+}
+
+// .v-dialog.prompt-dialog {
+//   @extend %bottom-dialog;
+// }
