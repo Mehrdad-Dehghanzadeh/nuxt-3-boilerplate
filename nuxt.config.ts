@@ -4,7 +4,6 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 const srcDir = path.resolve(__dirname, './src')
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir,
   telemetry: false,
@@ -35,19 +34,18 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     translateModule,
 
-    [
-      '@pinia/nuxt',
-      {
-        autoImports: ['defineStore', 'acceptHMRUpdate', 'storeToRefs']
-      }
-    ],
+    ['@pinia/nuxt'],
 
     (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        config.plugins.push(vuetify({ autoImport: true }))
+      nuxt.hooks.hook('vite:extendConfig', (config: any) => {
+        config?.plugins.push(vuetify({ autoImport: true }))
       })
     }
   ],
+
+  pinia: {
+    storesDirs: ['./src/stores/**']
+  },
 
   css: [
     'vuetify/lib/styles/main.sass',
