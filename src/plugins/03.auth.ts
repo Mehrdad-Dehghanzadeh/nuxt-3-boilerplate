@@ -4,6 +4,7 @@ import { type JwtType, type AppConfig } from '@type'
 
 export default defineNuxtPlugin(({ $api }) => {
   const store = useAppStore()
+  console.log(store)
   const { cookieAuhtName } = <Pick<AppConfig, 'cookieAuhtName'>>useAppConfig()
 
   function login(payload: LoginDto): Promise<any> {
