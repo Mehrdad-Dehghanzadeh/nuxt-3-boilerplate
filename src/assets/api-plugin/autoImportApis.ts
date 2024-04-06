@@ -3,9 +3,7 @@ import { type AxiosInstance } from 'axios'
 export default function (api: any, $axios: AxiosInstance) {
   const apisModules: any = import.meta.glob(`../../apis/*.(ts|js)`, { eager: true })
 
-  for (const apiFile in apisModules) {
-    const fileName: string = apiFile
-      .replace('../../apis', '')
+  for (const apiFile in apisModules) {const fileName: string = apiFile.replace('../../apis', '')
       .replaceAll('/', '')
       .replace('.js', '')
       .replace('.ts', '')

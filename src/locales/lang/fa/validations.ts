@@ -22,5 +22,6 @@ export default deepFreeze({
   mobile: 'شماره موبایل نادرست است',
   iban: 'شماره شبا نادرست است',
   noZero: 'مقدار وارد شده نباید صفر باشد',
-  persainDate: 'فرمت تاریخ فارسی صحیح نیست باید yyyy/mm/dd باشد'
+  persainDate: 'فرمت تاریخ فارسی صحیح نیست باید yyyy/mm/dd باشد',
+  cardNumber: 'شماره کارت اشتباه است'
 })

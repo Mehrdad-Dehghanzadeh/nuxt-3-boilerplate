@@ -3,9 +3,21 @@
   "version": "0.0.0",
   "private": false,
   "type": "module",
+  "author": {
+    "name": "Mehrdad Dehghanzadeh",
+    "email": "mehrdad.dehghanzadeh.dev@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mehrdad-Dehghanzadeh/nuxt-3-boilerplate.git"
+  },
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=9.0.0"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.{js,css,md,vue,ts}": "prettier --write"
   },
   "scripts": {
     "build": "nuxt build",
@@ -14,15 +26,17 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "analyze": "nuxt analyze ",
-    "cleanup": "nuxt cleanup"
+    "cleanup": "nuxt cleanup",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.1.5",
     "@nuxtjs/i18n": "^8.3.0",
     "@types/moment-jalaali": "^0.7.9",
     "@types/validator": "^13.11.9",
+    "husky": "^9.0.11",
     "nuxt": "^3.11.2",
-    "prettier": "^2.8.8",
+    "prettier": "^3.2.5",
     "sass": "^1.74.1",
     "vite-plugin-vuetify": "^2.0.3",
     "vuetify": "^3.5.14"
