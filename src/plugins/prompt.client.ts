@@ -27,7 +27,13 @@ function clearConfig() {
   }, 500)
 }
 
-const EventHandler: Promise<any> = new Promise((resolve, reject) => {
+type EventHandler = {
+  event: Event
+  error?: any
+  res?: any
+}
+
+const eventHandler = new Promise<EventHandler>((resolve, reject) => {
   addEventListener(PromptEvents.Ok, async (event) => {
     if (ref.model.callBackOK) {
       ref.model.loading = true
@@ -70,7 +76,7 @@ function open(config: PromptConfig) {
   nextTick(() => {
     ref.show = true
   })
-  return EventHandler
+  return eventHandler
 }
 
 export default defineNuxtPlugin(() => {
