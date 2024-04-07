@@ -1,14 +1,14 @@
 export default function () {
   const attrs = useAttrs()
 
-  const id = computed(() => attrs?.id)
+  const id = computed(() => <string>attrs?.id || '')
   const style = computed(() => attrs?.style)
-  const className = computed(() => attrs?.class)
+  const className = computed(() => <string>attrs?.class || '')
   const htmlAttr = computed(() => {
     return {
-      class: attrs?.class,
+      class: attrs?.class || '',
       style: attrs?.style,
-      id: attrs?.id
+      id: attrs?.id || ''
     }
   })
   const attrs$ = computed(() => {

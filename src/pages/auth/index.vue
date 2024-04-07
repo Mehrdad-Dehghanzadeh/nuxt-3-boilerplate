@@ -9,7 +9,6 @@
             v-model="model.username"
             label="نام کاربری"
             variant="outlined"
-            :rules="[required]"
             id="username"
             name="username"
             type="number"
@@ -19,12 +18,13 @@
             v-model="model.password"
             class="mb-4"
             label="رمز عبور"
-            :rules="[required]"
             variant="outlined"
             id="password"
             name="password"
             innerIcon
           />
+
+          <k-uploader id="w" />
 
           <v-btn :loading="loading" type="submit" color="primary" size="large" block>
             <v-icon>mdi-lock</v-icon>
