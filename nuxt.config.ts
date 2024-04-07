@@ -33,8 +33,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/i18n',
     translateModule,
-
-    ['@pinia/nuxt'],
+    '@pinia/nuxt',
 
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config: any) => {
