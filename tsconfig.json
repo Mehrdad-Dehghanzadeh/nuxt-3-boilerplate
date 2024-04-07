@@ -16,12 +16,12 @@
       "@includes/*": ["./src/components/includes/*"],
       "@data/*": ["./src/locales/data/*"],
       "@locales/*": ["./src/locales/*"],
-      "@enums": ["./src/locales/enums/*"],
+      "@enums": ["./src/ts/enums/*"],
       "@utils/*": ["./src/utils/*"],
       "@interface/*": ["./src/ts/interface/*"],
       "@assets/*": ["./src/assets/*"],
       "@type": ["./src/ts/type"],
-      "@dtos/*": ["./src/ts/dtos/*"]
+      "@models/*": ["./src/ts/models/*"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

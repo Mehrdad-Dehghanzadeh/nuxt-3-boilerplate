@@ -98,7 +98,7 @@ export default defineNuxtConfig({
     '@data': path.join(__dirname, 'src/locales/data'),
     '@utils': path.join(__dirname, 'src/utils'),
     '@type': path.join(__dirname, 'src/ts/type'),
-    '@dtos': path.join(__dirname, 'src/ts/dtos'),
+    '@models': path.join(__dirname, 'src/ts/models'),
     '@assets': path.join(__dirname, 'src/assets')
   }
 })

@@ -1,12 +1,11 @@
-import en from './src/locales/lang/en'
-import fa from './src/locales/lang/fa'
+import fa from './src/locales/fa'
 
 export default defineI18nConfig(function () {
   return {
     lazy: true,
     locale: 'fa',
     locales: ['fa'],
-      
+
     defaultLocale: 'fa',
     detectBrowserLanguage: {
       useCookie: true,

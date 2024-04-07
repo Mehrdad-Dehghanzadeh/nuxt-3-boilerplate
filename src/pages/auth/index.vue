@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-import type LoginDTO from '@dtos/LoginDTO'
+import { type LoginDTO } from '@models/Auth'
 
 const { required } = useValidations()
 const { $auth } = <any>useNuxtApp()

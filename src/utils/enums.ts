@@ -6,11 +6,11 @@ const enumsList: Record<string, EnumList> = {}
 const enums: Enums = {}
 
 export function importAllEnums(): void {
-  const enumModules: any = import.meta.glob(`../locales/enums/*.(ts|js)`, { eager: true })
+  const enumModules: any = import.meta.glob(`../ts/enums/*.(ts|js)`, { eager: true })
 
   for (const enumFile in enumModules) {
     const fileName: string = enumFile
-      .replace('../locales/enums', '')
+      .replace('../ts/enums', '')
       .replaceAll('/', '')
       .replace('.js', '')
       .replace('.ts', '')

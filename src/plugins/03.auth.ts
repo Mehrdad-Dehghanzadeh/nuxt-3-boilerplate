@@ -1,10 +1,9 @@
-import type LoginDto from '@dtos/LoginDto'
+import { type LoginDto } from '@models/Auth'
 import jwt_decode from 'jwt-decode'
 import { type JwtType, type AppConfig } from '@type'
 
 export default defineNuxtPlugin(({ $api }) => {
   const store = useAppStore()
-  console.log(store)
   const { cookieAuhtName } = <Pick<AppConfig, 'cookieAuhtName'>>useAppConfig()
 
   function login(payload: LoginDto): Promise<any> {
