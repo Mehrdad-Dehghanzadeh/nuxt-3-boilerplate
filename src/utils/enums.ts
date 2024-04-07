@@ -1,6 +1,6 @@
 import type { EnumType, EnumList } from '@type'
 
-type EnumProvider = object | EnumType
+type EnumProvider = EnumType | null
 type Enums = Record<string, any>
 const enumsList: Record<string, EnumList> = {}
 const enums: Enums = {}
@@ -30,7 +30,7 @@ export function enumsProvider(
     (i: EnumType) => i[prop as keyof typeof i] === value
   )
 
-  return typeof item !== 'undefined' ? item : {}
+  return typeof item !== 'undefined' ? item : null
 }
 
 export function getEnumList(type: keyof typeof enumsList): EnumType[] {
