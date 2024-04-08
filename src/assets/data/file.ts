@@ -6,6 +6,7 @@ type FilesOptionType = {
   extensions: string[]
   icon?: string
 }
+
 const files: Record<TFiles, FilesOptionType> = {
   image: {
     extensions: ['jpg', 'png', 'jpeg']

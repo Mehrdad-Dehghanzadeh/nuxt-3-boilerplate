@@ -9,6 +9,7 @@
             v-model="model.username"
             label="نام کاربری"
             variant="outlined"
+            :rules="[required]"
             id="username"
             name="username"
             type="number"
@@ -24,7 +25,11 @@
             innerIcon
           />
 
-          <k-uploader id="w" />
+          <k-uploader
+            label="شناسنامه"
+            placeholder="لطفا تصویر شناسنامه را وارد کنید"
+            :rules="[required, size(100)]"
+          />
 
           <v-btn :loading="loading" type="submit" color="primary" size="large" block>
             <v-icon>mdi-lock</v-icon>
@@ -37,13 +42,13 @@
 </template>
 
 <script lang="ts" setup>
-import { type LoginDTO } from '@models/Auth'
+import { type LoginDto } from '@models/Auth'
 
-const { required } = useValidations()
+const { required, size } = useValidations()
 const { $auth } = <any>useNuxtApp()
 const router = useRouter()
 
-const DEFAULT_MODEL: LoginDTO = {
+const DEFAULT_MODEL: LoginDto = {
   username: '',
   password: ''
 }
@@ -57,7 +62,7 @@ definePageMeta({
 })
 
 const loading = ref<boolean>(false)
-const model = reactive<LoginDTO>({ ...DEFAULT_MODEL })
+const model = reactive<LoginDto>({ ...DEFAULT_MODEL })
 
 function submit() {
   loading.value = true
