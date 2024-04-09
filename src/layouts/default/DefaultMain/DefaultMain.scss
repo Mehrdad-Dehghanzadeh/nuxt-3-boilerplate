@@ -1,0 +1,4 @@
+.default-main {
+  padding-top: map-get($layout-sizes, 'header-height') !important;
+  padding-bottom: map-get($layout-sizes, 'footer-height') !important;
+}

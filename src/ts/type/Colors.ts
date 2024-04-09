@@ -20,4 +20,4 @@ export type OnColors = {
   'on-info': string
 }
 
-export type themesColors = Readonly<Partial<BaseColors> & Partial<OnColors>>
+export type ThemesColors = Readonly<Partial<BaseColors> & Partial<OnColors>>

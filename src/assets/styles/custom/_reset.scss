@@ -11,7 +11,8 @@ ul li {
 
 html {
   overflow-y: auto;
-  @include text-size();
+  font-family: IranSans, sans-serif;
+  @include text-size(0.875rem, normal, 400);
 }
 
 /* Chrome, Safari, Edge, Opera */

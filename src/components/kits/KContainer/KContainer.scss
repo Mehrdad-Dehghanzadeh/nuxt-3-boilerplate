@@ -1,0 +1,6 @@
+.k-container {
+  max-width: map-get($container-sizes, 'max-width');
+  margin: map-get($container-sizes, 'margin-x');
+  padding-left: map-get($container-sizes, 'padding-x');
+  padding-right: map-get($container-sizes, 'padding-x');
+}
