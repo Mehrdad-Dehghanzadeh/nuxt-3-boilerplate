@@ -11,56 +11,72 @@ import {
   isCardNumber
 } from '@assets/validations'
 
-type validated = boolean | string
-type validatedFunc = (val: any) => string | boolean
+type Validated = boolean | string
+type ValidatedFunc = (val: any) => string | boolean
 
 export default function () {
   const { t } = useI18n()
 
-  function email(val: string): validated {
+  function email(val: string): Validated {
     return !val || isEmail(val) || t('errors.validations.email')
   }
 
-  function required(val: string | null): validated {
-    return (!!val && !isEmpty(val)) || t('errors.validations.required')
+  function required(val: any): Validated {
+    if (typeof val === 'string' || typeof val === 'number') {
+      const value = String(val)
+      return (!!value && !isEmpty(value)) || t('errors.validations.required')
+    }
+
+    if (typeof val === 'object') {
+      return (!!val && Object.keys(val).length === 0) || t('errors.validations.required')
+    } else {
+      return !!val || t('errors.validations.required')
+    }
   }
 
-  function maxValue(max: number | undefined): validatedFunc {
+  function maxValue(max: number | undefined): ValidatedFunc {
     return (val: string) =>
       !val || isFloat(val, { max }) || t('errors.validations.max_value', { max })
   }
 
-  function minValue(min: number | undefined): validatedFunc {
+  function minValue(min: number | undefined): ValidatedFunc {
     return (val: string) =>
       !val || isFloat(val, { min }) || t('errors.validations.min_value', { min })
   }
 
-  function realNationalCode(val: string): validated {
+  function realNationalCode(val: string): Validated {
     return !val || isRealNationalCode(val) || t('errors.validations.realNationalCode')
   }
 
-  function legalNationalCode(val: string): validated {
+  function legalNationalCode(val: string): Validated {
     return !val || isLegalNationalCode(val) || t('errors.validations.legalNationalCode')
   }
 
-  function nationalCode(val: string): validated {
+  function nationalCode(val: string): Validated {
     return !val || isNationalCode(val) || t('errors.validations.nationalCode')
   }
 
-  function iban(val: string): validated {
+  function iban(val: string): Validated {
     return !val || isIban(val) || t('errors.validations.iban')
   }
 
-  function password(val: string): validated {
+  function password(val: string): Validated {
     return !val || isStrongPassword(val) || t('errors.validations.password')
   }
 
-  function persainDate(val: string): validated {
+  function persainDate(val: string): Validated {
     return !val || isPersainDate(val) || t('errors.validations.persainDate')
   }
 
-  function cardNumber(val: string): validated {
+  function cardNumber(val: string): Validated {
     return !val || isCardNumber(val) || t('errors.validations.cardNumber')
+  }
+
+  function size(maxSize: number): ValidatedFunc {
+    return (val: File) =>
+      !val ||
+      val?.size < maxSize * 1024 ||
+      t('errors.validations.size', { size: maxSize })
   }
 
   return {
@@ -74,6 +90,7 @@ export default function () {
     iban,
     password,
     persainDate,
-    cardNumber
+    cardNumber,
+    size
   }
 }

@@ -99,5 +99,9 @@ export default defineNuxtConfig({
     '@type': path.join(__dirname, 'src/ts/type'),
     '@models': path.join(__dirname, 'src/ts/models'),
     '@assets': path.join(__dirname, 'src/assets')
+  },
+
+  devtools: {
+    enabled: true
   }
 })

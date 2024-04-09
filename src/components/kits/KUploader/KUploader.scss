@@ -1,0 +1,36 @@
+.k-uploader {
+  border: 1px solid #aaaaaa;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: border-color ease 200ms;
+  padding: 8px;
+
+  &:hover {
+    border-color: #474747;
+  }
+
+  &__wrapper {
+    width: 100%;
+    min-height: 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__placeholder {
+    color: rgb(var(--v-theme-primary));
+    @include text-size(0.75rem, 1.5, 400);
+  }
+
+  .v-input {
+    &__details > .v-messages {
+      text-align: center;
+    }
+  }
+}
