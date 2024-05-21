@@ -20,8 +20,10 @@ export default deepFreeze({
   legalNationalCode: 'شناسه ملی معتبر نیست',
   realNationalCode: 'کد ملی معتبر نیست',
   mobile: 'شماره موبایل نادرست است',
+  phone: 'شماره تلفن صحیح نمی باشد',
   iban: 'شماره شبا نادرست است',
   noZero: 'مقدار وارد شده نباید صفر باشد',
   persainDate: 'فرمت تاریخ فارسی صحیح نیست باید yyyy/mm/dd باشد',
+  postalCode: 'فرمت کدپستی صحیح نمی باشد',
   cardNumber: 'شماره کارت اشتباه است'
 })

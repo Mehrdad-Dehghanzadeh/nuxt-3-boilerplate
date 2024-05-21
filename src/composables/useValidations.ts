@@ -8,7 +8,8 @@ import {
   isNationalCode,
   isIban,
   isPersainDate,
-  isCardNumber
+  isCardNumber,
+  isPostalCode
 } from '@assets/validations'
 
 type Validated = boolean | string
@@ -79,6 +80,10 @@ export default function () {
       t('errors.validations.size', { size: maxSize })
   }
 
+  function postalCode(val: string | number): Validated {
+    return !val || isPostalCode(val) || t('errors.validations.postalCode')
+  }
+
   return {
     email,
     required,
@@ -91,6 +96,7 @@ export default function () {
     password,
     persainDate,
     cardNumber,
-    size
+    size,
+    postalCode
   }
 }

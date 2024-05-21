@@ -44,7 +44,7 @@
 <script lang="ts" setup>
 import { type LoginDto } from '@models/Auth'
 
-const { required, size } = useValidations()
+const { required, size, postalCode } = useValidations()
 const { $auth } = <any>useNuxtApp()
 const router = useRouter()
 
