@@ -105,7 +105,7 @@ const props = defineProps({
   }
 })
 
-let items:unknown[] = reactive([])
+let items: unknown[] = reactive([])
 let pagination = reactive({ ...props.defaultPagination })
 const loading = ref(false)
 const count = ref(0)
@@ -125,11 +125,8 @@ function clearFilters() {
 
 function setItems(data: any) {
   const dataItems = getValueObject(data, props.dataProp)
-  items = Array.isArray(dataItems)
-    ? deepClone(dataItems)
-    : deepClone([])
-  count.value =
-    getValueObject(data, props.countProp) ?? dataItems?.length
+  items = Array.isArray(dataItems) ? deepClone(dataItems) : deepClone([])
+  count.value = getValueObject(data, props.countProp) ?? dataItems?.length
 }
 
 function read() {
