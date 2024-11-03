@@ -56,7 +56,8 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@/assets/styles/global/index.scss";'
+          api: 'modern-compiler',
+          additionalData: ['@use "~/assets/styles/global/index.scss" as *;']
         }
       }
     },

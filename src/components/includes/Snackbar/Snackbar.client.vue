@@ -17,14 +17,14 @@ import { type IconType } from '@type'
 
 const { $snack } = <any>useNuxtApp()
 const snack = $snack?.refs
-const DEFUALT_ICON: IconType = {
+const DEFAULT_ICON: IconType = {
   success: 'mdi-checkbox-marked-circle-outline',
   info: 'mdi-information-outline',
   error: 'mdi-close-circle-outline',
   alert: 'mdi-alert-outline'
 }
 
-const icon = computed(() => snack.state && DEFUALT_ICON[snack.state as keyof IconType])
+const icon = computed(() => snack.state && DEFAULT_ICON[snack.state as keyof IconType])
 </script>
 
 <style lang="scss" src="./Snackbar.scss" />
