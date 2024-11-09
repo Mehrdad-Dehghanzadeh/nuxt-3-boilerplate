@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
 .k-snackbar {
   display: none;
   padding: 8px;
@@ -10,7 +14,7 @@
   transform: translateX(-50%);
   min-height: 80px;
   color: white;
-  z-index: map-get($z-index, 'snackbar' );
+  z-index: map.get($z-index, 'snackbar');
 
   &__wrapper {
     display: flex;

@@ -56,9 +56,15 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          api: 'modern-compiler',
+          api: 'modern',
           additionalData: ['@use "~/assets/styles/global/index.scss" as *;']
         }
+      }
+    },
+
+    postcss: {
+      plugins: {
+        autoprefixer: {}
       }
     },
 
@@ -99,7 +105,8 @@ export default defineNuxtConfig({
     '@utils': path.join(__dirname, 'src/utils'),
     '@type': path.join(__dirname, 'src/ts/type'),
     '@models': path.join(__dirname, 'src/ts/models'),
-    '@assets': path.join(__dirname, 'src/assets')
+    '@assets': path.join(__dirname, 'src/assets'),
+    '@styles': path.join(__dirname, 'src/assets/styles/global')
   },
 
   devtools: {
