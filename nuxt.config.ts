@@ -62,12 +62,6 @@ export default defineNuxtConfig({
       }
     },
 
-    postcss: {
-      plugins: {
-        autoprefixer: {}
-      }
-    },
-
     resolve: {
       mainFields: ['browser', 'module', 'main', 'jsnext:main', 'jsnext']
     },
@@ -76,6 +70,12 @@ export default defineNuxtConfig({
       template: {
         transformAssetUrls
       }
+    }
+  },
+
+  postcss: {
+    plugins: {
+      autoprefixer: {}
     }
   },
 
