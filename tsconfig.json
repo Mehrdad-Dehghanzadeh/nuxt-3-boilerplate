@@ -21,7 +21,9 @@
       "@interface/*": ["./src/ts/interface/*"],
       "@assets/*": ["./src/assets/*"],
       "@type": ["./src/ts/type"],
-      "@models/*": ["./src/ts/models/*"]
+      "@models/*": ["./src/ts/models/*"],
+      "@styles": ["./src/assets/styles/global"],
+      "@styles/*": ["./src/assets/styles/global/*"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
