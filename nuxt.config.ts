@@ -7,7 +7,7 @@ const srcDir = path.resolve(__dirname, './src')
 export default defineNuxtConfig({
   srcDir,
   telemetry: false,
-  ssr: false,
+  // ssr: false,
   imports: {
     dirs: [path.join(srcDir, 'stores')]
   },
