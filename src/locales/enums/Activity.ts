@@ -1,5 +1,3 @@
-import { type EnumList } from '@type'
-
 export enum Activity {
   Inactive,
   Active

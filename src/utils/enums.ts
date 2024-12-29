@@ -1,9 +1,8 @@
-import type { EnumType, EnumList } from '@type'
-
 type EnumProvider = EnumType | null
-type Enums = Record<string, any>
-const enumsList: Record<string, EnumList> = {}
-const enums: Enums = {}
+type TEnumList = Record<string, EnumList>
+
+const enumsList: TEnumList = {}
+const enums: TData = {}
 
 export function importAllEnums(): void {
   const enumModules: any = import.meta.glob(`../ts/enums/*.(ts|js)`, { eager: true })
@@ -22,13 +21,11 @@ export function importAllEnums(): void {
 }
 
 export function enumsProvider(
-  type: string,
+  type: keyof TEnumList,
   value: string | number | boolean,
   prop: string = 'id'
 ): EnumProvider {
-  const item = enumsList[type as keyof typeof enumsList].find(
-    (i: EnumType) => i[prop as keyof typeof i] === value
-  )
+  const item = enumsList[type].find((i: EnumType) => i[prop as keyof typeof i] === value)
 
   return typeof item !== 'undefined' ? item : null
 }
@@ -37,6 +34,6 @@ export function getEnumList(type: keyof typeof enumsList): EnumType[] {
   return enumsList[type]
 }
 
-export function getEnum(type: keyof Enums): Pick<Enums, keyof Enums> | undefined {
+export function getEnum(type: keyof TData): Pick<TData, keyof TData> | undefined {
   return enums[type]
 }
