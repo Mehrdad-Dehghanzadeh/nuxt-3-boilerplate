@@ -30,7 +30,7 @@ export function enumsProvider(
   return typeof item !== 'undefined' ? item : null
 }
 
-export function getEnumList(type: keyof typeof enumsList): EnumType[] {
+export function getEnumList(type: keyof TEnumList): EnumType[] {
   return enumsList[type]
 }
 

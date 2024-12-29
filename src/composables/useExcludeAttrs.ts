@@ -1,10 +1,11 @@
 import type { HtmlAttrs } from '@type'
+import type { StyleValue } from 'vue'
 
 export default function () {
   const attrs = useAttrs()
 
   const id = computed<string>(() => <string>attrs?.id || '')
-  const style = computed(() => attrs?.style)
+  const style = computed(() => <StyleValue>attrs?.style)
   const className = computed<string>(() => <string>attrs?.class || '')
   const htmlAttr = computed<HtmlAttrs>(() => ({
     class: attrs?.class || '',
