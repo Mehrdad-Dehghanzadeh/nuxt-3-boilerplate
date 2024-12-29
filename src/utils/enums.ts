@@ -23,9 +23,9 @@ export function importAllEnums(): void {
 export function enumsProvider(
   type: keyof TEnumList,
   value: string | number | boolean,
-  prop: string = 'id'
+  prop: keyof EnumType = 'id'
 ): EnumProvider {
-  const item = enumsList[type].find((i: EnumType) => i[prop as keyof typeof i] === value)
+  const item = enumsList[type].find((i: EnumType) => i[prop] === value)
 
   return typeof item !== 'undefined' ? item : null
 }
