@@ -1,7 +1,7 @@
-export type Data<T = unknown> = Record<string, T>
+import type { HTMLAttributes } from 'vue'
 
 export type HtmlAttrs = {
-  class: {} | string | Data
-  style: {} | unknown | string
-  id: {} | unknown | string
+  class: Pick<HTMLAttributes, 'class'>
+  style: Pick<HTMLAttributes, 'style'>
+  id: string
 }

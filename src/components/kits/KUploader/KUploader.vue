@@ -25,11 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-interface Props {
-  rules?: any[]
-  acceptedType?: string[]
-  label?: string
-}
+import type { Props } from './types'
 
 const props = withDefaults(defineProps<Props>(), {
   rules: () => []

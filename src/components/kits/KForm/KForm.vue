@@ -11,17 +11,19 @@
 </template>
 
 <script lang="ts" setup>
+import type { SubmitEventPromise } from 'vuetify'
+
 const form = <any>ref(null)
 const { id, name } = <{ id: string; name: string }>useAttrs()
 const { appName } = useAppConfig()
 
 const emit = defineEmits(['onValid', 'onInValid'])
 
-function submit(e) {
-  e.then((res: any) => {
+function submit(e: SubmitEventPromise) {
+  e.then((res) => {
     const event = res.valid ? 'onValid' : 'onInValid'
     emit(event, res)
-  }).catch((err: any) => {
+  }).catch((err) => {
     emit('onInValid', err)
   })
 }

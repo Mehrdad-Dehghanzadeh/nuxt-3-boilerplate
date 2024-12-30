@@ -53,24 +53,29 @@ const props = defineProps({
     type: String,
     required: true
   },
+
   method: {
     type: String,
     default: 'read'
   },
+
   defaultFilters: {
     type: Object,
     default() {
       return {}
     }
   },
+
   dataProp: {
     type: String,
     default: 'data'
   },
+
   countProp: {
     type: String,
     default: 'count'
   },
+
   defaultPagination: {
     type: Object,
     default() {
@@ -80,14 +85,17 @@ const props = defineProps({
       }
     }
   },
+
   pageProp: {
     type: String,
     default: 'pageNumber'
   },
+
   pageSizeProp: {
     type: String,
     default: 'pageSize'
   },
+
   actionBtnProps: {
     type: Object,
     default(val: any) {
