@@ -1,7 +1,7 @@
-import isEmail from 'validator/lib/isEmail'
-import isEmpty from 'validator/lib/isEmpty'
-import isFloat from 'validator/lib/isFloat'
-import isStrongPassword from 'validator/lib/isStrongPassword'
+import isEmail from 'validator/es/lib/isEmail'
+import isEmpty from 'validator/es/lib/isEmpty'
+import isFloat from 'validator/es/lib/isFloat'
+import isStrongPassword from 'validator/es/lib/isStrongPassword'
 import {
   isRealNationalCode,
   isLegalNationalCode,
