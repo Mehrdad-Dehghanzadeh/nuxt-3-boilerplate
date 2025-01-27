@@ -7,6 +7,7 @@ const srcDir = path.resolve(__dirname, './src')
 export default defineNuxtConfig({
   srcDir,
   telemetry: false,
+
   // ssr: false,
   imports: {
     dirs: [path.join(srcDir, 'stores')]
@@ -59,7 +60,7 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           api: 'modern',
-          additionalData: ['@use "~/assets/styles/global/index.scss" as *;']
+          additionalData: '@use "~/assets/styles/global/index.scss" as *;'
         }
       }
     },
@@ -90,11 +91,6 @@ export default defineNuxtConfig({
   //   payloadExtraction: true
   // },
 
-  sourcemap: {
-    server: false,
-    client: false
-  },
-
   alias: {
     '@apis': path.join(__dirname, 'src/apis'),
     '@page-components': path.join(__dirname, 'src/components/page-components'),
@@ -112,8 +108,9 @@ export default defineNuxtConfig({
   },
 
   devtools: {
-    enabled: true
+    enabled: true,
+    componentInspector: false
   },
 
-  compatibilityDate: '2024-08-15'
+  compatibilityDate: '2025-01-27'
 })
