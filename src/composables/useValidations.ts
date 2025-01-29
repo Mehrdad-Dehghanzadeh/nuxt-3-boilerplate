@@ -1,13 +1,13 @@
-import isEmail from 'validator/lib/isEmail'
-import isEmpty from 'validator/lib/isEmpty'
-import isFloat from 'validator/lib/isFloat'
-import isStrongPassword from 'validator/lib/isStrongPassword'
+import isEmail from 'validator/es/lib/isEmail'
+import isEmpty from 'validator/es/lib/isEmpty'
+import isFloat from 'validator/es/lib/isFloat'
+import isStrongPassword from 'validator/es/lib/isStrongPassword'
 import {
   isRealNationalCode,
   isLegalNationalCode,
   isNationalCode,
   isIban,
-  isPersainDate,
+  isPersianDate,
   isCardNumber,
   isPostalCode
 } from '@assets/validations'
@@ -66,7 +66,7 @@ export default function () {
   }
 
   function persainDate(val: string): Validated {
-    return !val || isPersainDate(val) || t('errors.validations.persainDate')
+    return !val || isPersianDate(val) || t('errors.validations.persainDate')
   }
 
   function cardNumber(val: string): Validated {

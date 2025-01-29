@@ -1,5 +1,4 @@
 import path from 'path'
-import translateModule from './translateModule'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 const srcDir = path.resolve(__dirname, './src')
@@ -7,6 +6,7 @@ const srcDir = path.resolve(__dirname, './src')
 export default defineNuxtConfig({
   srcDir,
   telemetry: false,
+
   // ssr: false,
   imports: {
     dirs: [path.join(srcDir, 'stores')]
@@ -34,7 +34,6 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/i18n',
-    translateModule,
     '@pinia/nuxt',
 
     (_options, nuxt) => {
@@ -43,6 +42,32 @@ export default defineNuxtConfig({
       })
     }
   ],
+
+  i18n: {
+    lazy: true,
+    strategy: 'no_prefix',
+
+    locales: [
+      {
+        code: 'fa',
+        language: 'fa-IR',
+        files: ['fa-IR/errors.json', 'fa-IR/control.json'],
+        dir: 'rtl'
+      },
+
+      { code: 'en', language: 'en-US', files: ['en-US/us.json'], dir: 'ltr' }
+    ],
+
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'appname.lang',
+      redirectOn: 'no prefix',
+      alwaysRedirect: false,
+      fallbackLocale: 'fa'
+    },
+
+    vueI18n: './i18n/i18n.config.ts'
+  },
 
   pinia: {
     storesDirs: ['./src/stores/**']
@@ -59,7 +84,7 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           api: 'modern',
-          additionalData: ['@use "~/assets/styles/global/index.scss" as *;']
+          additionalData: '@use "~/assets/styles/global/index.scss" as *;'
         }
       }
     },
@@ -90,11 +115,6 @@ export default defineNuxtConfig({
   //   payloadExtraction: true
   // },
 
-  sourcemap: {
-    server: false,
-    client: false
-  },
-
   alias: {
     '@apis': path.join(__dirname, 'src/apis'),
     '@page-components': path.join(__dirname, 'src/components/page-components'),
@@ -112,8 +132,9 @@ export default defineNuxtConfig({
   },
 
   devtools: {
-    enabled: true
+    enabled: true,
+    componentInspector: false
   },
 
-  compatibilityDate: '2024-08-15'
+  compatibilityDate: '2025-01-27'
 })
