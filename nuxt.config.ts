@@ -66,7 +66,7 @@ export default defineNuxtConfig({
       fallbackLocale: 'fa'
     },
 
-    vueI18n: './i18n/i18n.config.ts' // if you are using custom path, default
+    vueI18n: './i18n/i18n.config.ts'
   },
 
   pinia: {
