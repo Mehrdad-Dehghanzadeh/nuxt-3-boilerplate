@@ -1,5 +1,4 @@
 import path from 'path'
-import translateModule from './translateModule'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 const srcDir = path.resolve(__dirname, './src')
@@ -35,7 +34,6 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/i18n',
-    translateModule,
     '@pinia/nuxt',
 
     (_options, nuxt) => {
@@ -44,6 +42,32 @@ export default defineNuxtConfig({
       })
     }
   ],
+
+  i18n: {
+    lazy: true,
+    strategy: 'no_prefix',
+
+    locales: [
+      {
+        code: 'fa',
+        language: 'fa-IR',
+        files: ['fa-IR/errors.json', 'fa-IR/control.json'],
+        dir: 'rtl'
+      },
+
+      { code: 'en', language: 'en-US', files: ['en-US/us.json'], dir: 'ltr' }
+    ],
+
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'appname.lang',
+      redirectOn: 'no prefix',
+      alwaysRedirect: false,
+      fallbackLocale: 'fa'
+    },
+
+    vueI18n: './i18n/i18n.config.ts' // if you are using custom path, default
+  },
 
   pinia: {
     storesDirs: ['./src/stores/**']
