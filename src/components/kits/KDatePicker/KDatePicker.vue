@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts" setup>
-import { isPersainDate } from '@assets/validations'
+import { isPersianDate } from '@assets/validations'
 
 defineOptions({
   inheritAttrs: false
@@ -79,7 +79,7 @@ let date = ref<string>(props.modelValue)
 let localValue = ref<string>(utcToJalaalie(props.modelValue))
 
 watch(localValue, (val) => {
-  if (!val || isPersainDate(val)) {
+  if (!val || isPersianDate(val)) {
     date.value = jalaaliToUtc(val, props.format)
     emit('update:modelValue', date.value)
   }

@@ -7,7 +7,7 @@ import {
   isLegalNationalCode,
   isNationalCode,
   isIban,
-  isPersainDate,
+  isPersianDate,
   isCardNumber,
   isPostalCode
 } from '@assets/validations'
@@ -66,7 +66,7 @@ export default function () {
   }
 
   function persainDate(val: string): Validated {
-    return !val || isPersainDate(val) || t('errors.validations.persainDate')
+    return !val || isPersianDate(val) || t('errors.validations.persainDate')
   }
 
   function cardNumber(val: string): Validated {
