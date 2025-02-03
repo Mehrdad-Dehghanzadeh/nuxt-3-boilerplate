@@ -1,0 +1,11 @@
+.k-border-gradient {
+  overflow: hidden;
+  background-color: transparent;
+  background-clip: padding-box;
+  background-image: linear-gradient(220deg, #05a180 5.48%, rgba(140, 212, 154, 0) 47.87%),
+    linear-gradient(28deg, #05a180 5.48%, rgba(140, 212, 154, 0) 47.87%);
+
+  &__container {
+    background-color: rgb(var(--v-theme-background));
+  }
+}
