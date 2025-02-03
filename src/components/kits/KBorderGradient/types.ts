@@ -1,4 +1,7 @@
 export type Props = {
-  borderSize?: string
   tag?: string
+  gradinet?: string
+  backgroundColor?: string
+  borderSize?: PxUnit
+  borderRadius?: PxUnit
 }
