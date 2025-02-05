@@ -2,8 +2,28 @@ type EmptyString = ''
 
 type NumberString = `${number}`
 
+type CssAbsoluteUnit =
+  | `${number}cm`
+  | `${number}mm`
+  | `${number}in`
+  | `${number}px`
+  | `${number}pt`
+  | `${number}pc`
+
+type CssRelativeUnit =
+  | `${number}em`
+  | `${number}ex`
+  | `${number}ch`
+  | `${number}rem`
+  | `${number}vw`
+  | `${number}vh`
+  | `${number}vmin`
+  | `${number}vmax`
+  | `${number}%`
+
 type PxUnit = `${number}px`
 type PercentUnit = `${number}%`
+type CssSizeValue = CssAbsoluteUnit | CssRelativeUnit
 
 type TData<T = any> = object & Record<string, T>
 
