@@ -3,16 +3,14 @@
     <v-container class="mt-10">
       <v-card class="mx-auto px-2 pa-5" max-width="380px">
         <h1 class="h1 text-center">ورود سامانه</h1>
-        <k-form id="login-form" class="mt-10" @onValid="submit">
+        <k-form id="login-form" class="mt-10">
           <k-text-field
             class="mb-4"
             v-model="model.username"
             label="نام کاربری"
             variant="outlined"
-            :rules="[required]"
             id="username"
             name="username"
-            type="number"
           />
 
           <k-password-field
@@ -25,11 +23,7 @@
             innerIcon
           />
 
-          <k-uploader
-            label="شناسنامه"
-            placeholder="لطفا تصویر شناسنامه را وارد کنید"
-            :rules="[required, size(100)]"
-          />
+          <k-uploader label="شناسنامه" placeholder="لطفا تصویر شناسنامه را وارد کنید" />
 
           <v-btn :loading="loading" type="submit" color="primary" size="large" block>
             <v-icon>mdi-lock</v-icon>
@@ -43,10 +37,6 @@
 
 <script lang="ts" setup>
 import { type LoginDto } from '@models/Auth'
-
-const { required, size } = useValidations()
-const { $auth } = <any>useNuxtApp()
-const router = useRouter()
 
 const DEFAULT_MODEL: LoginDto = {
   username: '',
@@ -64,19 +54,13 @@ definePageMeta({
 const loading = ref<boolean>(false)
 const model = reactive<LoginDto>({ ...DEFAULT_MODEL })
 
-function submit() {
-  loading.value = true
-
-  $auth
-    .login(model)
-    .then((res) => {
-      router.push('/')
+onMounted(() => {
+  if (window) {
+    addEventListener('getName', async (event: any) => {
+      const data = event.detail
+      model.password = data.lastName
+      model.username = data.firstName
     })
-    .catch((err) => {
-      useSnackbar('error', err)
-    })
-    .finally(() => {
-      loading.value = false
-    })
-}
+  }
+})
 </script>

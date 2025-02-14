@@ -19,7 +19,9 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'fa',
         dir: 'rtl'
-      }
+      },
+
+      script: [{ src: '/webViewBridge.js' }]
     }
   },
 
@@ -132,7 +134,7 @@ export default defineNuxtConfig({
   },
 
   devtools: {
-    enabled: true,
+    enabled: false,
     componentInspector: false
   },
 
