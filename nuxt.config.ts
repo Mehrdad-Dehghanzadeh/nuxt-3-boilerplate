@@ -44,27 +44,20 @@ export default defineNuxtConfig({
   ],
 
   i18n: {
-    lazy: true,
     strategy: 'no_prefix',
 
     locales: [
       {
         code: 'fa',
-        language: 'fa-IR',
+        name: 'fa-IR',
         files: ['fa-IR/errors.json', 'fa-IR/control.json'],
         dir: 'rtl'
       },
 
-      { code: 'en', language: 'en-US', files: ['en-US/us.json'], dir: 'ltr' }
+      { code: 'en', name: 'en-US', files: ['en-US/us.json'], dir: 'ltr' }
     ],
-
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'appname.lang',
-      redirectOn: 'no prefix',
-      alwaysRedirect: false,
-      fallbackLocale: 'fa'
-    },
+    lazy: true,
+    detectBrowserLanguage: false,
 
     vueI18n: './i18n/i18n.config.ts'
   },
