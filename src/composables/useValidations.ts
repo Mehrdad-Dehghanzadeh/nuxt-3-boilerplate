@@ -65,8 +65,8 @@ export default function () {
     return !val || isStrongPassword(val) || t('errors.validations.password')
   }
 
-  function persainDate(val: string): Validated {
-    return !val || isPersianDate(val) || t('errors.validations.persainDate')
+  function persianDate(val: string): Validated {
+    return !val || isPersianDate(val) || t('errors.validations.persianDate')
   }
 
   function cardNumber(val: string): Validated {
@@ -94,7 +94,7 @@ export default function () {
     nationalCode,
     iban,
     password,
-    persainDate,
+    persianDate,
     cardNumber,
     size,
     postalCode
