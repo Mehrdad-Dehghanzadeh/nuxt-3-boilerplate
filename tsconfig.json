@@ -10,6 +10,7 @@
       "~~/*": ["./*"],
       "@@/*": ["./*"],
       "@apis/*": ["./src/apis/*"],
+      "@apis": ["./src/apis/index"],
       "@kits/*": ["./src/components/kits/*"],
       "@page-components/*": ["./src/components/page-components/*"],
       "@shared/*": ["./src/components/shared/*"],

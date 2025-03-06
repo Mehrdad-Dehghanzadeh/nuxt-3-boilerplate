@@ -42,13 +42,13 @@
 </template>
 
 <script lang="ts" setup>
-import { type LoginDto } from '@models/Auth'
+import type { LoginModel } from '@models/Auth'
 
 const { required, size } = useValidations()
 const { $auth } = <any>useNuxtApp()
 const router = useRouter()
 
-const DEFAULT_MODEL: LoginDto = {
+const DEFAULT_MODEL: LoginModel = {
   username: '',
   password: ''
 }
@@ -62,7 +62,7 @@ definePageMeta({
 })
 
 const loading = ref<boolean>(false)
-const model = reactive<LoginDto>({ ...DEFAULT_MODEL })
+const model = reactive<LoginModel>({ ...DEFAULT_MODEL })
 
 function submit() {
   loading.value = true

@@ -7,8 +7,9 @@ export default function ($axios: AxiosInstance) {
     function (config: AxiosRequestConfig): any {
       const cookie = useCookie(cookieAuhtName)
       const store = useAppStore()
+
       if (store.isLogin && config.headers) {
-      config.headers.Authorization = `Bearer ${cookie.value}`
+        config.headers.Authorization = `Bearer ${cookie.value}`
       }
 
       return config

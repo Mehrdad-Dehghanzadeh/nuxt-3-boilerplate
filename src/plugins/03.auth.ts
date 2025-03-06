@@ -1,18 +1,19 @@
-import { type LoginDto } from '@models/Auth'
 import jwt_decode from 'jwt-decode'
 import { type JwtType, type AppConfig } from '@type'
+import type { TApi } from '@apis/types'
 
-export default defineNuxtPlugin(({ $api }) => {
+export default defineNuxtPlugin((nuxtapp) => {
+  const $apis = <TApi>nuxtapp.$apis
   const store = useAppStore()
   const { cookieAuhtName } = <Pick<AppConfig, 'cookieAuhtName'>>useAppConfig()
 
-  function login(payload: LoginDto): Promise<any> {
+  function login(payload: any): Promise<any> {
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await $api.auth.login(payload)
+        const res = await $apis.auth.login(payload)
 
-        if (res?.data?.access_token) {
-          await setCookie(res?.data?.access_token)
+        if (res?.data?.token) {
+          await setCookie(res?.data?.token)
           await init()
           resolve(res)
         } else {
