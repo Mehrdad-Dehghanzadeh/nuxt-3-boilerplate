@@ -2,6 +2,6 @@ export type AppConfig = {
   publicUrl: string
   appVersion: string
   apiBaseUrl: string
-  cookieAuhtName: string
+  cookieAuthName: string
   appName: string
 }

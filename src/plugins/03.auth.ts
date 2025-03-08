@@ -1,13 +1,14 @@
-import jwt_decode from 'jwt-decode'
-import { type JwtType, type AppConfig } from '@type'
+import type { JwtType, AppConfig, AuthPlugin } from '@type'
 import type { TApi } from '@apis/types'
+import type { LoginPayload, LoginResponse } from '@type-apis/auth'
+import jwt_decode from 'jwt-decode'
 
 export default defineNuxtPlugin((nuxtapp) => {
   const $apis = <TApi>nuxtapp.$apis
   const store = useAppStore()
-  const { cookieAuhtName } = <Pick<AppConfig, 'cookieAuhtName'>>useAppConfig()
+  const { cookieAuthName } = <Pick<AppConfig, 'cookieAuthName'>>useAppConfig()
 
-  function login(payload: any): Promise<any> {
+  function login(payload: LoginPayload): Promise<LoginResponse> {
     return new Promise(async (resolve, reject) => {
       try {
         const res = await $apis.auth.login(payload)
@@ -29,7 +30,7 @@ export default defineNuxtPlugin((nuxtapp) => {
     return new Promise((resolve, reject) => {
       try {
         removeToken()
-        resolve(null)
+        resolve(true)
       } catch (error) {
         reject(error)
       }
@@ -38,13 +39,12 @@ export default defineNuxtPlugin((nuxtapp) => {
 
   function setUser(jwt: string): void {
     const jwtObject: JwtType = jwt_decode(jwt)
-    store.setUser(jwtObject.profile)
   }
 
   function setCookie(jwt: string): void {
     if (jwt) {
       const jwtObject: JwtType = jwt_decode(jwt)
-      const cookie = useCookie(cookieAuhtName, {
+      const cookie = useCookie(cookieAuthName, {
         sameSite: true,
         expires: new Date(jwtObject.exp * 1000),
         path: '/'
@@ -54,33 +54,33 @@ export default defineNuxtPlugin((nuxtapp) => {
   }
 
   function init() {
-    const cookie = useCookie(cookieAuhtName)
+    const cookie = useCookie(cookieAuthName)
     if (cookie.value) {
       const { exp, profile }: JwtType = jwt_decode(cookie.value)
       const isExpired: boolean = exp * 1000 > Date.now()
 
       if (isExpired && profile) {
         setUser(cookie.value)
-        store.setIslogin(true)
+        store.setIsLogin(true)
       } else {
         removeToken()
       }
     } else {
       store.setUser(null)
-      store.setIslogin(false)
+      store.setIsLogin(false)
     }
   }
 
   function removeToken() {
-    const cookie = useCookie(cookieAuhtName)
+    const cookie = useCookie(cookieAuthName)
     cookie.value = null
-    store.setIslogin(false)
+    store.setIsLogin(false)
     store.setUser(null)
   }
 
   init()
 
-  const auth = {
+  const auth: AuthPlugin = {
     login,
     removeToken,
     logout,

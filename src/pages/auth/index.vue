@@ -43,9 +43,10 @@
 
 <script lang="ts" setup>
 import type { LoginModel } from '@models/Auth'
+import type { AuthPlugin } from '@type'
 
 const { required, size } = useValidations()
-const { $auth } = <any>useNuxtApp()
+const $auth = <AuthPlugin>useNuxtApp().$auth
 const router = useRouter()
 
 const DEFAULT_MODEL: LoginModel = {
