@@ -1,6 +1,6 @@
 {
   "name": "nuxt-3-boilerplate",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": false,
   "type": "module",
   "packageManager": "npm@9.9.4",
