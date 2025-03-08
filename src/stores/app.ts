@@ -21,7 +21,7 @@ export const useAppStore = defineStore('app', {
       this.user = <UserState>(data ? deepClone(data) : null)
     },
 
-    setIslogin(value: boolean) {
+    setIsLogin(value: boolean) {
       this.isLogin = value
     }
   }

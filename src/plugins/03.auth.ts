@@ -1,18 +1,19 @@
-import { type LoginDto } from '@models/Auth'
+import type { JwtType, AppConfig, AuthPlugin, ApisPlugin } from '@type'
+import type { LoginPayload, LoginResponse } from '@type-apis/auth'
 import jwt_decode from 'jwt-decode'
-import { type JwtType, type AppConfig } from '@type'
 
-export default defineNuxtPlugin(({ $api }) => {
+export default defineNuxtPlugin((nuxtapp) => {
+  const $apis = <ApisPlugin>nuxtapp.$apis
   const store = useAppStore()
-  const { cookieAuhtName } = <Pick<AppConfig, 'cookieAuhtName'>>useAppConfig()
+  const { cookieAuthName } = <Pick<AppConfig, 'cookieAuthName'>>useAppConfig()
 
-  function login(payload: LoginDto): Promise<any> {
-    return new Promise(async (resolve, reject) => {
+  function login(payload: LoginPayload) {
+    return new Promise<LoginResponse>(async (resolve, reject) => {
       try {
-        const res = await $api.auth.login(payload)
+        const res = await $apis.auth.login(payload)
 
-        if (res?.data?.access_token) {
-          await setCookie(res?.data?.access_token)
+        if (res?.data?.token) {
+          await setCookie(res?.data?.token)
           await init()
           resolve(res)
         } else {
@@ -24,11 +25,11 @@ export default defineNuxtPlugin(({ $api }) => {
     })
   }
 
-  function logout(): Promise<any> {
-    return new Promise((resolve, reject) => {
+  function logout() {
+    return new Promise<boolean>((resolve, reject) => {
       try {
         removeToken()
-        resolve(null)
+        resolve(true)
       } catch (error) {
         reject(error)
       }
@@ -37,13 +38,12 @@ export default defineNuxtPlugin(({ $api }) => {
 
   function setUser(jwt: string): void {
     const jwtObject: JwtType = jwt_decode(jwt)
-    store.setUser(jwtObject.profile)
   }
 
   function setCookie(jwt: string): void {
     if (jwt) {
       const jwtObject: JwtType = jwt_decode(jwt)
-      const cookie = useCookie(cookieAuhtName, {
+      const cookie = useCookie(cookieAuthName, {
         sameSite: true,
         expires: new Date(jwtObject.exp * 1000),
         path: '/'
@@ -53,33 +53,33 @@ export default defineNuxtPlugin(({ $api }) => {
   }
 
   function init() {
-    const cookie = useCookie(cookieAuhtName)
+    const cookie = useCookie(cookieAuthName)
     if (cookie.value) {
       const { exp, profile }: JwtType = jwt_decode(cookie.value)
       const isExpired: boolean = exp * 1000 > Date.now()
 
       if (isExpired && profile) {
         setUser(cookie.value)
-        store.setIslogin(true)
+        store.setIsLogin(true)
       } else {
         removeToken()
       }
     } else {
       store.setUser(null)
-      store.setIslogin(false)
+      store.setIsLogin(false)
     }
   }
 
   function removeToken() {
-    const cookie = useCookie(cookieAuhtName)
+    const cookie = useCookie(cookieAuthName)
     cookie.value = null
-    store.setIslogin(false)
+    store.setIsLogin(false)
     store.setUser(null)
   }
 
   init()
 
-  const auth = {
+  const auth: AuthPlugin = {
     login,
     removeToken,
     logout,

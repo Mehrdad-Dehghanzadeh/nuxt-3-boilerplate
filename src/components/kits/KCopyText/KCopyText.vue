@@ -1,7 +1,7 @@
 <template>
-  <div class="k-copy-text" @click="copy(text)">
+  <component :is="tag" class="k-copy-text" @click="copy(text)">
     <slot />
-  </div>
+  </component>
 </template>
 
 <script>
@@ -17,6 +17,11 @@ export default {
     message: {
       type: String,
       default: 'متن کپی شد'
+    },
+
+    tag: {
+      type: String,
+      default: 'div'
     }
   },
 
