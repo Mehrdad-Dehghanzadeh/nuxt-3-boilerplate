@@ -1,5 +1,4 @@
-import type { TApi } from '@apis/types'
-import type { AppConfig } from '@type'
+import type { AppConfig, ApisPlugin } from '@type'
 import axios from 'axios'
 import interceptorsRequest from '@assets/api-plugin/interceptorsRequest'
 import interceptorsResponse from '@assets/api-plugin/interceptorsResponse'
@@ -16,7 +15,7 @@ export default defineNuxtPlugin(() => {
   interceptorsRequest($axios)
   interceptorsResponse($axios)
 
-  const api: TApi = createApis($axios)
+  const api: ApisPlugin = createApis($axios)
 
   return {
     provide: {

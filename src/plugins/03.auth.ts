@@ -1,15 +1,14 @@
-import type { JwtType, AppConfig, AuthPlugin } from '@type'
-import type { TApi } from '@apis/types'
+import type { JwtType, AppConfig, AuthPlugin, ApisPlugin } from '@type'
 import type { LoginPayload, LoginResponse } from '@type-apis/auth'
 import jwt_decode from 'jwt-decode'
 
 export default defineNuxtPlugin((nuxtapp) => {
-  const $apis = <TApi>nuxtapp.$apis
+  const $apis = <ApisPlugin>nuxtapp.$apis
   const store = useAppStore()
   const { cookieAuthName } = <Pick<AppConfig, 'cookieAuthName'>>useAppConfig()
 
-  function login(payload: LoginPayload): Promise<LoginResponse> {
-    return new Promise(async (resolve, reject) => {
+  function login(payload: LoginPayload) {
+    return new Promise<LoginResponse>(async (resolve, reject) => {
       try {
         const res = await $apis.auth.login(payload)
 
@@ -26,8 +25,8 @@ export default defineNuxtPlugin((nuxtapp) => {
     })
   }
 
-  function logout(): Promise<any> {
-    return new Promise((resolve, reject) => {
+  function logout() {
+    return new Promise<boolean>((resolve, reject) => {
       try {
         removeToken()
         resolve(true)

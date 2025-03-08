@@ -1,7 +1,11 @@
-import type { AuthAPI } from './types'
-import type { LoginPayload, LoginResponse, LoginResponseData } from '@type-apis/Auth'
+import type {
+  AuthApis,
+  LoginPayload,
+  LoginResponse,
+  LoginResponseData
+} from '@type-apis/Auth'
 
-const authAPI: AuthAPI = ($axios) => ({
+const authAPI: AuthApis = ($axios) => ({
   login(payload: LoginPayload) {
     return $axios.post<LoginResponseData, LoginResponse, LoginPayload>(
       '/auth/login',

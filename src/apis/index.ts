@@ -1,8 +1,8 @@
 import type { AxiosInstance } from 'axios'
-import type { TApi } from './types'
-import authAPI from '@apis/auth/authApis'
+import type { ApisPlugin } from '@type'
+import authAPI from '@apis/resources/auth'
 
-export default function createApis($axios: AxiosInstance): TApi {
+export default function createApis($axios: AxiosInstance): ApisPlugin {
   return {
     auth: authAPI($axios)
   }
