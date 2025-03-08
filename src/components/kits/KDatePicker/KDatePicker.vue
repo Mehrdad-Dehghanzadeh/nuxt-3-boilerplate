@@ -12,7 +12,7 @@
         @click:append-inner="show = true"
       />
 
-      <persain-date
+      <persian-date
         v-model="date"
         type="date"
         :format="props.format"
@@ -71,8 +71,8 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 const localRules: any = computed(() => {
-  const { persainDate } = useValidations()
-  return Array.isArray(props.rules) ? [...props.rules, persainDate] : [persainDate]
+  const { persianDate } = useValidations()
+  return Array.isArray(props.rules) ? [...props.rules, persianDate] : [persianDate]
 })
 
 let date = ref<string>(props.modelValue)
