@@ -53,10 +53,10 @@
     "vue3-persian-datetime-picker": "^1.2.2"
   },
   "browserslist": [
-    "Chrome >=80",
-    "Firefox >=80",
+    "Chrome >=90",
+    "Firefox >=88",
     "Edge >=80",
-    "Safari >=13.1",
-    "iOS >=13.1"
+    "Safari >=15",
+    "iOS >=15"
   ]
 }
