@@ -8,7 +8,7 @@ Look at the [Vuetify 3](https://vuetifyjs.com/en/) to learn more.
 
 Look at the [Sass](https://sass-lang.com/) to learn more.
 
-## Features {#features}
+## Features 
 
 - Nuxt 3
 - Vue 3
@@ -21,7 +21,7 @@ Look at the [Sass](https://sass-lang.com/) to learn more.
 - Persian Date Time Picker
 - Utils
 
-## Setup {#setup}
+## Setup 
 
 Make sure to install the dependencies:
 
@@ -48,7 +48,7 @@ initial typing for project and extended typing with this command:
 npm run postinstall
 ```
 
-## Development Server {#development-server}
+## Development Server
 
 Start the development server on http://localhost:3000
 
@@ -66,7 +66,7 @@ Build the application for production:
 npm run build
 ```
 
-### Build SSG OR Static {#build-ssg}
+### Build SSG OR Static
 
 ```bash
 npm run generate
@@ -80,7 +80,7 @@ Locally preview production build:
 npm run preview
 ```
 
-## Clean Up Cache {#clean-cache}
+## Clean Up Cache
 
 for clean up cache development mode and remove `.nuxt` directory:
 
@@ -88,13 +88,13 @@ for clean up cache development mode and remove `.nuxt` directory:
 npm run cleanup
 ```
 
-## Browser List {#browser-list}
+## Browser List 
 
 | Chrome | FireFox | Edge | Safari | ios  |
 | :----: | :-----: | :--: | :----: | :--: |
 |  >=90  |  >=88   | >=80 |  >=15  | >=15 |
 
-## Usage Packages {#usage-packages}
+## Usage Packages 
 
 - **@nuxtjs/i18n:** for supporting multi language and i18n
 - **@pinia/nuxt:** for State management app
@@ -104,29 +104,29 @@ npm run cleanup
 - **@mdi/font:** font icon for icon apps
 - **jwt-decode:** for decoding jwt token in auth process
 
-## Project Directory Structure {#project-directory-structure}
+## Project Directory Structure
 
-### src {#src-directory}
+### src 
 
 main directory for project
 
-### i18n {#i18n-directory}
+### i18n 
 
 multi language and messages for all languages and config for lazy loading.
 It is boilerplate uses `@nuxtjs/i18n` packages
 
-### apis {#apis-directory}
+### apis 
 
 This directory uses for all backend Api endpoints.
 
-### assets {#assets-directory}
+### assets
 
 This directory uses for assets project such as `styles` and `constance` this boilerplate.
 
-### store {#store-directory}
+### store 
 
 This directory uses for state management project and we used `pinia` for this boilerplate.
 
-### ts {#ts-directory}
+### ts 
 
 this directory uses for typescript
