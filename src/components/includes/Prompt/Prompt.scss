@@ -1,0 +1,9 @@
+@use 'sass:map';
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.prompt {
+  @include fixed();
+  @include flex-center();
+  z-index: map.get($z-index, 'prompt');
+}

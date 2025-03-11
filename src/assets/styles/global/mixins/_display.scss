@@ -12,6 +12,13 @@
   flex-direction: $column;
 }
 
+@mixin flex-center($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
 @mixin inline-block($vertical-align: middle) {
   display: inline-block;
   vertical-align: $vertical-align;
