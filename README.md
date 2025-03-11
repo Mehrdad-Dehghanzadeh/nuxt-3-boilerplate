@@ -8,7 +8,7 @@ Look at the [Vuetify 3](https://vuetifyjs.com/en/) to learn more.
 
 Look at the [Sass](https://sass-lang.com/) to learn more.
 
-## Features
+## Features {#features}
 
 - Nuxt 3
 - Vue 3
@@ -21,7 +21,7 @@ Look at the [Sass](https://sass-lang.com/) to learn more.
 - Persian Date Time Picker
 - Utils
 
-## Setup
+## Setup {#setup}
 
 Make sure to install the dependencies:
 
@@ -48,7 +48,7 @@ initial typing for project and extended typing with this command:
 npm run postinstall
 ```
 
-## Development Server
+## Development Server {#development-server}
 
 Start the development server on http://localhost:3000
 
@@ -56,17 +56,17 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
-## Production
+## Production {#production}
 
 Build the application for production:
 
-### Build SSR
+### Build SSR {#build-ssr}
 
 ```bash
 npm run build
 ```
 
-### Build SSG OR Static
+### Build SSG OR Static {#build-ssg}
 
 ```bash
 npm run generate
@@ -80,7 +80,7 @@ Locally preview production build:
 npm run preview
 ```
 
-## Clean Up Cache
+## Clean Up Cache {#clean-cache}
 
 for clean up cache development mode and remove `.nuxt` directory:
 
@@ -88,13 +88,13 @@ for clean up cache development mode and remove `.nuxt` directory:
 npm run cleanup
 ```
 
-## Browser List
+## Browser List {#browser-list}
 
 | Chrome | FireFox | Edge | Safari | ios  |
-| ------ | ------- | ---- | ------ | ---- |
-| >=90   | >=88    | >=80 | >=15   | >=15 |
+| :----: | :-----: | :--: | :----: | :--: |
+|  >=90  |  >=88   | >=80 |  >=15  | >=15 |
 
-## Usage Packages
+## Usage Packages {#usage-packages}
 
 - **@nuxtjs/i18n:** for supporting multi language and i18n
 - **@pinia/nuxt:** for State management app
@@ -104,28 +104,29 @@ npm run cleanup
 - **@mdi/font:** font icon for icon apps
 - **jwt-decode:** for decoding jwt token in auth process
 
-## Project Directory Structure
+## Project Directory Structure {#project-directory-structure}
 
-### src
+### src {#src-directory}
 
 main directory for project
 
-### i18n
+### i18n {#i18n-directory}
 
 multi language and messages for all languages and config for lazy loading.
+It is boilerplate uses `@nuxtjs/i18n` packages
 
-### apis
+### apis {#apis-directory}
 
 This directory uses for all backend Api endpoints.
 
-### assets
+### assets {#assets-directory}
 
 This directory uses for assets project such as `styles` and `constance` this boilerplate.
 
-### store
+### store {#store-directory}
 
 This directory uses for state management project and we used `pinia` for this boilerplate.
 
-### ts
+### ts {#ts-directory}
 
 this directory uses for typescript
