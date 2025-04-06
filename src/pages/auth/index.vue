@@ -37,8 +37,6 @@
           </v-btn>
         </k-form>
       </v-card>
-
-      {{ appStore.user }}
     </v-container>
   </article>
 </template>
@@ -66,14 +64,6 @@ definePageMeta({
 
 const loading = ref<boolean>(false)
 const model = reactive<LoginModel>({ ...DEFAULT_MODEL })
-const appStore = useAppStore()
-
-watch(
-  () => model.username,
-  (value: string) => {
-    appStore.setUser({ username: value })
-  }
-)
 
 function submit() {
   loading.value = true
