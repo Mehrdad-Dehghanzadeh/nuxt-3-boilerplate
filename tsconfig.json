@@ -24,6 +24,7 @@
       "@type": ["./src/ts/type"],
       "@type-apis": ["./src/ts/type/apis"],
       "@type-apis/*": ["./src/ts/type/apis/*"],
+      "@type-stores/*": ["./src/ts/type/stores/*"],
       "@models/*": ["./src/ts/models/*"],
       "@styles": ["./src/assets/styles/global"],
       "@styles/*": ["./src/assets/styles/global/*"]

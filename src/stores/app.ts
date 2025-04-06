@@ -1,4 +1,4 @@
-import type { State, UserState } from './types'
+import type { State, UserState } from '@type-stores/app'
 
 export const useAppStore = defineStore('app', {
   state: (): State => ({
