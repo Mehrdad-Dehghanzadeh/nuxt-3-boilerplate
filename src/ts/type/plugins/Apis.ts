@@ -1,5 +1,5 @@
-import type { AuthApis } from '@type-apis/Auth'
+import type { TAuthApis } from '@type-apis/Auth'
 
 export type ApisPlugin = {
-  auth: ReturnType<AuthApis>
+  auth: ReturnType<TAuthApis>
 }

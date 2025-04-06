@@ -9,6 +9,6 @@ export interface LoginResponseData {
 
 export interface LoginResponse extends AxiosResponse<LoginResponseData> {}
 
-export type AuthApis = ($axios: AxiosInstance) => {
+export type TAuthApis = ($axios: AxiosInstance) => {
   login: (payload: LoginPayload) => Promise<LoginResponse>
 }
