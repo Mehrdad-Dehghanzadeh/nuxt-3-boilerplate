@@ -1,10 +1,4 @@
-import { type User } from '@type'
-
-type UserState = User | null
-type State = {
-  user: UserState
-  isLogin: boolean
-}
+import type { State, UserState } from './types'
 
 export const useAppStore = defineStore('app', {
   state: (): State => ({
