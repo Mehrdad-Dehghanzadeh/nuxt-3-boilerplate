@@ -56,9 +56,13 @@ export default defineNuxtConfig({
 
       { code: 'en', name: 'en-US', files: ['en-US/us.json'], dir: 'ltr' }
     ],
+
+    bundle: {
+      optimizeTranslationDirective: false
+    },
+
     lazy: true,
     detectBrowserLanguage: false,
-
     vueI18n: 'i18n.config.ts'
   },
 
