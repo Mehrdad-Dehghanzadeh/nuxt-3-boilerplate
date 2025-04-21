@@ -32,3 +32,40 @@ export function objectFileToLink(file: File) {
     if (fileURL) window.URL.revokeObjectURL(fileURL)
   }, 200)
 }
+
+export function downloadLinkFile(url: string, name?: string) {
+  const tempLink = document.createElement('a')
+  tempLink.style.display = 'none'
+  tempLink.href = url
+  tempLink.setAttribute('target', '_blank')
+  tempLink.setAttribute('download', name || 'download')
+  tempLink.setAttribute('rel', 'nofollow')
+
+  document.body.appendChild(tempLink)
+
+  tempLink.click()
+
+  setTimeout(function () {
+    document.body.removeChild(tempLink)
+  }, 200)
+}
+
+export function downloadAll(url: string, name?: string) {
+  let link = document.createElement('a')
+  document.body.append(link)
+
+  fetch(url)
+    .then((res) => res.blob())
+    .then((blob) => {
+      let objectURL = URL.createObjectURL(blob)
+
+      link.setAttribute('download', name || 'download')
+      link.setAttribute('rel', 'nofollow')
+      link.href = objectURL
+      link.click()
+
+      setTimeout(function () {
+        document.body.removeChild(link)
+      }, 200)
+    })
+}
