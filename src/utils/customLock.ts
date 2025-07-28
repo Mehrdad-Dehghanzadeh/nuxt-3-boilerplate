@@ -5,14 +5,14 @@ enum LockStatus {
   Created = 'Created'
 }
 
-interface ILock {
+interface ICustomLock {
   name: string
   readonly status: LockStatus
   readonly createdAt: number
   wait(): Promise<unknown> | undefined
 }
 
-export class Lock implements ILock {
+export class CustomLock implements ICustomLock {
   name = ''
   createdAt = 0
   status = LockStatus.Created
