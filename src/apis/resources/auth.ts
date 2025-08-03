@@ -7,10 +7,7 @@ import type {
 
 const authAPI: TAuthApis = ($axios) => ({
   login(payload: LoginPayload) {
-    return $axios.post<LoginResponseData, LoginResponse, LoginPayload>(
-      '/auth/login',
-      payload
-    )
+    return $axios.post<LoginResponseData, LoginResponse, LoginPayload>('/login', payload)
   }
 })
 

@@ -1,7 +1,7 @@
-import { type AxiosRequestConfig, type AxiosInstance, type AppConfig } from '@type'
+import type { AxiosRequestConfig, AxiosInstance } from 'axios'
 
 export default function ($axios: AxiosInstance) {
-  const { cookieAuhtName } = <Pick<AppConfig, 'cookieAuhtName'>>useAppConfig()
+  const cookieAuhtName = useAppConfig()?.cookieAuthName
 
   $axios.interceptors.request.use(
     function (config: AxiosRequestConfig): any {
