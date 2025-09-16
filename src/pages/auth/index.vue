@@ -49,7 +49,6 @@ const { required, size } = useValidations()
 const $auth = <AuthPlugin>useNuxtApp().$auth
 const $api = <ApisPlugin>useNuxtApp().$api
 const router = useRouter()
-const lockAuth = new CustomLock('auth')
 
 const DEFAULT_MODEL: LoginModel = {
   username: '',
@@ -82,22 +81,4 @@ function submit() {
       loading.value = false
     })
 }
-
-onMounted(async () => {
-  setTimeout(() => {
-    console.log(lockAuth)
-    lockAuth.resolve({ name: '2222' })
-  }, 10000)
-
-  try {
-    await $api.auth.login({ username: '1', password: '1' })
-    await lockAuth.wait()
-
-    await $api.auth.login({ username: '2', password: '2' })
-    await $api.auth.login({ username: '3', password: '3' })
-    await $api.auth.login({ username: '4', password: '4' })
-  } catch (e) {
-    console.error(e)
-  }
-})
 </script>
