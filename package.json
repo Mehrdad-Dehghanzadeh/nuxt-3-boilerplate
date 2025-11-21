@@ -18,7 +18,7 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
-    "*.{js,css,md,vue,ts}": "prettier --write"
+    "*.{js,css,scss,sass,md,vue,ts}": "prettier --write"
   },
   "scripts": {
     "build": "nuxt build",
