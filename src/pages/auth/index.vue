@@ -49,7 +49,6 @@ const { required, size } = useValidations()
 const $auth = <AuthPlugin>useNuxtApp().$auth
 const $api = <ApisPlugin>useNuxtApp().$api
 const router = useRouter()
-const lockAuth = new CustomLock('auth')
 
 const DEFAULT_MODEL: LoginModel = {
   username: '',
