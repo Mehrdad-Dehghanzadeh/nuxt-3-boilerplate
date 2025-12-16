@@ -16,8 +16,8 @@ export class CustomLock implements ICustomLock {
   name = ''
   createdAt = 0
   status = LockStatus.Created
-  #resolve: ((value?: any) => void) | undefined
-  #reject: ((reason?: any) => void) | undefined
+  private _resolve: ((value?: any) => void) | undefined
+  private _reject: ((reason?: any) => void) | undefined
 
   constructor(name: string) {
     this.name = name
@@ -29,22 +29,22 @@ export class CustomLock implements ICustomLock {
       this.status = LockStatus.Wait
 
       return new Promise((res, rej) => {
-        this.#resolve = res
-        this.#reject = rej
+        this._resolve = res
+        this._reject = rej
       })
     }
   }
 
   resolve<T = any>(value?: T) {
-    if (this.#resolve) {
-      this.#resolve(value)
+    if (this._resolve) {
+      this._resolve(value)
       this.status = LockStatus.Resolve
     }
   }
 
   reject<T = any>(reason?: T) {
-    if (this.#reject) {
-      this.#reject(reason)
+    if (this._reject) {
+      this._reject(reason)
       this.status = LockStatus.Reject
     }
   }

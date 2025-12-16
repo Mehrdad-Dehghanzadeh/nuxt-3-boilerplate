@@ -66,7 +66,7 @@ definePageMeta({
 const loading = ref<boolean>(false)
 const model = reactive<LoginModel>({ ...DEFAULT_MODEL })
 
-function submit() {
+async function submit() {
   loading.value = true
 
   $auth
